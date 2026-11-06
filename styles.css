@@ -7530,26 +7530,86 @@ header.scrolled { background: transparent; }
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
+/* ── Preț cu reducere (Student Plus) ──
+   Rând 1: preț vechi tăiat + etichetă reducere; rând 2: preț nou mare.
+   Fiecare bucată e nowrap, ca „75 RON” / „50 RON” / „/ lună” să nu se rupă pe 2 rânduri. */
+.lp-plan-price-sale {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+.lp-plan-price-was,
+.lp-plan-price-now {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.lp-plan-price-now {
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.lp-plan-price-was > *,
+.lp-plan-price-now > * {
+  white-space: nowrap;
+}
 .lp-plan-price-old {
-  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
   font-weight: 600;
+  line-height: 1;
+  color: var(--lp-text-muted, #5a6b7f);
   text-decoration: line-through;
-  color: var(--lp-text-faint, #8896ab);
-  align-self: center;
+  text-decoration-color: #f87171;
+  text-decoration-thickness: 2px;
 }
 .lp-plan-featured .lp-plan-price-old {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.72);
 }
 .lp-plan-sale-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
-  background: #ef4444;
-  color: #fff;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.3px;
   text-transform: uppercase;
-  align-self: center;
+  background: #ef4444;
+  color: #fff;
+  padding: 0.35rem 0.6rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 0 #b91c1c;
+}
+.lp-plan-price-currency {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--lp-heading, #1a2744);
+}
+.lp-plan-featured .lp-plan-price-currency {
+  color: var(--lp-on-accent, #fff);
+}
+/* Pe 2 coloane, „Gratuit” se aliniază cu „50 RON”, deci listele de beneficii încep la aceeași înălțime */
+@media (min-width: 769px) {
+  .lp-plans .lp-plan-price {
+    min-height: 5.1rem;
+    align-items: flex-end;
+  }
+  .lp-plans .lp-plan-price-sale {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+}
+.lp-body .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
