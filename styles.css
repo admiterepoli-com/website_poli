@@ -4210,6 +4210,7 @@ img, button { max-width: 100%; }
     color: #0f172a;
     margin-bottom: 1.3rem;
     line-height: 1.25;
+    text-wrap: balance;
 }
 
 #newsletter-popup .glass-body {
@@ -4228,6 +4229,7 @@ img, button { max-width: 100%; }
     color: #334155;
     margin-bottom: 0.5rem;
     line-height: 1.45;
+    text-wrap: balance;
 }
 
 #newsletter-popup .popup-benefits strong {
@@ -4252,6 +4254,7 @@ img, button { max-width: 100%; }
     color: #ffffff;
     box-shadow: 0 4px 0 #1a9c4a, 0 6px 12px rgba(37, 211, 102, 0.2);
     transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, filter 0.2s;
+    text-wrap: balance;
 }
 
 #newsletter-popup .whatsapp-btn:hover {
@@ -4279,6 +4282,13 @@ img, button { max-width: 100%; }
 
 #newsletter-popup .popup-microcopy:hover {
     color: #94a3b8;
+}
+
+/* Telefoane foarte înguste (320px): titlul rămâne pe 2 rânduri și cu fontul de rezervă */
+@media screen and (max-width: 360px) {
+    #newsletter-popup .glass-headline {
+        font-size: 1.25rem !important;
+    }
 }
 
 /* ── Newsletter popup — dark cartoonish overrides ──────────── */
@@ -4334,11 +4344,11 @@ img, button { max-width: 100%; }
   text-align: left;
 }
 
+/* Block (nu flex): cu flex, <strong> și textul din jur devin coloane separate */
 .lp-body #newsletter-popup .popup-benefits p {
   color: rgba(255, 255, 255, 0.58);
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
+  position: relative;
+  padding-left: calc(7px + 0.55rem);
   margin-bottom: 0.6rem;
   font-size: 0.92rem;
   line-height: 1.5;
@@ -4347,12 +4357,13 @@ img, button { max-width: 100%; }
 /* Green dot bullet per benefit */
 .lp-body #newsletter-popup .popup-benefits p::before {
   content: '';
+  position: absolute;
+  left: 0;
+  top: calc(0.75em - 3.5px);
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #34d399;
-  flex-shrink: 0;
-  margin-top: 0.42rem;
 }
 
 .lp-body #newsletter-popup .popup-benefits strong {
