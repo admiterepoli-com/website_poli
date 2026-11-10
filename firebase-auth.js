@@ -149,12 +149,13 @@ function injectModal() {
       <!-- Step 2: Plan Selection -->
       <div class="auth-step" id="auth-step-plan">
         <h2 class="plan-title">Alege planul tău</h2>
-        <p class="plan-subtitle">Selectează planul care ți se potrivește</p>
+        <p class="plan-subtitle">Selectează planul care ți se potrivește · prețuri cu TVA inclus</p>
 
         <div class="plan-toggle-wrap">
-          <div class="plan-toggle" id="plan-toggle">
+          <div class="plan-toggle plan-toggle--3" id="plan-toggle">
             <button class="plan-toggle-btn active" data-billing="monthly">Lunar</button>
-            <button class="plan-toggle-btn" data-billing="quarterly">3 Luni</button>
+            <button class="plan-toggle-btn" data-billing="preadmitere">Preadmitere</button>
+            <button class="plan-toggle-btn" data-billing="admitere">Admitere</button>
             <div class="plan-toggle-slider"></div>
           </div>
         </div>
@@ -171,9 +172,9 @@ function injectModal() {
               </div>
             </div>
             <div class="plan-price">
-              <span class="plan-amount" data-monthly="0" data-quarterly="0">0</span>
+              <span class="plan-amount" data-monthly="0" data-preadmitere="0" data-admitere="0">0</span>
               <span class="plan-currency">RON</span>
-              <span class="plan-period" data-monthly="/lună" data-quarterly="/3 luni">/lună</span>
+              <span class="plan-period" data-monthly="/lună" data-preadmitere="/lună" data-admitere="/lună">/lună</span>
             </div>
           </div>
 
@@ -187,15 +188,15 @@ function injectModal() {
               </div>
             </div>
             <div class="plan-price-wrap">
-              <div class="plan-price-old-row">
-                <span class="plan-amount-old" data-monthly="75" data-quarterly="180">75</span>
+              <div class="plan-price-old-row" hidden>
+                <span class="plan-amount-old" data-monthly="" data-preadmitere="460" data-admitere="736"></span>
                 <span class="plan-amount-old">RON</span>
-                <span class="plan-sale-badge">Reducere</span>
+                <span class="plan-sale-badge" data-monthly="" data-preadmitere="-25%" data-admitere="-35%"></span>
               </div>
               <div class="plan-price">
-                <span class="plan-amount" data-monthly="50" data-quarterly="120">50</span>
+                <span class="plan-amount" data-monthly="92" data-preadmitere="345" data-admitere="480">92</span>
                 <span class="plan-currency">RON</span>
-                <span class="plan-period" data-monthly="/lună" data-quarterly="/3 luni">/lună</span>
+                <span class="plan-period" data-monthly="/lună" data-preadmitere="până la Preadmitere" data-admitere="până la Admitere">/lună</span>
               </div>
             </div>
           </div>
@@ -781,8 +782,12 @@ function updatePlanPrices() {
     const value = el.getAttribute(`data-${currentBilling}`);
     animateNumber(el, parseInt(el.textContent), parseInt(value));
   });
-  document.querySelectorAll('.plan-amount-old[data-monthly]').forEach(el => {
+  document.querySelectorAll('.plan-amount-old[data-monthly], .plan-sale-badge[data-monthly]').forEach(el => {
     el.textContent = el.getAttribute(`data-${currentBilling}`);
+  });
+  // Lunar e preţul de referinţă — rândul cu preţul tăiat apare doar la planurile fixe.
+  document.querySelectorAll('.plan-price-old-row').forEach(el => {
+    el.hidden = currentBilling === 'monthly';
   });
   document.querySelectorAll('.plan-period').forEach(el => {
     el.textContent = el.getAttribute(`data-${currentBilling}`);
@@ -902,7 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Plan billing toggle (Lunar / 3 Luni) ──────────────────── */
+  /* ── Plan billing toggle (Lunar / Preadmitere / Admitere) ──── */
   const planToggleBtns = document.querySelectorAll('.plan-toggle-btn');
   planToggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -913,7 +918,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const toggle = document.getElementById('plan-toggle');
       const slider = toggle.querySelector('.plan-toggle-slider');
-      const idx = btn.dataset.billing === 'quarterly' ? 1 : 0;
+      const idx = [...planToggleBtns].indexOf(btn);
       slider.style.transform = `translateX(${idx * 100}%)`;
 
       updatePlanPrices();
@@ -1023,6 +1028,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const user = auth.currentUser;
 
+    // Gumroad se deschide în tab nou SINCRON, direct în handler-ul de click —
+    // după un await, browserul nu mai consideră deschiderea iniţiată de user
+    // şi o blochează ca popup.
+    if (plan === 'student-plus' && user) {
+      const returnUrl = encodeURIComponent(`${window.location.origin}/profil?upgraded=1`);
+      const gumroadUrls = {
+        monthly:     `https://admiterepoli.gumroad.com/l/student-plus-lunar?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
+        preadmitere: `https://admiterepoli.gumroad.com/l/student-plus-preadmitere?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
+        admitere:    `https://admiterepoli.gumroad.com/l/student-plus-admitere?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`
+      };
+      window.open(gumroadUrls[billing] || gumroadUrls.monthly, '_blank', 'noopener,noreferrer');
+    }
+
     if (user) {
       try {
         const userRef = doc(db, 'users', user.uid);
@@ -1039,15 +1057,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.disabled = false;
     closeModal();
-
-    if (plan === 'student-plus' && user) {
-      const returnUrl = encodeURIComponent(`${window.location.origin}/profil?upgraded=1`);
-      const gumroadUrls = {
-        monthly:   `https://admiterepoli.gumroad.com/l/student-plus-lunar?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
-        quarterly: `https://admiterepoli.gumroad.com/l/student-plus?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`
-      };
-      window.location.href = gumroadUrls[billing] || gumroadUrls.monthly;
-    }
   });
 
   // Logout

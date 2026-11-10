@@ -12,12 +12,28 @@ db.settings({ databaseId: "admiterepoli" });
 // users/{uid}.purchasedSimulations.
 const SIMULATION_PERMALINKS = ["simulare_09_05", "simulare-21-07"];
 
+// Planuri Student Plus cu plată unică şi acces până la o dată fixă (NU abonamente).
+// accessUntil = ultimul moment cu acces (ora României). expireFixedTermUsers
+// retrogradează la "free" după această dată.
+const FIXED_TERM_PLANS = {
+  "student-plus-preadmitere": new Date("2027-04-05T23:59:59+03:00"),
+  "student-plus-admitere": new Date("2027-07-31T23:59:59+03:00"),
+};
+
 // Gumroad trimite fie permalink-ul simplu, fie forma "<user>/<permalink>".
-function matchSimulationPermalink(productPermalink) {
+function matchPermalink(productPermalink, permalinks) {
   if (typeof productPermalink !== "string") return null;
-  return SIMULATION_PERMALINKS.find(
+  return permalinks.find(
     (p) => productPermalink === p || productPermalink.endsWith(`/${p}`)
   ) || null;
+}
+
+function matchSimulationPermalink(productPermalink) {
+  return matchPermalink(productPermalink, SIMULATION_PERMALINKS);
+}
+
+function matchFixedTermPlan(productPermalink) {
+  return matchPermalink(productPermalink, Object.keys(FIXED_TERM_PLANS));
 }
 
 exports.gumroadWebhook = onRequest(async (req, res) => {
@@ -156,13 +172,41 @@ exports.gumroadWebhook = onRequest(async (req, res) => {
       return res.status(200).send("Simulare access granted");
     }
 
-    // --- sale: cumpărare nouă sau reînnoire ---
+    // --- sale: plan cu plată unică până la o dată fixă (preadmitere / admitere) ---
+    const fixedPlan = matchFixedTermPlan(product_permalink);
+    if (fixedPlan) {
+      const userRef = db.collection("users").doc(uid);
+      const newUntil = FIXED_TERM_PLANS[fixedPlan];
+      await db.runTransaction(async (tx) => {
+        const snap = await tx.get(userRef);
+        // Dacă userul are deja un plan fix mai lung (ex. a cumpărat Admitere,
+        // apoi Preadmitere), nu îi scurtăm accesul.
+        const current = snap.exists ? snap.get("accessUntil") : null;
+        const currentDate = current && typeof current.toDate === "function" ? current.toDate() : null;
+        const accessUntil = currentDate && currentDate > newUntil ? currentDate : newUntil;
+        tx.set(userRef, {
+          status: "paid",
+          gumroadSaleId: sale_id || null,
+          gumroadProduct: product_permalink,
+          gumroadSubscriptionId: null,
+          accessUntil: admin.firestore.Timestamp.fromDate(accessUntil),
+          paidAt: admin.firestore.FieldValue.serverTimestamp(),
+        }, { merge: true });
+      });
+      console.log(`[Webhook] Plan fix ${fixedPlan} activat pentru uid ${uid}`);
+      return res.status(200).send("Fixed-term plan granted");
+    }
+
+    // --- sale: abonament lunar, cumpărare nouă sau reînnoire ---
+    // accessUntil se şterge: accesul e guvernat de abonament (cancel/ended events),
+    // altfel expireFixedTermUsers l-ar retrograda pe baza unei date vechi.
     await db.collection("users").doc(uid).set(
       {
         status: "paid",
         gumroadSaleId: sale_id || null,
         gumroadProduct: product_permalink || null,
         gumroadSubscriptionId: subscription_id || null,
+        accessUntil: admin.firestore.FieldValue.delete(),
         paidAt: admin.firestore.FieldValue.serverTimestamp(),
       },
       { merge: true }
@@ -204,3 +248,37 @@ exports.expireTrialUsers = onSchedule({ schedule: "0 7 12 5 *", timeZone: "UTC" 
     console.log(`[expireTrialUsers] ${snap.docs.length} useri migrati → purchasedSimulations + free`);
     return null;
   });
+
+// Expirare planuri fixe (preadmitere / admitere): zilnic la 00:10 ora României,
+// retrogradează la "free" userii plătiţi al căror accessUntil a trecut.
+// Interogare doar pe accessUntil (index single-field automat), filtrare status în cod,
+// ca să nu fie nevoie de index compus.
+exports.expireFixedTermUsers = onSchedule(
+  { schedule: "10 0 * * *", timeZone: "Europe/Bucharest" },
+  async () => {
+    const now = admin.firestore.Timestamp.now();
+    const snap = await db.collection("users")
+      .where("accessUntil", "<=", now)
+      .get();
+
+    const expired = snap.docs.filter((d) => d.get("status") === "paid");
+    if (expired.length === 0) {
+      console.log("[expireFixedTermUsers] Niciun plan fix de expirat.");
+      return null;
+    }
+
+    // Batch-urile Firestore au limită de 500 de operaţii.
+    for (let i = 0; i < expired.length; i += 500) {
+      const batch = db.batch();
+      expired.slice(i, i + 500).forEach((d) => {
+        batch.update(d.ref, {
+          status: "free",
+          accessExpiredAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+      });
+      await batch.commit();
+    }
+    console.log(`[expireFixedTermUsers] ${expired.length} useri retrogradaţi la free`);
+    return null;
+  }
+);

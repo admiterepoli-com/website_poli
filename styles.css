@@ -903,6 +903,7 @@ img, button { max-width: 100%; }
   --lp-plan-featured-desc: rgba(255, 255, 255, 0.6);
   --lp-plan-featured-period: rgba(255, 255, 255, 0.5);
   --lp-plan-badge-text: #5a82ba;
+  --lp-plan-badge-bg: linear-gradient(135deg, rgba(123,160,217,0.15), rgba(123,160,217,0.08));
   --lp-mobile-nav-bg: #fff;
   --lp-mobile-nav-link: #1a2744;
   --lp-mobile-auth-bg: #7BA0D9;
@@ -7249,6 +7250,18 @@ header.scrolled { background: transparent; }
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
+/* Varianta cu 3 opţiuni (Lunar / Preadmitere / Admitere) */
+.plan-toggle--3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 380px;
+}
+.plan-toggle--3 .plan-toggle-btn {
+  padding: 0.5rem 0.4rem;
+  font-size: 0.85rem;
+}
+.plan-toggle--3 .plan-toggle-slider {
+  width: calc((100% - 8px) / 3);
+}
 
 /* ── Panels ──────────────────────────────────────────────────── */
 .auth-panel { display: none; }
@@ -7500,6 +7513,7 @@ header.scrolled { background: transparent; }
 .plan-period {
   font-size: 0.8rem;
   color: var(--muted);
+  white-space: nowrap;
 }
 .plan-price-wrap {
   display: flex;
@@ -7512,6 +7526,17 @@ header.scrolled { background: transparent; }
   align-items: center;
   gap: 0.35rem;
   margin-bottom: 0.15rem;
+}
+.plan-price-old-row[hidden] {
+  display: none;
+}
+/* „până la Preadmitere” trece pe rândul de sub preţ, ca să nu strivească numele planului */
+.plan-price-wrap {
+  max-width: 9rem;
+}
+.plan-price-wrap .plan-price {
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .plan-amount-old {
   font-size: 0.82rem;
@@ -7578,6 +7603,36 @@ header.scrolled { background: transparent; }
   padding: 0.35rem 0.6rem;
   border-radius: 20px;
   box-shadow: 0 2px 0 #b91c1c;
+}
+/* Planuri cu plată unică sub preţul lunar (Student Plus) */
+.lp-plan-terms {
+  list-style: none;
+  margin: -0.5rem 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.lp-plan-terms li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+.lp-plan-terms li > * {
+  white-space: nowrap;
+}
+.lp-plan-terms li > span:first-child {
+  opacity: 0.8;
+}
+.lp-plan-terms .lp-plan-terms-note {
+  font-size: 0.8rem;
+  opacity: 0.65;
+}
+.lp-plan-terms .lp-plan-sale-tag {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.5rem;
 }
 .lp-plan-price-currency {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -7794,7 +7849,7 @@ header.scrolled { background: transparent; }
 }
 
 .lp-body .plan-badge {
-  background: linear-gradient(135deg, rgba(123,160,217,0.15), rgba(123,160,217,0.08));
+  background: var(--lp-plan-badge-bg);
   color: var(--lp-plan-badge-text);
 }
 
@@ -9006,6 +9061,8 @@ html[data-theme="dark"] body.lp-body {
   --lp-plan-featured-desc: rgba(255, 255, 255, 0.7);
   --lp-plan-featured-period: rgba(255, 255, 255, 0.6);
   --lp-plan-badge-text: #111218;
+  /* Text închis → fundal auriu plin, ca badge-ul „Popular” de pe landing */
+  --lp-plan-badge-bg: #fbbf24;
   --lp-mobile-nav-bg: #1a1b23;
   --lp-mobile-nav-link: #e2e8f0;
   --lp-mobile-auth-bg: #5b9cf6;

@@ -148,9 +148,27 @@ function renderPlanSection(user, userData) {
   const isTrialPending = userData.status === 'trial_pending';
   const isPaid = userData.status === 'paid' || userData.status === 'pending_cancellation';
   const isPendingCancellation = userData.status === 'pending_cancellation';
-  const isQuarterly = isPaid && userData.gumroadProduct && userData.gumroadProduct.includes('student-plus') && !userData.gumroadProduct.includes('lunar');
-  const planName = isPaid ? (isQuarterly ? 'Student Plus · 3 luni' : 'Student Plus · Lunar') : 'Standard';
-  const planPrice = isQuarterly ? '120 RON / 3 luni' : '50 RON / lună';
+  const product = (isPaid && userData.gumroadProduct) || '';
+  // Ordinea contează: „student-plus-preadmitere” conţine şi „admitere”.
+  const paidPlan = product.includes('preadmitere') ? 'preadmitere'
+    : product.includes('admitere') ? 'admitere'
+    : product.includes('lunar') ? 'monthly'
+    : product.includes('student-plus') ? 'legacy-3m'
+    : 'monthly';
+  const PAID_PLAN_INFO = {
+    'monthly':     { name: 'Student Plus · Lunar',               price: '92 RON / lună' },
+    'preadmitere': { name: 'Student Plus · Până la Preadmitere', price: '345 RON · plată unică' },
+    'admitere':    { name: 'Student Plus · Până la Admitere',    price: '480 RON · plată unică' },
+    'legacy-3m':   { name: 'Student Plus · 3 luni',              price: 'plată unică' }
+  };
+  const planName = isPaid ? PAID_PLAN_INFO[paidPlan].name : 'Standard';
+  const planPrice = PAID_PLAN_INFO[paidPlan].price;
+  const accessUntilDate = userData.accessUntil && typeof userData.accessUntil.toDate === 'function'
+    ? userData.accessUntil.toDate()
+    : null;
+  const accessUntilText = accessUntilDate
+    ? accessUntilDate.toLocaleDateString('ro-RO', { day: 'numeric', month: 'long', year: 'numeric' })
+    : null;
 
   if (isTrial || isTrialPending) {
     const statusText = isTrialPending
@@ -206,8 +224,10 @@ function renderPlanSection(user, userData) {
         }
         <p class="profile-muted" style="margin-top:0.5rem">Pentru refund în primele 14 zile, scrie-ne la <a class="profile-cancel-link" href="mailto:admiterepoli@gmail.com">admiterepoli@gmail.com</a>.</p>
       ` : `
-        <p class="profile-label">Acces pe 3 luni</p>
-        <p class="profile-muted">Planul tău oferă acces complet timp de 3 luni de la cumpărare. Nu se reînnoiește automat.</p>
+        <p class="profile-label">Plată unică</p>
+        <p class="profile-muted">${accessUntilText
+          ? `Ai acces complet până pe <strong>${accessUntilText}</strong> inclusiv.`
+          : 'Ai acces complet pe perioada planului cumpărat.'} Nu se reînnoiește automat.</p>
         <p class="profile-muted" style="margin-top:0.5rem">Dacă dorești un refund în primele 14 zile, scrie-ne la <a class="profile-cancel-link" href="mailto:admiterepoli@gmail.com">admiterepoli@gmail.com</a>.</p>
       `}
     </div>
@@ -215,12 +235,14 @@ function renderPlanSection(user, userData) {
 
   const upgradeSection = isPaid ? '' : `
     <div class="plan-toggle-wrap" style="margin-top:1rem">
-      <div class="plan-toggle" id="profile-billing-toggle">
-        <button class="plan-toggle-btn active" data-billing="monthly">Lunar · <s>75</s> 50 RON</button>
-        <button class="plan-toggle-btn" data-billing="quarterly">3 Luni · <s>180</s> 120 RON</button>
+      <div class="plan-toggle plan-toggle--3" id="profile-billing-toggle">
+        <button class="plan-toggle-btn active" data-billing="monthly">Lunar</button>
+        <button class="plan-toggle-btn" data-billing="preadmitere">Preadmitere</button>
+        <button class="plan-toggle-btn" data-billing="admitere">Admitere</button>
         <div class="plan-toggle-slider"></div>
       </div>
     </div>
+    <p class="profile-muted" style="text-align:center;margin-top:0.5rem">Toate prețurile includ TVA.</p>
     <button class="profile-btn-upgrade" id="btn-upgrade-plan">Upgrade la Student Plus</button>
   `;
 
@@ -244,7 +266,7 @@ function renderPlanSection(user, userData) {
       </div>
       <div class="profile-plan-col ${isPaid ? 'plan-col-active' : ''}">
         <div class="profile-plan-col-name">Student Plus</div>
-        <div class="profile-plan-col-price" id="profile-plus-price">${isPaid ? planPrice : '<s style="color:var(--muted);font-size:0.85em">75 RON</s> 50 RON / lună'}</div>
+        <div class="profile-plan-col-price" id="profile-plus-price">${isPaid ? planPrice : '92 RON / lună'}</div>
         <ul class="profile-plan-benefits">
           ${plusBenefits.map(b => `<li>${b}</li>`).join('')}
         </ul>
@@ -261,12 +283,14 @@ function renderPlanSection(user, userData) {
 
     const gumroadUrls = {
       monthly:   `https://admiterepoli.gumroad.com/l/student-plus-lunar?wanted=true&email=${encodeURIComponent(user.email)}`,
-      quarterly: `https://admiterepoli.gumroad.com/l/student-plus?wanted=true&email=${encodeURIComponent(user.email)}`
+      preadmitere: `https://admiterepoli.gumroad.com/l/student-plus-preadmitere?wanted=true&email=${encodeURIComponent(user.email)}`,
+      admitere:    `https://admiterepoli.gumroad.com/l/student-plus-admitere?wanted=true&email=${encodeURIComponent(user.email)}`
     };
 
     const priceLabels = {
-      monthly:   '50 RON / lună',
-      quarterly: '120 RON / 3 luni'
+      monthly:     '92 RON / lună',
+      preadmitere: '<s style="color:var(--muted);font-size:0.85em">460 RON</s> 345 RON · până la Preadmitere',
+      admitere:    '<s style="color:var(--muted);font-size:0.85em">736 RON</s> 480 RON · până la Admitere'
     };
 
     const cols = document.querySelectorAll('.profile-plan-col');
@@ -297,9 +321,11 @@ function renderPlanSection(user, userData) {
         billing = btn.dataset.billing;
 
         const slider = document.querySelector('#profile-billing-toggle .plan-toggle-slider');
-        slider.style.transform = billing === 'quarterly' ? 'translateX(100%)' : 'translateX(0)';
+        const btns = [...document.querySelectorAll('#profile-billing-toggle .plan-toggle-btn')];
+        slider.style.transform = `translateX(${btns.indexOf(btn) * 100}%)`;
 
-        document.getElementById('profile-plus-price').textContent = priceLabels[billing];
+        // priceLabels sunt constante din cod (nu date de la user), deci innerHTML e sigur.
+        document.getElementById('profile-plus-price').innerHTML = priceLabels[billing];
       });
     });
 
