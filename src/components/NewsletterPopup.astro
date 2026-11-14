@@ -1,0 +1,69 @@
+---
+/**
+ * WhatsApp group popup plus its <noscript> fallback.
+ *
+ * The popup markup is identical on every legacy page that has it. The
+ * <noscript> text is static HTML that search engines read, and it exists in
+ * three versions on the legacy site, so the page must say which one it had:
+ *
+ * - `weekly` (most pages): "...pentru a primi săptămânal noutăți despre admitere..."
+ * - `info`   (simulari, barem-simulare-admiterepoli-3 and -4): "...pentru informații despre admitere..."
+ * - `title`  (cti-vs-is, etti-vs-cti): heading only, no paragraph
+ */
+export type NoscriptText = 'weekly' | 'info' | 'title';
+
+interface Props {
+  noscript?: NoscriptText | undefined;
+}
+
+const { noscript = 'weekly' } = Astro.props;
+---
+
+<div id="newsletter-popup">
+  <div class="newsletter-content">
+    <button class="close-btn" aria-label="Close">
+      &times;
+    </button>
+    <h3 class="glass-headline">Antrenament zilnic pentru&nbsp;admitere</h3>
+    <div class="popup-benefits">
+      <p>
+        <strong>Seturi noi de probleme</strong> la mate, info și&nbsp;fizică
+      </p>
+      <p>Sesiuni LIVE de simulări pe Google&nbsp;Meet</p>
+    </div>
+    <a
+      href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D"
+      target="_blank"
+      class="whatsapp-btn"
+      id="whatsapp-link"
+    >
+      Intră&nbsp;în&nbsp;grupul de&nbsp;WhatsApp
+    </a>
+    <a href="#" class="dismiss-link popup-microcopy">
+      Nu acum &middot; Fără spam
+    </a>
+  </div>
+</div>
+<noscript>
+  <div style="padding: 20px; background: #f8f9fa; border: 1px solid #ddd; text-align: center; color: #333;">
+    <h3>Rămâi la curent cu AdmiterePoli</h3>
+    {noscript === 'weekly' && (
+      <p>
+        Abonează-te la newsletter-ul nostru pentru a primi săptămânal noutăți despre admitere, subiecte
+        rezolvate și resurse utile.
+      </p>
+    )}
+    {noscript === 'info' && (
+      <p>
+        Abonează-te la newsletter-ul nostru pentru informații despre admitere, subiecte rezolvate și resurse
+        utile.
+      </p>
+    )}
+  </div>
+</noscript>
+
+<script>
+  import { initPopup } from '../scripts/popup';
+
+  initPopup();
+</script>

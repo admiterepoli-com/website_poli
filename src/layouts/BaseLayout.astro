@@ -22,6 +22,7 @@ import Analytics from '../components/Analytics.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import NewsletterPopup, { type NoscriptText } from '../components/NewsletterPopup.astro';
 import SeoHead, { type FontSet } from '../components/SeoHead.astro';
 
 interface Props {
@@ -43,6 +44,8 @@ interface Props {
   footerIconAlt?: boolean;
   /** WhatsApp popup. Ten legacy pages do not include it (simulations, legal pages, profil, ...). */
   popup?: boolean;
+  /** Which <noscript> text the legacy page had under the popup (see NewsletterPopup). */
+  popupNoscript?: NoscriptText;
   /** Firebase auth module (sign-up button, gates). Only `404` lacks it. */
   auth?: boolean;
 }
@@ -60,6 +63,7 @@ const {
   footer = true,
   footerIconAlt,
   popup = true,
+  popupNoscript,
   auth = true,
 } = Astro.props;
 
@@ -84,7 +88,7 @@ const parts = { cookieConsent, header, footer, popup, auth };
     <slot />
     {parts.footer && <Footer iconAlt={footerIconAlt} />}
     <slot name="scripts" />
-    {/* PLACEHOLDER newsletter popup (issue #16). Uses parts.popup. */}
+    {parts.popup && <NewsletterPopup noscript={popupNoscript} />}
     {/* PLACEHOLDER auth entry script (issue #19). Uses parts.auth. */}
   </body>
 </html>
