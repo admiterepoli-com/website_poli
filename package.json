@@ -11,8 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
-    "lint": "eslint . && prettier --check \"src/**/*.{ts,astro}\" \"scripts/**/*.ts\" \"integrations/**/*.ts\" \"*.{ts,js,json}\"",
-    "format": "prettier --write \"src/**/*.{ts,astro}\" \"scripts/**/*.ts\" \"integrations/**/*.ts\" \"*.{ts,js,json}\""
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",

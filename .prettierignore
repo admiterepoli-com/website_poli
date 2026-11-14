@@ -9,3 +9,8 @@ seo-baseline.json
 *.css
 /*.js
 !/eslint.config.js
+.github/
+.claude/
+*.md
+firebase.json
+.firebaserc
