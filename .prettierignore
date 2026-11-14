@@ -15,3 +15,5 @@ seo-baseline.json
 firebase.json
 .firebaserc
 src/styles/
+# Page markup is copied verbatim from the legacy site; reformatting can change inline whitespace.
+src/pages/

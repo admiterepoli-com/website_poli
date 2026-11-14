@@ -1,0 +1,167 @@
+---
+/**
+ * REFERENCE EXAMPLE of a ported page. Copy this pattern for other pages.
+ *
+ * How this page was ported from legacy/cti-vs-is.html:
+ * 1. <head>: only title and description are passed to BaseLayout. Cookie
+ *    consent, analytics, fonts, favicon and the stylesheet come from the layout.
+ * 2. <header>, <footer>, the WhatsApp popup and the auth script are NOT copied:
+ *    the layout renders them. Use the layout props when the legacy page
+ *    differs from the default (see BaseLayout.astro for the list).
+ * 3. Everything between <main> and </main> is copied as it is: same tags,
+ *    classes, inline styles, texts and links. Do not tidy it up.
+ * 4. legacy/cti-vs-is.html is deleted in the same PR.
+ *
+ * Before opening the PR:
+ *   npm run build && npm run seo:check && npm run visual -- cti-vs-is
+ *
+ * Notes for this page: its <noscript> popup text is the heading-only version,
+ * hence popupNoscript="title".
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="CTI vs IS – Comparație Detaliată | AdmiterePoli"
+  description="Ești nehotărât între Calculatoare (CTI) și Ingineria Sistemelor (IS)? Află diferențele reale, materiile studiate și joburile după absolvire la ACS UPB."
+  popupNoscript="title"
+>
+  <main>
+      <section class="grid-main-content">
+
+          <!-- HERO -->
+          <div class="hero-comparatie">
+              <a href="./informatii" class="hero-back-btn">← Înapoi la Informații</a>
+              <span class="badge">Ghid complet ACS</span>
+              <h1>CTI vs IS</h1>
+              <p>Alegerea specializării la Facultatea de Automatică și Calculatoare (ACS) este una dintre cele mai importante decizii. Ambele sunt de top, dar te pregătesc pentru cariere ușor diferite. Iată ce trebuie să știi.</p>
+          </div>
+
+          <!-- TABEL COMPARATIV -->
+          <div class="section-card" style="animation-delay:0.1s">
+              <h2>Tabel Comparativ Rapid</h2>
+              <div class="comparison-table-wrapper">
+                  <table class="comparison-table">
+                      <thead>
+                          <tr>
+                              <th>Criteriu</th>
+                              <th><span class="tag tag-cti">CTI</span> Calculatoare</th>
+                              <th><span class="tag tag-is">IS</span> Ingineria Sistemelor</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><strong>Focus Principal</strong></td>
+                              <td>Software, Algoritmi, Arhitectura calculatoarelor</td>
+                              <td>Hardware, Automatizări, Robotică, Controlul sistemelor</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Materiile studiate</strong></td>
+                              <td>Mai multă Programare, Baze de Date, Rețele</td>
+                              <td>Mai multă Fizică, Electronică, Matematică aplicată</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Concurența la Admitere</strong></td>
+                              <td>Medii de intrare de obicei mai mari</td>
+                              <td>Medii de intrare ușor mai mici</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Joburi tipice</strong></td>
+                              <td>Software Developer, DevOps, Data Engineer, Cybersecurity</td>
+                              <td>Automation Engineer, System Integrator, Embedded Developer</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <!-- CE VREI SA STUDIEZI -->
+          <div class="section-card" style="animation-delay:0.15s">
+              <h2>Ce vei studia efectiv?</h2>
+              <div class="materii-grid">
+                  <div class="materii-box">
+                      <h3 style="color:var(--accent2)">Materiile de la CTI</h3>
+                      <p>Vei aprofunda modul în care funcționează software-ul și cum comunică cu componentele fizice ale unui calculator.</p>
+                      <ul>
+                          <li>Programare (C, C++, Java, Python)</li>
+                          <li>Structuri de date și Algoritmi</li>
+                          <li>Sisteme de Operare și Baze de Date</li>
+                          <li>Proiectarea Microprocesoarelor</li>
+                          <li>Inteligență Artificială și Machine Learning</li>
+                      </ul>
+                  </div>
+                  <div class="materii-box">
+                      <h3 style="color:var(--accent3)">Materiile de la IS</h3>
+                      <p>Focusul pică pe interacțiunea dintre programe și lumea fizică (procese industriale, roboți, semafoare inteligente).</p>
+                      <ul>
+                          <li>Teoria Sistemelor (matematică avansată aplicată)</li>
+                          <li>Electronică analogică și digitală</li>
+                          <li>Semnale și Sisteme</li>
+                          <li>Robotică și control industrial</li>
+                          <li>Programarea micro-controlerelor (C/C++)</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <!-- MITURI SI REALITATE -->
+          <div class="section-card" style="animation-delay:0.2s">
+              <h2>Mituri și Realitate</h2>
+              <div class="myth-grid">
+                  <div class="triple-card card-myth">
+                      <h3>Mit: „Dacă termin IS, nu pot să mă angajez ca programator web/software."</h3>
+                      <p><strong style="color:var(--accent3)">Realitate:</strong> Nu este imposibil, dar nici garantat. La IS, facultatea te pregătește în principal pentru hardware, automatizări și programare low-level (C/C++). Dacă vrei să te angajezi ca Web Developer sau Software Engineer pe tehnologii moderne (Java, Python, Web), va trebui să înveți destul de mult singur. E un mic „trap": vei avea multă matematică și fizică pentru facultate, în timp ce va trebui să îți găsești timp și pentru proiecte personale de programare.</p>
+                  </div>
+                  <div class="triple-card card-myth">
+                      <h3>Mit: „La CTI e doar programare și zero fizică."</h3>
+                      <p><strong style="color:var(--accent3)">Realitate:</strong> Fiind o facultate de inginerie (UPB), vei face fizică și electronică și la CTI (mai ales în primii doi ani), dar ponderea acestor materii este mult mai mică în comparație cu IS.</p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- VERDICT / PENTRU CINE -->
+          <div class="section-card" style="animation-delay:0.25s">
+              <h2>Pentru cine este fiecare secție?</h2>
+              <div class="triple-grid">
+                  <div class="triple-card card-cti">
+                      <h3>Alege CTI dacă…</h3>
+                      <ul>
+                          <li>Ți-a plăcut foarte mult informatica în liceu și vrei să scrii cod</li>
+                          <li>Te pasionează crearea de aplicații complexe, AI și rețelele de calculatoare</li>
+                          <li>Vrei să înțelegi cum funcționează un calculator „sub capotă" la nivel de software</li>
+                          <li>Ești atras de startup-uri tech sau roluri de Software Engineer</li>
+                      </ul>
+                  </div>
+                  <div class="triple-card card-is">
+                      <h3>Alege IS dacă…</h3>
+                      <ul>
+                          <li>Ești pasionat de cum interacționează tehnologia cu lumea reală (hardware, senzori, roboți)</li>
+                          <li>Te atrag drone, mașini autonome și sisteme de automatizare</li>
+                          <li>Îți place fizica și ești dispus să înveți multă matematică aplicată</li>
+                          <li>Vrei să automatizezi sisteme complexe din industrie</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+          <!-- PROGRAME OFICIALE -->
+          <div class="section-card" style="animation-delay:0.3s">
+              <h2>Programe oficiale & resurse</h2>
+              <div class="sfat-info" style="margin:0 0 1rem 0">
+                  <p>Consultă programa detaliată : <em>Programa Oficială UPB ACS –</em>
+                      <span class="links">
+                          <a href="https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_CTI_Calculatoare_f.pdf" target="_blank">CTI</a>
+                          <span class="separator">|</span>
+                          <a href="https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_AIASI_Automatica-si-informatica-aplicata_f.pdf" target="_blank">AIASI</a>
+                      </span>
+                  </p>
+              </div>
+              <div class="cta-back">
+                  <p>Vrei să explorezi și alte informații despre admitere?</p>
+                  <a href="./informatii" class="lp-btn lp-btn-fill">Vezi toate informațiile</a>
+              </div>
+          </div>
+
+      </section>
+  </main>
+</BaseLayout>
