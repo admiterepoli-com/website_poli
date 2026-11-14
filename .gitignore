@@ -13,3 +13,9 @@ skills-lock.json
 design-system/
 *.py
 .firebase/
+
+# Astro
+node_modules/
+dist/
+.astro/
+.visual/

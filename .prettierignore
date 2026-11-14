@@ -1,0 +1,11 @@
+dist/
+.astro/
+legacy/
+public/
+functions/
+package-lock.json
+seo-baseline.json
+*.html
+*.css
+/*.js
+!/eslint.config.js
