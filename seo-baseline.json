@@ -1,0 +1,2998 @@
+{
+ "pages": {
+  "404": {
+   "title": "Page Not Found",
+   "description": null,
+   "canonical": null,
+   "robots": "noindex",
+   "lang": null,
+   "headings": [
+    "h2: 404",
+    "h1: Page Not Found",
+    "h3: Why am I seeing this?"
+   ],
+   "internalLinks": [],
+   "externalLinks": [],
+   "images": [],
+   "textWords": 49,
+   "textHash": "266468edc051311d"
+  },
+  "admitere-2023-informatica-barem": {
+   "title": "Barem Admitere Politehnica 2023 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de admitere la informatică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2023 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba scrisă la informatică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-matematica-barem",
+    "admitere-2024-informatica-barem",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2023-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Informatica_I_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 147,
+   "textHash": "c91230efa44cdea2"
+  },
+  "admitere-2023-matematica-barem": {
+   "title": "Barem Admitere Politehnica 2023 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de admitere la matematică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2023 – Matematică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba scrisă la matematică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-informatica-barem",
+    "admitere-2024-matematica-barem",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=QmD3k7vcaNY"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 148,
+   "textHash": "a99e31a7b0240e93"
+  },
+  "admitere-2024-informatica-barem": {
+   "title": "Barem Admitere Politehnica 2024 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de admitere la informatică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2024 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba scrisă la informatică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2024-matematica-barem",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-informatica-barem",
+    "resurse",
+    "rezolvare-admitere-2024-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Informatica_I_(Varianta_A).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 147,
+   "textHash": "0b80e16f8fea9d3f"
+  },
+  "admitere-2024-matematica-barem": {
+   "title": "Barem Admitere Politehnica 2024 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de admitere la matematică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2024 – Matematică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba scrisă la matematică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2024-informatica-barem",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-matematica-barem",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_A).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=gbX0MePdi70"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 148,
+   "textHash": "17cfe5d2ad1e85e8"
+  },
+  "admitere-2025-informatica-barem": {
+   "title": "Barem Admitere Politehnica 2025 – Informatică | AdmiterePoli",
+   "description": "Vezi baremul oficial pentru examenul final de admitere la informatică din anul 2025 de la Universitatea Politehnica București (UPB).",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2025 – Informatică",
+    "h3: Aici este publicat baremul oficial de corectare pentru proba scrisă la informatică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București (Sesiunea de Vară 2025).",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "simulare-2025-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "9fbd07bc54418e57"
+  },
+  "admitere-2025-matematica-barem": {
+   "title": "Barem Admitere Politehnica 2025 – Matematică | AdmiterePoli",
+   "description": "Vezi baremul oficial pentru examenul final de admitere la matematică din anul 2025 de la Universitatea Politehnica București (UPB).",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Admitere Politehnica 2025 – Matematică",
+    "h3: Consultă baremul oficial de corectare pentru proba scrisă la matematică din cadrul examenului final de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București (Sesiunea de Vară 2025).",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=IvdfNGfQIf0"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 143,
+   "textHash": "b9e1434741f2b856"
+  },
+  "barem-simulare-admiterepoli-1": {
+   "title": "Barem Simulare AdmiterePoli 1 2026 – Mate-Info | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare AdmiterePoli I",
+    "h3: Aici găsești baremul pentru prima simulare organizata de noi, AdmiterePoli. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-1",
+    "simulare-2026-03-21",
+    "simulare-2026-informatica-barem",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 174,
+   "textHash": "887422f3786c2f56"
+  },
+  "barem-simulare-admiterepoli-2": {
+   "title": "Barem Simulare AdmiterePoli 2 2026 – Mate-Info | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare AdmiterePoli II",
+    "h3: Aici găsești baremul pentru a doua simulare organizata de noi, AdmiterePoli. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-2",
+    "simulare-2026-03-26",
+    "simulare-2026-informatica-barem",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 175,
+   "textHash": "93a6dfe398743ff9"
+  },
+  "barem-simulare-admiterepoli-3": {
+   "title": "Barem Simulare AdmiterePoli 3 2026 – Mate-Fizică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea #3 de admitere la Universitatea Politehnica București (UPB) 2026 – Matematică și Fizică. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare AdmiterePoli III",
+    "h3: Aici găsești baremul pentru a treia simulare organizată de noi, AdmiterePoli. Simularea a inclus atât varianta Informatică, cât și varianta Fizică. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-1",
+    "barem-simulare-admiterepoli-2",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-3",
+    "simulare-2026-05-09",
+    "simulare-2026-informatica-barem",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 202,
+   "textHash": "4fd79cd43626d4bd"
+  },
+  "barem-simulare-admiterepoli-4": {
+   "title": "Barem Simulare AdmiterePoli 4 2026 – Informatică | AdmiterePoli",
+   "description": "Baremul pentru a patra simulare de admitere la Universitatea Politehnica București (UPB) 2026 – Informatică. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare AdmiterePoli IV",
+    "h3: Aici găsești baremul pentru a patra simulare organizată de noi, AdmiterePoli, pentru toate cele trei probe: Matematică, Informatică și Fizică. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-1",
+    "barem-simulare-admiterepoli-2",
+    "barem-simulare-admiterepoli-3",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-4",
+    "simulare-2026-07-21",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 196,
+   "textHash": "89ac98ced3bea705"
+  },
+  "contact": {
+   "title": "Contactează-ne",
+   "description": "Ia legătura cu echipa admiterepoli pentru orice întrebări, sugestii sau detalii despre admiterea la facultate!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Hai săvorbim.",
+    "h2: Trimite-ne un mesaj",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "mailto:admiterepoli@gmail.com"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 107,
+   "textHash": "0dc017c29d7400cb"
+  },
+  "cti-vs-is": {
+   "title": "CTI vs IS – Comparație Detaliată | AdmiterePoli",
+   "description": "Ești nehotărât între Calculatoare (CTI) și Ingineria Sistemelor (IS)? Află diferențele reale, materiile studiate și joburile după absolvire la ACS UPB.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: CTI vs IS",
+    "h2: Tabel Comparativ Rapid",
+    "h2: Ce vei studia efectiv?",
+    "h3: Materiile de la CTI",
+    "h3: Materiile de la IS",
+    "h2: Mituri și Realitate",
+    "h3: Mit: „Dacă termin IS, nu pot să mă angajez ca programator web/software.\"",
+    "h3: Mit: „La CTI e doar programare și zero fizică.\"",
+    "h2: Pentru cine este fiecare secție?",
+    "h3: Alege CTI dacă…",
+    "h3: Alege IS dacă…",
+    "h2: Programe oficiale & resurse",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_AIASI_Automatica-si-informatica-aplicata_f.pdf",
+    "https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_CTI_Calculatoare_f.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 509,
+   "textHash": "17d1b34f935c364b"
+  },
+  "etti-vs-cti": {
+   "title": "ETTI vs CTI vs ETTI Engleză – Comparație Detaliată | AdmiterePoli",
+   "description": "Comparație detaliată între ETTI, CTI și ETTI Engleză (IETTIE) – materii, joburi, mituri și sfaturi pentru a alege secția potrivită la Politehnică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: ETTI vs CTI vs ETTI Engleză",
+    "h2: Tabel Comparativ Rapid",
+    "h2: Ce vei studia efectiv?",
+    "h3: Materiile de la CTI",
+    "h3: Materiile de la ETTI",
+    "h2: ETTI Română vs IETTIE (Engleză)",
+    "h3: ETTI – Secția Română",
+    "h3: IETTIE – Secția Engleză",
+    "h2: Mituri și Realitate",
+    "h3: Mit: „Dacă termin ETTI, ajung să repar televizoare.\"",
+    "h3: Mit: „La CTI faci doar programare, zero hardware.\"",
+    "h3: Mit: „La IETTIE profesorii sunt mai indulgenți.\"",
+    "h3: Mit: „Dacă fac ETTI în română, voi fi dezavantajat la multinaționale.\"",
+    "h2: Pentru cine este fiecare secție?",
+    "h3: Alege ETTI dacă…",
+    "h3: Alege CTI dacă…",
+    "h2: Programe oficiale & resurse",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_ELA.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_INF.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_MON.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_RST.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_TST.pdf",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 700,
+   "textHash": "8722814bf138d30b"
+  },
+  "exercitii-video": {
+   "title": "Exerciții Video · AdmiterePoli",
+   "description": "Exerciții video pas cu pas pentru admiterea la Politehnica București — matematică și informatică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Exerciții videopentru admitere",
+    "h2: "
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | WhatsApp",
+    "images/instagram.svg | Instagram"
+   ],
+   "textWords": 74,
+   "textHash": "c790d903ea3ce477"
+  },
+  "index": {
+   "title": "admiterepoli - Creat de studenți, pentru viitori studenți.",
+   "description": "Tot ce contează pentru admiterea la Politehnică – organizat simplu, clar și complet, direct de la studenți pentru viitorii studenți!",
+   "canonical": "https://admiterepoli.com/",
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: AdmiterePoli.",
+    "h2: Creat de studenți, pentru viitori studenți.",
+    "h2: Simulare Completă Admitere 2026",
+    "h2: Tot ce ai nevoie pentru admitere",
+    "h3: Subiecte rezolvate",
+    "h3: Simulări interactive",
+    "h3: Exerciții video",
+    "h3: Resurse complete",
+    "h2: Resursele care te fac student",
+    "h3: Standard",
+    "h3: Student Plus",
+    "h2: Subiecte Politehnică 2026 Rezolvate",
+    "h3: Simulare 2026",
+    "h3: Preadmitere 2026",
+    "h3: Admitere 2025",
+    "h2: Creat de studenți, pentru viitori studenți",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2026-info-subiect",
+    "preadmitere-2026-informatica-barem",
+    "preadmitere-2026-mate-subiect",
+    "preadmitere-2026-matematica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-admitere-2025-matematica",
+    "rezolvare-preadmitere-2026-informatica",
+    "rezolvare-preadmitere-2026-matematica",
+    "rezolvare-simulare-2026-informatica",
+    "rezolvare-simulare-2026-matematica",
+    "simulare-2026-informatica-barem",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "http://www.physics.pub.ro/Admitere/2025/Informatica_I_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.reddit.com/r/Polytehnica/comments/1rnasfy/subiecte_infomate_simulare_2026/"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/poza-alex.jpg | Alex",
+    "images/poza-robert.jpg | Robert",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 441,
+   "textHash": "55b861af0ab2a0e2"
+  },
+  "informatii": {
+   "title": "Informații importante pentru admitere",
+   "description": "Informații importante despre admiterea la Politehnică – colectate și explicate de studenți, pentru viitorii studenți.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Informații importante pentru admitere",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "cti-vs-is",
+    "etti-vs-cti",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_AIASI_Automatica-si-informatica-aplicata_f.pdf",
+    "https://acs.pub.ro/public/2025_29_PLi_L_03_FAC_CTI_Calculatoare_f.pdf",
+    "https://acs.pub.ro/public/Lista_concursuri_admitere_licenta_2025_vf.pdf",
+    "https://admitere.pub.ro/docs/Anexa_VI_Regulament_2025.pdf",
+    "https://admitere.pub.ro/docs/Regulament_admitere_licenta_2025.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_ELA.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_INF.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_MON.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_RST.pdf",
+    "https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_TST.pdf",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.simularepoli.ro/"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/logoautomatica.png | ACS logo",
+    "images/ETTI-LOGO-1211079136.png | ETTI logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 979,
+   "textHash": "c5cdea3f00c8fec4"
+  },
+  "mateinfub-2023-ii-informatica-barem": {
+   "title": "Barem MateInfoUB 2023 Runda II – Informatică | AdmiterePoli",
+   "description": "Baremul pentru MateInfoUB 2023 Runda II – Informatică, concursul de admitere organizat de Universitatea din București.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem MateInfoUB 2023 Runda II – Informatică",
+    "h3: Aici va fi publicat baremul pentru proba de informatică din cadrul concursului MateInfoUB 2023, Runda II, organizat de Universitatea din București.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-informatica-barem",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-mateinfub-2023-ii-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://drive.google.com/file/d/1H1GZS1neiHZ8NEwKJaENlJIXU68AXicJ/view",
+    "https://drive.google.com/file/d/1ewfcSDsKZN-6LSSIqV2hdQ6YwOAog5Oo/view",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 148,
+   "textHash": "a06f71eea401436a"
+  },
+  "politica-confidentialitate": {
+   "title": "Politică de confidențialitate | AdmiterePoli",
+   "description": null,
+   "canonical": null,
+   "robots": "noindex",
+   "lang": "ro",
+   "headings": [
+    "h1: Politică de confidențialitate",
+    "h2: 1. Cine suntem",
+    "h2: 2. Ce date colectăm și de ce",
+    "h3: Date de cont (Firebase Authentication)",
+    "h3: Date de profil (Firestore)",
+    "h3: Rezultate simulări",
+    "h3: Date de analiză (Google Analytics 4)",
+    "h2: 3. Cum folosim datele",
+    "h2: 4. Terți care prelucrează date în numele nostru",
+    "h2: 5. Cookie-uri și stocare locală",
+    "h2: 6. Cât păstrăm datele",
+    "h2: 7. Drepturile tale (GDPR)",
+    "h2: 8. Securitatea datelor",
+    "h2: 9. Modificări ale politicii",
+    "h2: 10. Contact"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://firebase.google.com/support/privacy",
+    "https://gumroad.com/privacy",
+    "https://policies.google.com/privacy",
+    "https://web3forms.com/privacy",
+    "https://www.dataprotection.ro",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "mailto:admiterepoli@gmail.com"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 635,
+   "textHash": "31a6bea383925274"
+  },
+  "preadmitere-2023-informatica-barem": {
+   "title": "Barem Preadmitere UPB 2023 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru preadmiterea la informatică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere UPB 2023 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba de informatică de la preadmiterea Universității Naționale de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2023-matematica-barem",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2023-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Admitere_anticipata_2023/Informatica_22.04.2023.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 143,
+   "textHash": "8ed300b9918efbca"
+  },
+  "preadmitere-2023-matematica-barem": {
+   "title": "Barem Preadmitere UPB 2023 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru preadmiterea la matematică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere UPB 2023 – Matematică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba de matematică de la preadmiterea Universității Naționale de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2023-informatica-barem",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Admitere_anticipata_2023/Algebra-Analiza_22.04.2023.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=bOaD0Bf4tWc"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "182460eee3c8f5af"
+  },
+  "preadmitere-2024-informatica-barem": {
+   "title": "Barem Preadmitere UPB 2024 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru preadmiterea la informatică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere UPB 2024 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru proba de informatică de la preadmiterea Universității Naționale de Știință și Tehnologie Politehnica București, 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2024-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-matematica-barem",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Admitere_anticipata_2024/Informatica_I_(Varianta_C).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=X4fratNZJ4k"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "5ad1585140f6dc7d"
+  },
+  "preadmitere-2024-matematica-barem": {
+   "title": "Barem Preadmitere Politehnica 2024 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de preadmitere la informatică, Universitatea Politehnica București (UPB) 2024. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere Politehnica 2024 – Informatică",
+    "h3: Acesta este baremul oficial de notare pentru examenul de preadmitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2024. Asigură-te că ai confruntat grilele cu răspunsurile de aici.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2024-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-informatica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2024-matematica.html",
+    "simulare-2024-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Admitere_anticipata_2024/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_F).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 142,
+   "textHash": "b561c836504982e9"
+  },
+  "preadmitere-2025-info-subiect": {
+   "title": "Subiect Preadmitere Politehnica 2025 – Informatică | AdmiterePoli",
+   "description": "Subiectul oficial de informatică de la preadmiterea Politehnica București 2025. Pregătește-te eficient cu AdmiterePoli.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Subiect Preadmitere Politehnica 2025 – Informatică",
+    "h3: Acesta este subiectul oficial dat la proba de informatică pentru preadmiterea la Universitatea Națională de Știință și Tehnologie Politehnica București în anul 2025.",
+    "h3: 🔗 Linkuri utile pentru acest subiect:",
+    "h3: Mai exersează la Informatică (Anul 2025):",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-preadmitere-2025-matematica",
+    "simulare-2025-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=Z73qI8v-h_A&pp=0gcJCfwAo7VqN5tD"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 153,
+   "textHash": "92ff5c27744bae1e"
+  },
+  "preadmitere-2025-informatica-barem": {
+   "title": "Barem Preadmitere Politehnica 2025 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de preadmitere la informatică, Universitatea Politehnica București (UPB) 2025. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere Politehnica 2025 – Informatică",
+    "h3: Acesta este baremul oficial de notare pentru examenul de preadmitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2025. Asigură-te că ai confruntat grilele cu răspunsurile de aici.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulare-2025-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=Z73qI8v-h_A&ab_channel=ZecelaExamene",
+    "https://www.youtube.com/watch?v=Z73qI8v-h_A&pp=0gcJCfwAo7VqN5tD"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 143,
+   "textHash": "76e81bc394a939e1"
+  },
+  "preadmitere-2025-matematica-barem": {
+   "title": "Barem Preadmitere Politehnica 2025 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru examenul de preadmitere la matematică, Universitatea Politehnica București (UPB) 2025. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere Politehnica 2025 – Matematică",
+    "h3: Verifică baremul oficial de notare pentru examenul de preadmitere la matematică, susținut la Universitatea Politehnica București (UPB) în anul 2025. Află care au fost răspunsurile corecte pentru fiecare grilă.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2025-matematica",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://mate.info.ro/UploadedMaterials/Mate.Info.Ro.5783%20Preadmitere%20UPB%202025%20-%20Subiecte%20Algebra%20si%20Analiza%20matematica.pdf",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 146,
+   "textHash": "ee86a598e7fd74ed"
+  },
+  "preadmitere-2026-info-subiect": {
+   "title": "Subiect Preadmitere Politehnica 2026 – Informatică | AdmiterePoli",
+   "description": "Subiectul oficial de informatică de la preadmiterea Politehnica București 2026. Pregătește-te eficient cu AdmiterePoli.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Subiect Preadmitere Politehnica 2026 – Informatică",
+    "h3: Acesta este subiectul oficial dat la proba de informatică pentru preadmiterea la Universitatea Națională de Știință și Tehnologie Politehnica București în anul 2026.",
+    "h3: 🔗 Linkuri utile pentru acest subiect:",
+    "h3: Mai exersează la Informatică (Anul 2026):",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-info-subiect",
+    "preadmitere-2026-informatica-barem",
+    "preadmitere-2026-mate-subiect",
+    "resurse",
+    "rezolvare-preadmitere-2026-informatica",
+    "rezolvare-simulare-2026-informatica",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 151,
+   "textHash": "0f0c9eb2dc67fce4"
+  },
+  "preadmitere-2026-informatica-barem": {
+   "title": "Barem Preadmitere Politehnica 2026 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru preadmiterea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere Politehnica 2026 – Informatică",
+    "h3: Aici găsești baremul oficial de corectare pentru preadmiterea examenului de admitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "preadmitere-2026-info-subiect",
+    "preadmitere-2026-matematica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2026-informatica",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 170,
+   "textHash": "739e908443c47e49"
+  },
+  "preadmitere-2026-mate-subiect": {
+   "title": "Subiect Preadmitere Politehnica 2026 – Matematică | AdmiterePoli",
+   "description": "Subiectul oficial de matematică de la preadmiterea Politehnica București 2026. Pregătește-te eficient cu AdmiterePoli.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Subiect Preadmitere Politehnica 2026 – Matematică",
+    "h3: Acesta este subiectul oficial dat la proba de matematică pentru preadmiterea la Universitatea Națională de Știință și Tehnologie Politehnica București în anul 2026.",
+    "h3: 🔗 Linkuri utile pentru acest subiect:",
+    "h3: Mai exersează la Matematică (Anul 2026):",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2026-matematica-barem",
+    "resurse",
+    "rezolvare-simulare-2026-matematica",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 137,
+   "textHash": "02304aa669fd5f2e"
+  },
+  "preadmitere-2026-matematica-barem": {
+   "title": "Barem Preadmitere Politehnica 2026 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru preadmiterea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Preadmitere Politehnica 2026 – Matematică",
+    "h3: Aici găsești baremul oficial de corectare pentru preadmiterea examenului de admitere la matematică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "preadmitere-2026-mate-subiect",
+    "resurse",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 161,
+   "textHash": "6985720234121e24"
+  },
+  "profil": {
+   "title": "Profilul meu | AdmiterePoli",
+   "description": null,
+   "canonical": null,
+   "robots": "noindex",
+   "lang": "ro",
+   "headings": [
+    "h1: Profilul meu",
+    "h2: Informații cont",
+    "h2: Planul tău",
+    "h2: Rezultatele mele"
+   ],
+   "internalLinks": [
+    "/",
+    "exercitii-video",
+    "informatii",
+    "resurse",
+    "simulari",
+    "subiecte"
+   ],
+   "externalLinks": [],
+   "images": [
+    "images/logonoutrans.png | logo"
+   ],
+   "textWords": 23,
+   "textHash": "a77925c7bf2a9f24"
+  },
+  "resurse": {
+   "title": "Resurse — AdmiterePoli",
+   "description": "Materialele care ne-au ajutat cel mai mult în pregătirea pentru admitere.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Resurse pentru admitere",
+    "h2: Resurse Matematică",
+    "h2: Resurse Informatică",
+    "h2: Resurse Fizică",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://en.wikipedia.org/wiki/Four_color_theorem",
+    "https://infogenius.ro/algoritmul-lui-euclid/",
+    "https://infogenius.ro/ciurul-lui-eratostene/",
+    "https://matefizica.wordpress.com/wp-content/uploads/2015/03/culegere-matematica_mecanica-iasi.pdf",
+    "https://mihai-nan.bitbucket.io/admitere-info/",
+    "https://pdfcoffee.com/timc-pdf-free.html",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.math.md/school/formule/trigonom/trigonom.pdf",
+    "https://www.youtube.com/@BucharestCramSchool",
+    "https://www.youtube.com/@atelieruldematematica2934",
+    "https://www.youtube.com/watch?v=-ObbWAE7rh0&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=9",
+    "https://www.youtube.com/watch?v=-x4OFdaLSdA&ab_channel=BlackTshirtMathProfessor",
+    "https://www.youtube.com/watch?v=3sYl9SsxsZc&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=11",
+    "https://www.youtube.com/watch?v=7Axsc2v_Ywk&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=7",
+    "https://www.youtube.com/watch?v=7MSS0E96DfQ&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=10",
+    "https://www.youtube.com/watch?v=9FMH57o-9tE&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=1",
+    "https://www.youtube.com/watch?v=Bc9rRtW_MFo&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=2",
+    "https://www.youtube.com/watch?v=BtnTWe0tA7o&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=6",
+    "https://www.youtube.com/watch?v=CeICmlMSf0k&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=13",
+    "https://www.youtube.com/watch?v=DJ4a7cmjZY0&ab_channel=BackToBackSWE",
+    "https://www.youtube.com/watch?v=ERh6xveZpsw&t=4s&ab_channel=BlackTshirt",
+    "https://www.youtube.com/watch?v=EnUweG_wBQw&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=3",
+    "https://www.youtube.com/watch?v=ErmLob8J7ec&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=10",
+    "https://www.youtube.com/watch?v=FsM1jMjwtkM&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=9",
+    "https://www.youtube.com/watch?v=GzBFBRgg8EY&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=4",
+    "https://www.youtube.com/watch?v=J9E-KZdPUMc&list=PLn9oGSe656KTrTYpH8Yjg9rh7j20YmSPj&ab_channel=UniversitateaPOLITEHNICAdinBucure%C8%99ti",
+    "https://www.youtube.com/watch?v=KWs3XtXaRBc&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=13",
+    "https://www.youtube.com/watch?v=LurI8AYY18E&ab_channel=InfinityLearnNEET",
+    "https://www.youtube.com/watch?v=Nj2RShiGHwY&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=12",
+    "https://www.youtube.com/watch?v=PvWTj3b5Msk&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=11",
+    "https://www.youtube.com/watch?v=R6giSk0X3ow&t=949s&ab_channel=BlackTshirtMathProfessor",
+    "https://www.youtube.com/watch?v=RCCapBeDyhc&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=5",
+    "https://www.youtube.com/watch?v=S5ck15BZ2Qs&ab_channel=PrimeNewtons",
+    "https://www.youtube.com/watch?v=SSKMzirXK2w&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=5",
+    "https://www.youtube.com/watch?v=T7SeSB5d_m0&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=12",
+    "https://www.youtube.com/watch?v=TAuJV5eNKLM&ab_channel=SackVideo",
+    "https://www.youtube.com/watch?v=UTCScjoPymA&t=837s&ab_channel=Numberphile",
+    "https://www.youtube.com/watch?v=Uf34c0AqsKc&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=4",
+    "https://www.youtube.com/watch?v=XLrzyIGZg9U&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=3",
+    "https://www.youtube.com/watch?v=ZMhQkusxJ4k&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=5",
+    "https://www.youtube.com/watch?v=bFUHOJqZ7Tg",
+    "https://www.youtube.com/watch?v=bLz5N_6fkZ8&t=1015s&ab_channel=PrimeNewtons",
+    "https://www.youtube.com/watch?v=baxwO_CVQFw&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=1",
+    "https://www.youtube.com/watch?v=c9DvvKyos98&ab_channel=BucharestCramSchool",
+    "https://www.youtube.com/watch?v=cS-198wtfj0&t=25s&ab_channel=AlgoMonster",
+    "https://www.youtube.com/watch?v=eC-YfrBhnqw&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=7",
+    "https://www.youtube.com/watch?v=eJhdv-7U978&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=7",
+    "https://www.youtube.com/watch?v=f1o6wwajOUY&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=3",
+    "https://www.youtube.com/watch?v=fo6FaFwPuHg&list=PLkDJ3dC4ul0NGQWYG5uqVql86XxTeRWIo&index=2",
+    "https://www.youtube.com/watch?v=gkXD2bV8WJY&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=8",
+    "https://www.youtube.com/watch?v=mFa_SiRNQi0",
+    "https://www.youtube.com/watch?v=owqpnn4bmKs&t=692s&ab_channel=PrimeNewtons",
+    "https://www.youtube.com/watch?v=pIz3MxatykU&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=8",
+    "https://www.youtube.com/watch?v=pbXg5EI5t4c&ab_channel=Numberphile",
+    "https://www.youtube.com/watch?v=qYAWjIVY7Zw&ab_channel=Numberphile2",
+    "https://www.youtube.com/watch?v=reofvz-dh18&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=6",
+    "https://www.youtube.com/watch?v=taPPV4kNhh0&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=2",
+    "https://www.youtube.com/watch?v=u9ZU7uMHwYM&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=15",
+    "https://www.youtube.com/watch?v=wDRJFByh_o4&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=4",
+    "https://www.youtube.com/watch?v=wqkotEdn9X4&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=1",
+    "https://www.youtube.com/watch?v=xCbYmUPvc2Q&t=27s&ab_channel=BackToBackSWE",
+    "https://www.youtube.com/watch?v=ybJ9aQFulXo&list=PLkDJ3dC4ul0ODpAtd_585L76ee9XVUzgv&index=6",
+    "https://www.youtube.com/watch?v=zxbax0OsY5A&list=PLkDJ3dC4ul0N7l9q3POo91xEk8V_xJiPM&index=14"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 365,
+   "textHash": "6b825d6744c42562"
+  },
+  "rezolvare-admitere-2023-informatica": {
+   "title": "Rezolvare Admitere Politehnica 2023 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru examenul de admitere la informatică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Admitere Politehnica 2023 – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de informatică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2024-informatica",
+    "rezolvare-admitere-2025-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Informatica_I_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=QmD3k7vcaNY"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "32e6fb3b6da368d6"
+  },
+  "rezolvare-admitere-2024-informatica": {
+   "title": "Rezolvare Admitere Politehnica 2024 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru examenul de admitere la informatică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Admitere Politehnica 2024 – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de informatică din cadrul examenului de admitere la Universitatea Națională de Știință și Tehnologie Politehnica București, 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2024-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Informatica_I_(Varianta_A).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=gbX0MePdi70"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "3c193e276e20077d"
+  },
+  "rezolvare-admitere-2025-informatica": {
+   "title": "Rezolvare Admitere Politehnica 2025 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru subiectul de informatică de la admiterea Politehnica București (Sesiunea Vară) 2025. Soluții explicate de studenți la Automatică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Admitere Politehnica 2025 – Informatică",
+    "h3: Aceasta este rezolvarea completă pentru subiectul de informatică din cadrul examenului final de admitere la Politehnica București, 2025. Fiecare grilă și algoritm sunt explicate detaliat de studenți pentru a te ajuta să înțelegi raționamentul din spatele răspunsurilor corecte.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Informatica_I_(Varianta_S).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=IvdfNGfQIf0"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 152,
+   "textHash": "cc2b7f6695c7988d"
+  },
+  "rezolvare-admitere-2025-matematica": {
+   "title": "Rezolvare Admitere Politehnica 2025 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea și baremul oficial pentru examenul de admitere la matematică, Universitatea Politehnica București (UPB) 2025. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Admitere Politehnica 2025 – Matematică",
+    "h3: Aici găsești rezolvarea detaliată și baremul pentru examenul de admitere la matematică, susținut la Universitatea Politehnica București (UPB) în vara anului 2025. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=CA4ylt19zEA"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 142,
+   "textHash": "ca97dd03e1d851db"
+  },
+  "rezolvare-admitere-unibuc-2025-informatica": {
+   "title": "Rezolvare Admitere Unibuc 2025 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru examenul de admitere la informatică, Universitatea din București 2025.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Admitere Unibuc 2025 – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de informatică de la admiterea Universității din București (MateInfo), 2025.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-mateinfub-2023-ii-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://drive.google.com/drive/folders/1eUXi8NUWS3Ht20OxDaV5YYstBTJZGuxB",
+    "https://drive.google.com/file/d/13HP1FriIFREgcSo_ayufVnBC302YuOMk/view",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=Xgh8w8mLDrI"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 143,
+   "textHash": "026493f0a526790d"
+  },
+  "rezolvare-mateinfub-2023-ii-informatica": {
+   "title": "Rezolvare MateInfoUB 2023 Runda II – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru MateInfoUB 2023 Runda II – Informatică, concursul de admitere organizat de Universitatea din București.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare MateInfoUB 2023 Runda II – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru proba de informatică din cadrul concursului MateInfoUB 2023, Runda II, organizat de Universitatea din București.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "mateinfub-2023-ii-informatica-barem",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2023-informatica",
+    "rezolvare-admitere-2025-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://drive.google.com/file/d/1ds4Rw-tAFzJn7HwDtOWOuQznYgHo2bqx/view",
+    "https://drive.google.com/file/d/1ewfcSDsKZN-6LSSIqV2hdQ6YwOAog5Oo/view",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 149,
+   "textHash": "811cf4441beccfee"
+  },
+  "rezolvare-preadmitere-2023-informatica": {
+   "title": "Rezolvare Preadmitere UPB 2023 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru preadmiterea la informatică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Preadmitere UPB 2023 – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de informatică de la preadmiterea Universității Naționale de Știință și Tehnologie Politehnica București, 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2023-informatica-barem",
+    "resurse",
+    "rezolvare-admitere-2023-informatica",
+    "rezolvare-preadmitere-2025-matematica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Admitere_anticipata_2023/Informatica_22.04.2023.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=bOaD0Bf4tWc"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 142,
+   "textHash": "24e43c5d9345d414"
+  },
+  "rezolvare-preadmitere-2024-matematica": {
+   "title": "Rezolvare Preadmitere Politehnica 2024 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru subiectul de matematică de la preadmiterea Politehnica București 2024. Soluții explicate pas cu pas de studenți la Automatică și Calculatoare.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Preadmitere Politehnica 2024 – Matematică",
+    "h3: Aceasta este rezolvarea completă pentru subiectul de matematică de la preadmiterea Politehnica București 2024. Soluțiile sunt explicate pas cu pas de studenți de la Automatică și Calculatoare și urmăresc metoda oficială de rezolvare.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-matematica-barem",
+    "resurse",
+    "simulare-2024-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Admitere_anticipata_2024/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_F).pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=fc4mHDIIhBo"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 146,
+   "textHash": "b72e966594d15241"
+  },
+  "rezolvare-preadmitere-2025-matematica": {
+   "title": "Rezolvare Preadmitere Politehnica 2025 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru subiectul de matematică de la preadmiterea Politehnica București 2025. Soluții explicate pas cu pas de studenți la Automatică și Calculatoare.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Preadmitere Politehnica 2025 – Matematică",
+    "h3: Aceasta este rezolvarea completă pentru subiectul de matematică de la preadmiterea Politehnica București 2025. Soluțiile sunt explicate pas cu pas de studenți de la Automatică și Calculatoare și urmăresc metoda oficială de rezolvare.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://mate.info.ro/UploadedMaterials/Mate.Info.Ro.5783%20Preadmitere%20UPB%202025%20-%20Subiecte%20Algebra%20si%20Analiza%20matematica.pdf",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=Z73qI8v-h_A&pp=0gcJCfwAo7VqN5tD"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 147,
+   "textHash": "b0751577c727e945"
+  },
+  "rezolvare-preadmitere-2026-informatica": {
+   "title": "Rezolvare Preadmitere Politehnica 2026 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea și baremul oficial pentru preadmiterea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Preadmitere Politehnica 2026 – Informatică",
+    "h3: Aici găsești rezolvarea detaliată și baremul pentru preadmiterea examenului de admitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "preadmitere-2026-informatica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2026-matematica",
+    "rezolvare-simulare-2026-informatica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 142,
+   "textHash": "39d01f45ae5ff52c"
+  },
+  "rezolvare-preadmitere-2026-matematica": {
+   "title": "Rezolvare Preadmitere Politehnica 2026 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea și baremul oficial pentru preadmiterea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Preadmitere Politehnica 2026 – Matematică",
+    "h3: Aici găsești rezolvarea detaliată și baremul pentru preadmiterea examenului de admitere la matematică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2026-mate-subiect",
+    "preadmitere-2026-matematica-barem",
+    "resurse",
+    "rezolvare-preadmitere-2025-matematica",
+    "rezolvare-simulare-2026-matematica",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 142,
+   "textHash": "c491f65cb5652350"
+  },
+  "rezolvare-simulare-2023-matematica": {
+   "title": "Rezolvare Simulare Admitere Politehnica 2023 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru simularea de admitere la matematică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Politehnica 2023 – Matematică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de matematică de la simularea admiterii organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2025-matematica",
+    "rezolvare-simulare-2023-informatica-video",
+    "rezolvare-simulare-2024-matematica",
+    "simulare-2023-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.reddit.com/r/Polytehnica/comments/11ouifn/simulare_upb_2023/"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 146,
+   "textHash": "0ccabb4c615bd95a"
+  },
+  "rezolvare-simulare-2024-informatica": {
+   "title": "Rezolvare Simulare Admitere Politehnica 2024 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru simularea de admitere la informatică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Politehnica 2024 – Informatică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de informatică de la simularea admiterii organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2024-informatica",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-simulare-2024-matematica",
+    "simulare-2024-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Informatica_Subiect_I_simulare_2024.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "2098851c1371e8e2"
+  },
+  "rezolvare-simulare-2024-matematica": {
+   "title": "Rezolvare Simulare Admitere Politehnica 2024 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea completă pentru simularea de admitere la matematică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Politehnica 2024 – Matematică",
+    "h3: Aici va fi publicată rezolvarea completă pentru subiectul de matematică de la simularea admiterii organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Rezolvarea va fi disponibilă în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-admitere-2025-matematica",
+    "rezolvare-preadmitere-2024-matematica",
+    "rezolvare-simulare-2024-informatica",
+    "simulare-2024-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Algebra_si_Analiza_matematica_Subiect_C_simulare_2024.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "b3133402148c64dc"
+  },
+  "rezolvare-simulare-2026-informatica": {
+   "title": "Rezolvare Simulare Politehnica 2026 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea și baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Politehnica 2026 – Informatică",
+    "h3: Aici găsești rezolvarea detaliată și baremul pentru simularea examenului de admitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-simulare-2026-matematica",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "12b37f5f2f08f0c5"
+  },
+  "rezolvare-simulare-2026-matematica": {
+   "title": "Rezolvare Simulare Politehnica 2026 – Matematică | AdmiterePoli",
+   "description": "Rezolvarea și baremul oficial pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Politehnica 2026 – Matematică",
+    "h3: Aici găsești rezolvarea detaliată și baremul pentru simularea examenului de admitere la matematică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=1qCOqhuo42Q"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "fc866e2e3e94883d"
+  },
+  "rezolvare-simulare-admiterepoli-1": {
+   "title": "Rezolvare Simulare Informatică și Matematică | AdmiterePoli 1",
+   "description": "Rezolvarea completă, pas cu pas, a subiectelor de informatică și matematică de la simularea AdmiterePoli.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Informatică și Matematică",
+    "h3: Aici găsești rezolvarea detaliată, pas cu pas, pentru subiectele combinate de la proba de Informatică și Matematică. Parcurge explicațiile pentru a înțelege exact cum se abordează fiecare problemă.",
+    "h3: Linkuri utile pentru această simulare:",
+    "h3: Mai exersează:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-1",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-preadmitere-2025-matematica",
+    "rezolvare-simulare-2026-informatica.html",
+    "simulare-2026-03-21",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "f23dfb2590b5396a"
+  },
+  "rezolvare-simulare-admiterepoli-2": {
+   "title": "Rezolvare Simulare Informatică și Matematică | AdmiterePoli 2",
+   "description": "Rezolvarea completă, pas cu pas, a subiectelor de informatică și matematică de la simularea AdmiterePoli.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Informatică și Matematică",
+    "h3: Aici găsești rezolvarea detaliată, pas cu pas, pentru subiectele combinate de la proba de Informatică și Matematică. Parcurge explicațiile pentru a înțelege exact cum se abordează fiecare problemă.",
+    "h3: Linkuri utile pentru această simulare:",
+    "h3: Mai exersează:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-2",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-preadmitere-2025-matematica",
+    "rezolvare-simulare-2026-informatica.html",
+    "simulare-2026-03-26",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "f23dfb2590b5396a"
+  },
+  "rezolvare-simulare-admiterepoli-3": {
+   "title": "Rezolvare Simulare Matematică, Informatică și Fizică | AdmiterePoli 3",
+   "description": "Rezolvarea completă, pas cu pas, a subiectelor de matematică, informatică și fizică de la simularea AdmiterePoli #3.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare Matematică, Informatică și Fizică",
+    "h3: Aici găsești rezolvarea detaliată, pas cu pas, pentru subiectele combinate de la proba de Matematică, Informatică și Fizică de la simularea #3. Parcurge explicațiile pentru a înțelege exact cum se abordează fiecare problemă.",
+    "h3: Linkuri utile pentru această simulare:",
+    "h3: Mai exersează:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-3",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-1",
+    "rezolvare-simulare-admiterepoli-2",
+    "simulare-2026-05-09",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "848da12725f1a99d"
+  },
+  "rezolvare-simulare-admiterepoli-4": {
+   "title": "Rezolvare Simulare AdmiterePoli 4 2026 – Informatică | AdmiterePoli",
+   "description": "Rezolvarea scrisă pentru a patra simulare de admitere la Universitatea Politehnica București (UPB) 2026 – Informatică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Rezolvare Simulare AdmiterePoli IV",
+    "h3: Aici găsești rezolvarea detaliată, pas cu pas, pentru subiectele de la a patra simulare AdmiterePoli. Parcurge explicațiile pentru a înțelege exact cum se abordează fiecare problemă.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Rezolvări similare care te-ar putea ajuta:"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-4",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-1",
+    "rezolvare-simulare-admiterepoli-2",
+    "rezolvare-simulare-admiterepoli-3",
+    "simulare-2026-07-21",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 83,
+   "textHash": "69a24c865bc62404"
+  },
+  "simulare-2023-informatica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2023 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2023 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru simularea admiterii la informatică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulare-2023-matematica-barem",
+    "simulare-2024-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.reddit.com/r/Polytehnica/comments/11ouifn/simulare_upb_2023/",
+    "https://www.youtube.com/watch?v=e8TjyyQG7Vw"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 145,
+   "textHash": "1286c4babddd7261"
+  },
+  "simulare-2023-matematica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2023 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2023.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2023 – Matematică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru simularea admiterii la matematică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2023.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2023-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-2023-matematica",
+    "simulare-2023-informatica-barem",
+    "simulare-2024-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.reddit.com/r/Polytehnica/comments/11ouifn/simulare_upb_2023/"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "8f8e64b3e0d49dbd"
+  },
+  "simulare-2024-informatica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2024 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2024 – Informatică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru simularea admiterii la informatică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-informatica-barem",
+    "resurse",
+    "rezolvare-simulare-2024-informatica",
+    "simulare-2024-matematica-barem",
+    "simulare-2025-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Informatica_Subiect_I_simulare_2024.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "0708d23267b1e746"
+  },
+  "simulare-2024-matematica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2024 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2024.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2024 – Matematică",
+    "h3: Aici va fi publicat baremul oficial de corectare pentru simularea admiterii la matematică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2024.",
+    "h3: 🔗 Linkuri utile:",
+    "h2: Baremul va fi disponibil în curând.",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-matematica-barem",
+    "resurse",
+    "rezolvare-simulare-2024-matematica",
+    "simulare-2024-informatica-barem",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Algebra_si_Analiza_matematica_Subiect_C_simulare_2024.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 144,
+   "textHash": "f2b8d25003ebf976"
+  },
+  "simulare-2025-informatica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2025 – Informatică | AdmiterePoli",
+   "description": "Vezi baremul oficial de corectare pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2025.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2025 – Informatică",
+    "h3: Aici găsești baremul oficial de corectare și notare pentru simularea examenului de admitere la informatică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2025.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "simulare-2025-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Simulare_Admitere_2025/Informatica_(Varianta_B)_I-B_15.03.2025.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=DNt4iXbzpQo"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "4b78f9a1a4fc46bc"
+  },
+  "simulare-2025-matematica-barem": {
+   "title": "Barem Simulare Admitere Politehnica 2025 – Matematică | AdmiterePoli",
+   "description": "Vezi baremul oficial de corectare pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2025.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2025 – Matematică",
+    "h3: Aici găsești baremul oficial de corectare și notare pentru simularea examenului de admitere la matematică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2025.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "simulare-2025-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2025/Simulare_Admitere_2025/Algebra_si_Elemente_de_Analiza_Matematica_(Varianta_B)_AAM-B_15.03.2025.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=9mBcY7_gpxE"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 141,
+   "textHash": "b831c39fbb3f9926"
+  },
+  "simulare-2026-03-21": {
+   "title": "Simulare Preadmitere 1 | AdmiterePoli",
+   "description": "Testeaza-ti cunostintele la Matematica si Informatica pentru admiterea la Politehnica.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 60,
+   "textHash": "96482f4eb06d9cdc"
+  },
+  "simulare-2026-03-26": {
+   "title": "Simulare Preadmitere 2 | AdmiterePoli",
+   "description": "Testeaza-ti cunostintele la Matematica si Informatica pentru admiterea la Politehnica.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 60,
+   "textHash": "96482f4eb06d9cdc"
+  },
+  "simulare-2026-05-09": {
+   "title": "Simulare #3 — 9 Mai 2026 | AdmiterePoli",
+   "description": "Simulare preadmitere 9 Mai 2026 — Matematică + Informatică sau Fizică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Simulare #3"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 122,
+   "textHash": "0cadb1dc45ad2ccb"
+  },
+  "simulare-2026-07-21": {
+   "title": "Simulare #4 — 21–24 Iulie 2026 | AdmiterePoli",
+   "description": "A patra simulare AdmiterePoli — Matematică + Informatică sau Fizică.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Simulare #4"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 115,
+   "textHash": "ebc2a0d6bddef333"
+  },
+  "simulare-2026-informatica-barem": {
+   "title": "Barem Simulare Politehnica 2026 – Informatică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la informatică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2026 – Informatică",
+    "h3: Aici găsești baremul oficial de corectare pentru simularea examenului de admitere la informatică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-informatica-barem",
+    "resurse",
+    "rezolvare-simulare-2026-informatica",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 147,
+   "textHash": "90aa37b776509514"
+  },
+  "simulare-2026-matematica-barem": {
+   "title": "Barem Simulare Politehnica 2026 – Matematică | AdmiterePoli",
+   "description": "Baremul oficial pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Barem Simulare Politehnica 2026 – Matematică",
+    "h3: Aici găsești baremul oficial de corectare pentru simularea examenului de admitere la matematică, susținut la Universitatea Politehnica București (UPB) în 2026. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.",
+    "h3: 🔗 Linkuri utile:",
+    "h3: Subiecte similare care te-ar putea ajuta:",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2025-matematica-barem",
+    "resurse",
+    "rezolvare-simulare-2026-matematica",
+    "simulare-2026-informatica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.youtube.com/watch?v=1qCOqhuo42Q"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 147,
+   "textHash": "63b5ddc58b6a7125"
+  },
+  "simulari": {
+   "title": "Simulări AdmiterePoli | Testează-te pentru Preadmitere",
+   "description": "Simulări gratuite pentru admiterea la Universitatea Politehnica București. Testează-ți cunoștințele la matematică și informatică în condiții reale de examen.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Simulări AdmiterePoli",
+    "h3: Regulament",
+    "h3: Simulări anterioare",
+    "h3: Simulare 4 2026 — Informatică",
+    "h3: Simulare 3 2026",
+    "h3: Simulare 2 2026",
+    "h3: Simulare 1 2026",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "barem-simulare-admiterepoli-1",
+    "barem-simulare-admiterepoli-2",
+    "barem-simulare-admiterepoli-3",
+    "barem-simulare-admiterepoli-4",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "rezolvare-simulare-admiterepoli-1",
+    "rezolvare-simulare-admiterepoli-2",
+    "rezolvare-simulare-admiterepoli-3",
+    "rezolvare-simulare-admiterepoli-4",
+    "simulare-2026-03-21",
+    "simulare-2026-03-26",
+    "simulare-2026-05-09",
+    "simulare-2026-07-21",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 252,
+   "textHash": "470b537e9be6741f"
+  },
+  "subiecte": {
+   "title": "Subiecte, Bareme și Rezolvări",
+   "description": "Arhiva completă a subiectelor de admitere din anii trecuți de la UPB și Unibuc, cu baremele și rezolvările lor.",
+   "canonical": null,
+   "robots": null,
+   "lang": "ro",
+   "headings": [
+    "h1: Subiecte, Bareme și Rezolvări",
+    "h3: Simulare 2026",
+    "h3: Preadmitere 2026",
+    "h3: Admitere 2026",
+    "h3: Simulare",
+    "h3: Preadmitere",
+    "h3: Admitere",
+    "h3: Simulare",
+    "h3: Preadmitere",
+    "h3: Admitere",
+    "h3: Simulare",
+    "h3: Preadmitere",
+    "h3: Admitere",
+    "h3: MateInfoUB I",
+    "h3: MateInfoUB II",
+    "h3: Admitere",
+    "h3: MateInfoUB I",
+    "h3: MateInfoUB II",
+    "h3: Admitere",
+    "h3: MateInfoUB I",
+    "h3: MateInfoUB II",
+    "h3: Admitere",
+    "h3: Antrenament zilnic pentru admitere",
+    "h3: Rămâi la curent cu AdmiterePoli"
+   ],
+   "internalLinks": [
+    "/",
+    "admitere-2025-informatica-barem",
+    "admitere-2025-matematica-barem",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "preadmitere-2024-matematica-barem",
+    "preadmitere-2025-info-subiect",
+    "preadmitere-2025-informatica-barem",
+    "preadmitere-2025-matematica-barem",
+    "preadmitere-2026-info-subiect",
+    "preadmitere-2026-informatica-barem",
+    "preadmitere-2026-mate-subiect",
+    "preadmitere-2026-matematica-barem",
+    "resurse",
+    "rezolvare-admitere-2025-informatica",
+    "rezolvare-admitere-2025-matematica",
+    "rezolvare-preadmitere-2024-matematica",
+    "rezolvare-preadmitere-2025-matematica",
+    "rezolvare-preadmitere-2026-informatica",
+    "rezolvare-preadmitere-2026-matematica",
+    "rezolvare-simulare-2026-informatica",
+    "rezolvare-simulare-2026-matematica",
+    "simulare-2025-informatica-barem",
+    "simulare-2025-matematica-barem",
+    "simulare-2026-informatica-barem",
+    "simulare-2026-matematica-barem",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "http://www.physics.pub.ro/Admitere/2023/Admitere_anticipata_2023/Algebra-Analiza_22.04.2023.pdf",
+    "http://www.physics.pub.ro/Admitere/2023/Admitere_anticipata_2023/Informatica_22.04.2023.pdf",
+    "http://www.physics.pub.ro/Admitere/2023/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "http://www.physics.pub.ro/Admitere/2023/Informatica_I_(Varianta_S).pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Admitere_anticipata_2024/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_F).pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Admitere_anticipata_2024/Informatica_I_(Varianta_C).pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_A).pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Informatica_I_(Varianta_A).pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Algebra_si_Analiza_matematica_Subiect_C_simulare_2024.pdf",
+    "http://www.physics.pub.ro/Admitere/2024/Simulare_Admitere_2024/Informatica_Subiect_I_simulare_2024.pdf",
+    "http://www.physics.pub.ro/Admitere/2025/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf",
+    "http://www.physics.pub.ro/Admitere/2025/Informatica_I_(Varianta_S).pdf",
+    "http://www.physics.pub.ro/Admitere/2025/Simulare_Admitere_2025/Algebra_si_Elemente_de_Analiza_Matematica_(Varianta_B)_AAM-B_15.03.2025.pdf",
+    "http://www.physics.pub.ro/Admitere/2025/Simulare_Admitere_2025/Informatica_(Varianta_B)_I-B_15.03.2025.pdf",
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://drive.google.com/drive/folders/12yCsptq94vl68pXoj5a7oTbnEBWrmIAp",
+    "https://drive.google.com/drive/folders/1OIM4jWlOLJFeRFQrcN-MXa5IzynhI71Q",
+    "https://drive.google.com/drive/folders/1eUXi8NUWS3Ht20OxDaV5YYstBTJZGuxB",
+    "https://drive.google.com/file/d/12JovmE5oX4tHcClF0PL9wMbtCleA9i4M/view",
+    "https://drive.google.com/file/d/13HP1FriIFREgcSo_ayufVnBC302YuOMk/view",
+    "https://drive.google.com/file/d/17ctSU0ol5V0nI3G9kt0UcJxjzNUxSGSh/view",
+    "https://drive.google.com/file/d/17t1maDCx1VUWYrFYd-uJTJWC5pwmJiMW/view",
+    "https://drive.google.com/file/d/18vyfNqb5HQH_HTtPs6R_6rnn5S1ZHKMv/view",
+    "https://drive.google.com/file/d/1AHc_togebDyo8_kI5P-nw8anEJcsJUWg/view",
+    "https://drive.google.com/file/d/1C3g0qG4QgdHM8vSMfRwDTFINfuZ139Qy/view",
+    "https://drive.google.com/file/d/1ELG_G7TTewJxSslSTyEXi7u4KLBnTNQG/view",
+    "https://drive.google.com/file/d/1FRtAPoLPuIMDQFiCMyZJPf3EvG54vL8X/view",
+    "https://drive.google.com/file/d/1H1GZS1neiHZ8NEwKJaENlJIXU68AXicJ/view",
+    "https://drive.google.com/file/d/1Hxxpq1WN29SV_6YZp0-yD7cJJlalAdt9/view",
+    "https://drive.google.com/file/d/1IExtyCNaQLaJSKhToxZzX0WMyYeK4KAu/view",
+    "https://drive.google.com/file/d/1Jtuewic4lkuMOUmp6OTy-ZOpttVnulhQ/view",
+    "https://drive.google.com/file/d/1N3GBkzxkug6bwRN1IaI2O77c06sBMcY6/view",
+    "https://drive.google.com/file/d/1R2UNWqYqYHX-p-_-zLyK0Nk8vE0h0rF7/view",
+    "https://drive.google.com/file/d/1TLDap-lkJXKLihjFHUw9DdeWL_MY1cmL/view",
+    "https://drive.google.com/file/d/1VKXK1HGQB7oQdhXuAB_cz2GAA0ItFIDn/view",
+    "https://drive.google.com/file/d/1Xd2RcC5RXqKUKu4MY0UJckrY_sF_4ChP/view",
+    "https://drive.google.com/file/d/1axlQi3h8u-EsWn6ozJfnEohwRnsvwk61/view",
+    "https://drive.google.com/file/d/1b7cNHKb4mL4urtq4157s9vYfaHTtfhfv/view",
+    "https://drive.google.com/file/d/1cEHgSJbnPFtXbJ1onTe54xBuWpIcvfjJ/view",
+    "https://drive.google.com/file/d/1ds4Rw-tAFzJn7HwDtOWOuQznYgHo2bqx/view",
+    "https://drive.google.com/file/d/1ewfcSDsKZN-6LSSIqV2hdQ6YwOAog5Oo/view",
+    "https://drive.google.com/file/d/1g6HGYP_zyuVyPDx5MbMz-1etf5kurR0Z/view",
+    "https://drive.google.com/file/d/1iQP0fPBUXRN1Wmg6Tkfi2FyteY1cqbzI/view",
+    "https://drive.google.com/file/d/1mBP9UpAKtGQh6zAMmaCQzTTkkCD8Godv/view",
+    "https://drive.google.com/file/d/1vskXMAYJ3oJufdBdq1-w_QxT9XzZfUw-/view",
+    "https://drive.google.com/file/d/1yAjVNyJi7oR2DsxS2ddlPj20fN0r0k-e/view",
+    "https://github.com/MateInfo-UB/MateInfoUB-2025-Informatica-Runda-II",
+    "https://github.com/theodormoroianu/mateinfoUB-2024",
+    "https://mate.info.ro/UploadedMaterials/Mate.Info.Ro.5783%20Preadmitere%20UPB%202025%20-%20Subiecte%20Algebra%20si%20Analiza%20matematica.pdf",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "https://www.reddit.com/r/Polytehnica/comments/11ouifn/simulare_upb_2023/",
+    "https://www.reddit.com/r/Polytehnica/comments/1rnasfy/subiecte_infomate_simulare_2026/",
+    "https://www.youtube.com/watch?v=9mBcY7_gpxE",
+    "https://www.youtube.com/watch?v=DNt4iXbzpQo",
+    "https://www.youtube.com/watch?v=QmD3k7vcaNY",
+    "https://www.youtube.com/watch?v=X4fratNZJ4k",
+    "https://www.youtube.com/watch?v=Xgh8w8mLDrI",
+    "https://www.youtube.com/watch?v=Z73qI8v-h_A&pp=0gcJCfwAo7VqN5tD",
+    "https://www.youtube.com/watch?v=bOaD0Bf4tWc",
+    "https://www.youtube.com/watch?v=e8TjyyQG7Vw",
+    "https://www.youtube.com/watch?v=gbX0MePdi70"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 439,
+   "textHash": "06e5241ad34308c1"
+  },
+  "termeni-si-conditii": {
+   "title": "Termeni și Condiții | AdmiterePoli",
+   "description": null,
+   "canonical": null,
+   "robots": "noindex",
+   "lang": "ro",
+   "headings": [
+    "h1: Termeni și Condiții",
+    "h2: 1. Acceptarea termenilor",
+    "h2: 2. Despre AdmiterePoli",
+    "h2: 3. Servicii oferite",
+    "h3: Cont gratuit",
+    "h3: Abonament Student Plus (cont premium)",
+    "h2: 4. Crearea contului",
+    "h2: 5. Abonamentul Student Plus — plată, anulare, rambursare",
+    "h3: Plata",
+    "h3: Durata și reînnoirea",
+    "h3: Anulare",
+    "h3: Rambursare",
+    "h2: 6. Cookie-uri și date de analiză",
+    "h3: Stocare strict necesară (fără consimțământ)",
+    "h3: Stocare analitică (necesită consimțământul tău explicit)",
+    "h2: 7. Proprietate intelectuală",
+    "h2: 8. Conduita utilizatorului",
+    "h2: 9. Limitarea răspunderii",
+    "h2: 10. Modificarea termenilor",
+    "h2: 11. Legea aplicabilă și soluționarea litigiilor",
+    "h2: 12. Contact"
+   ],
+   "internalLinks": [
+    "/",
+    "contact",
+    "exercitii-video",
+    "informatii",
+    "politica-confidentialitate",
+    "resurse",
+    "simulari",
+    "subiecte",
+    "termeni-si-conditii"
+   ],
+   "externalLinks": [
+    "https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D",
+    "https://ec.europa.eu/consumers/odr",
+    "https://gumroad.com/terms",
+    "https://www.anpc.go.ro",
+    "https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr",
+    "mailto:admiterepoli@gmail.com"
+   ],
+   "images": [
+    "images/logonoutrans.png | logo",
+    "images/whatsapp.svg | ",
+    "images/instagram.svg | "
+   ],
+   "textWords": 1014,
+   "textHash": "cb754a371d1632cf"
+  }
+ },
+ "files": {
+  "CNAME": "a85300ae580aefa2",
+  "images/ETTI-LOGO-1211079136.png": "4965343ea0b7c48e",
+  "images/instagram.svg": "5ae576c3652e8f5a",
+  "images/logoautomatica.png": "12991a81fdb69bfe",
+  "images/logonoutrans.png": "b067100ec4f63f2c",
+  "images/poza-alex.jpg": "9b04fb873ebd387c",
+  "images/poza-mate.jpg": "b827faf4640e9d8d",
+  "images/poza-robert.jpg": "c5ec89b893dbaa3a",
+  "images/pozainfo.png": "b32a92add4080725",
+  "images/triunghi.png": "92cb93be7d56fbc3",
+  "images/whatsapp.svg": "c84bb831fff3ba8e",
+  "pdfs/admitere2025-info-barem.pdf": "9c6b5f6613c31ac4",
+  "pdfs/admitere2025-info-rezolvare.pdf": "5f0817d4e449d021",
+  "pdfs/admitere2025-mate-barem.pdf": "c6eda036ec745619",
+  "pdfs/admitere2025-mate-rezolvare.pdf": "045eaf969e3b9d2a",
+  "pdfs/preadmitere2024-mate-barem.pdf": "2bafd247ecadc1c6",
+  "pdfs/preadmitere2024-mate-rezolvare.pdf": "8d6f33459291b651",
+  "pdfs/preadmitere2025-info-barem.pdf": "27ebfb0f63d12ac7",
+  "pdfs/preadmitere2025-info-subiect.pdf": "42784afd2592c961",
+  "pdfs/preadmitere2025-mate-barem.pdf": "2b9d78fff378870b",
+  "pdfs/preadmitere2025-mate-rezolvare.pdf": "1a9a059335da6347",
+  "pdfs/preadmitere2026-info-rezolvare.pdf": "5b559431b41df056",
+  "pdfs/preadmitere2026-info-subiect.pdf": "a9750f3707ec3704",
+  "pdfs/preadmitere2026-mate-rezolvare.pdf": "4782689e7a643fb3",
+  "pdfs/preadmitere2026-mate-subiect.pdf": "1f0294ef70aeab65",
+  "pdfs/rezolvare-simulare-admiterepoli-1.pdf": "e24dd2a03c92afca",
+  "pdfs/rezolvare-simulare-admiterepoli-2.pdf": "19f9de5f067e92e1",
+  "pdfs/rezolvare-simulare-admiterepoli-3.pdf": "d7f72056f4c22a8c",
+  "pdfs/rezolvare-simulare-admiterepoli-4.pdf": "b465622f98d0398d",
+  "pdfs/simulare2025-info-barem.pdf": "134ea9dc277485c0",
+  "pdfs/simulare2025-mate-barem.pdf": "33b0ba1990131116",
+  "pdfs/simulare2026-info-barem.pdf": "0aadc43816d19342",
+  "pdfs/simulare2026-info-rezolvare.pdf": "7135f1da780ed615",
+  "pdfs/simulare2026-mate-barem.pdf": "645c796fc1be4847",
+  "pdfs/simulare2026-mate-rezolvare.pdf": "6e79cc16b105c624",
+  "robots.txt": "04aeb6002548cfe1",
+  "sitemap.xml": "53376a28e0f571ea"
+ }
+}
