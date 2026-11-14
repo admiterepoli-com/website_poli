@@ -1,0 +1,12 @@
+---
+/**
+ * Inlines the cookie consent script as a render-blocking classic script.
+ * It must be the first thing in <head>, before <Analytics />.
+ */
+import { compileInlineScript } from '../lib/inline-script';
+import source from '../scripts/cookie-consent.ts?raw';
+
+const code = compileInlineScript(source);
+---
+
+<script is:inline set:html={code} />
