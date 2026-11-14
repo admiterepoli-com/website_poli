@@ -1,0 +1,36 @@
+name: Port close issues
+
+# GitHub only auto-closes "Closes #N" issues for merges into the default branch.
+# The port lives on typescript-port, so this workflow closes them instead.
+on:
+  pull_request:
+    types: [closed]
+    branches: [typescript-port]
+
+permissions:
+  issues: write
+  pull-requests: read
+
+jobs:
+  close:
+    name: close linked issues
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close issues referenced by the merged PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          issues=$(printf '%s' "$BODY" | grep -oiE '(close[sd]?|fix(e[sd])?|resolve[sd]?)[[:space:]]+#[0-9]+' | grep -oE '[0-9]+' | sort -u || true)
+          if [ -z "$issues" ]; then
+            echo "No linked issues in PR #$PR."
+            exit 0
+          fi
+          for issue in $issues; do
+            echo "Closing #$issue"
+            gh issue edit "$issue" -R "$REPO" --remove-label in-progress || true
+            gh issue close "$issue" -R "$REPO" --comment "✅ Done in #$PR, merged into \`typescript-port\`."
+          done
