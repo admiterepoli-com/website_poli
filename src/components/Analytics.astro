@@ -1,0 +1,25 @@
+---
+/**
+ * Google Analytics 4 (gtag). Rendered exactly like the legacy snippet.
+ * The cookie consent script must come BEFORE this component: it sets the
+ * `ga-disable-*` flag that stops analytics until the visitor accepts.
+ *
+ * Keep this script as it is:
+ * - `gtag` must be a global function (other scripts call it), so no
+ *   `define:vars`, which would wrap the code in a closure.
+ * - gtag.js only understands the real `arguments` object, not an array.
+ * The measurement id is repeated in src/scripts/cookie-consent.ts.
+ */
+---
+
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-PC1VMXYCRN');
+</script>

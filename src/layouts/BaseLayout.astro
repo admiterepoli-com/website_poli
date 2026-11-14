@@ -1,0 +1,80 @@
+---
+/**
+ * Base layout of every ported page.
+ *
+ * Usage:
+ *   <BaseLayout title="..." description="...">
+ *     <main> ...page markup copied from the legacy file... </main>
+ *     <Fragment slot="scripts"> ...page scripts... </Fragment>
+ *   </BaseLayout>
+ *
+ * Slots: default (page content, including its own <main>), `head` (extra head
+ * tags such as KaTeX CSS or a start-time script), `scripts` (end of body,
+ * before the auth module).
+ *
+ * The shared parts of the page (cookie consent, header, footer, popup, auth)
+ * are added by their own components at the marked places below. Each flag
+ * exists because some legacy pages do not have that part; the defaults match
+ * the majority of pages.
+ */
+import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import SeoHead, { type FontSet } from '../components/SeoHead.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  fonts?: FontSet;
+  /** 46 legacy pages use "lp-body lp-dark"; 21 have no body class (pass ""). */
+  bodyClass?: string;
+  /** Cookie consent banner. Legacy `exercitii-video` and `404` do not load it. */
+  cookieConsent?: boolean;
+  header?: boolean;
+  /** Legacy `profil` and `404` have no footer. */
+  footer?: boolean;
+  /** WhatsApp popup. Ten legacy pages do not include it (simulations, legal pages, profil, ...). */
+  popup?: boolean;
+  /** Firebase auth module (sign-up button, gates). Only `404` lacks it. */
+  auth?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noindex,
+  fonts,
+  bodyClass = 'lp-body lp-dark',
+  cookieConsent = true,
+  header = true,
+  footer = true,
+  popup = true,
+  auth = true,
+} = Astro.props;
+
+// The flags below are consumed by the components that later issues plug in.
+const parts = { cookieConsent, header, footer, popup, auth };
+---
+
+<!doctype html>
+<html lang="ro">
+  <head>
+    {/* PLACEHOLDER cookie-consent (issue #13): must stay first, before Analytics. Uses parts.cookieConsent. */}
+    <Analytics />
+    <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} fonts={fonts} />
+    <slot name="head" />
+  </head>
+  <body
+    class={bodyClass === '' ? undefined : bodyClass}
+    data-parts={import.meta.env.DEV ? JSON.stringify(parts) : undefined}
+  >
+    {/* PLACEHOLDER header (issue #14). Uses parts.header. */}
+    <slot />
+    {/* PLACEHOLDER footer (issue #15). Uses parts.footer. */}
+    <slot name="scripts" />
+    {/* PLACEHOLDER newsletter popup (issue #16). Uses parts.popup. */}
+    {/* PLACEHOLDER auth entry script (issue #19). Uses parts.auth. */}
+  </body>
+</html>
