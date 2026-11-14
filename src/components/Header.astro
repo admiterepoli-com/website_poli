@@ -1,0 +1,97 @@
+---
+/**
+ * Site header. Two markup generations exist on the legacy site and both are
+ * reproduced exactly, because the CSS and the auth script depend on them:
+ *
+ * - `modern` (46 pages, body class "lp-body lp-dark"): logo outside <nav>,
+ *   sliding nav cursor, static "Sign Up" button.
+ * - `classic` (20 pages, no body class): logo and hamburger inside <nav>, no
+ *   Sign Up button in the markup (the auth script injects one), and the
+ *   "Simulări" link carries the class `nav-sim-btn`.
+ */
+interface Props {
+  variant?: 'modern' | 'classic' | undefined;
+}
+
+const { variant = 'modern' } = Astro.props;
+---
+
+{variant === 'modern' ? (
+  <header>
+    <a href="./" class="nav-logo-link">
+      <img src="images/logonoutrans.png" alt="logo" class="logonav" />
+    </a>
+    <nav>
+      <div id="nav-cursor" class="nav-cursor" aria-hidden="true" />
+
+      <ul class="nav-elements">
+        <li>
+          <a href="./informatii">Informații generale</a>
+        </li>
+        <li>
+          <a href="./subiecte">Subiecte/Rezolvări</a>
+        </li>
+        <li>
+          <a href="./resurse">Resurse</a>
+        </li>
+        <li>
+          <a href="./simulari">Simulări</a>
+        </li>
+        <li>
+          <a href="./exercitii-video">Exerciții video</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-header-actions">
+      <button class="nav-header-signup" id="header-signup-btn">
+        Sign Up
+      </button>
+    </div>
+    <div class="hamburger">
+      <span class="bar" />
+      <span class="bar" />
+      <span class="bar" />
+    </div>
+  </header>
+) : (
+  <header>
+    <nav>
+      <a href="./">
+        <img src="images/logonoutrans.png" alt="logo" class="logonav" />
+      </a>
+      <ul class="nav-elements">
+        <li>
+          <a href="./informatii">Informații generale</a>
+        </li>
+        <li>
+          <a href="./subiecte">Subiecte/Rezolvări</a>
+        </li>
+        <li>
+          <a href="./resurse">Resurse</a>
+        </li>
+        <li>
+          <a href="./simulari" class="nav-sim-btn">
+            Simulări
+          </a>
+        </li>
+        <li>
+          <a href="./exercitii-video">Exerciții video</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar" />
+        <span class="bar" />
+        <span class="bar" />
+      </div>
+    </nav>
+  </header>
+)}
+
+<script>
+  import { initNav } from '../scripts/nav';
+  import { initNavCursor } from '../scripts/nav-cursor';
+
+  initNav();
+  initNavCursor();
+</script>

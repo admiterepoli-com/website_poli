@@ -20,6 +20,7 @@
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import Header from '../components/Header.astro';
 import SeoHead, { type FontSet } from '../components/SeoHead.astro';
 
 interface Props {
@@ -33,6 +34,8 @@ interface Props {
   /** Cookie consent banner. Legacy `exercitii-video` and `404` do not load it. */
   cookieConsent?: boolean;
   header?: boolean;
+  /** Defaults to `classic` for pages without a body class, `modern` otherwise (as on the legacy site). */
+  headerVariant?: 'modern' | 'classic';
   /** Legacy `profil` and `404` have no footer. */
   footer?: boolean;
   /** WhatsApp popup. Ten legacy pages do not include it (simulations, legal pages, profil, ...). */
@@ -50,6 +53,7 @@ const {
   bodyClass = 'lp-body lp-dark',
   cookieConsent = true,
   header = true,
+  headerVariant = bodyClass === '' ? 'classic' : 'modern',
   footer = true,
   popup = true,
   auth = true,
@@ -72,7 +76,7 @@ const parts = { cookieConsent, header, footer, popup, auth };
     class={bodyClass === '' ? undefined : bodyClass}
     data-parts={import.meta.env.DEV ? JSON.stringify(parts) : undefined}
   >
-    {/* PLACEHOLDER header (issue #14). Uses parts.header. */}
+    {parts.header && <Header variant={headerVariant} />}
     <slot />
     {/* PLACEHOLDER footer (issue #15). Uses parts.footer. */}
     <slot name="scripts" />
