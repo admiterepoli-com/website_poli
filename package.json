@@ -12,13 +12,15 @@
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "lint": "eslint . && prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "seo:check": "node scripts/seo-check.ts"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@eslint/js": "^10.0.1",
     "@types/node": "^22.20.5",
     "astro": "^7.4.1",
+    "cheerio": "^1.2.0",
     "eslint": "^10.15.0",
     "eslint-plugin-astro": "^3.2.1",
     "prettier": "^3.10.1",
