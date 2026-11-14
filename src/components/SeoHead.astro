@@ -1,0 +1,41 @@
+---
+/**
+ * The <head> tags search engines read. It renders exactly what the legacy
+ * pages have and nothing more: no Open Graph tags, no generator tag, and a
+ * canonical or robots tag only when the legacy page had one.
+ * Any change here changes what Google sees on every page; `npm run seo:check`
+ * will report it.
+ */
+export type FontSet = 'jakarta' | 'dm-sans' | 'none';
+
+interface Props {
+  title: string;
+  description?: string | undefined;
+  /** Only the home page has a canonical tag today. */
+  canonical?: string | undefined;
+  /** Adds <meta name="robots" content="noindex">. */
+  noindex?: boolean | undefined;
+  /** Google Fonts stylesheet used by the page (legacy pages use one of two sets). */
+  fonts?: FontSet | undefined;
+}
+
+const FONT_URLS: Record<Exclude<FontSet, 'none'>, string> = {
+  jakarta:
+    'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap',
+  'dm-sans':
+    'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap',
+};
+
+const { title, description, canonical, noindex = false, fonts = 'jakarta' } = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+{description !== undefined && <meta name="description" content={description} />}
+{canonical !== undefined && <link rel="canonical" href={canonical} />}
+{noindex && <meta name="robots" content="noindex" />}
+<link rel="icon" type="image/png" href="logosquared.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+{fonts !== 'none' && <link href={FONT_URLS[fonts]} rel="stylesheet" />}
