@@ -1,0 +1,42 @@
+---
+/**
+ * Site footer, copied from the legacy pages (inline styles included).
+ *
+ * `exercitii-video` is the only legacy page whose footer icons have alt texts.
+ * Image alt texts are part of the SEO baseline, so that difference is kept:
+ * pass `iconAlt` on that page only.
+ */
+interface Props {
+  iconAlt?: boolean | undefined;
+}
+
+const { iconAlt = false } = Astro.props;
+const iconStyle = iconAlt
+  ? 'width:24px;height:24px;filter:brightness(0) invert(1);'
+  : 'width: 24px; height: 24px; filter: brightness(0) invert(1);';
+// The standard footer has a leading space inside the first two text links.
+const lead = iconAlt ? '' : ' ';
+const linkStyle = iconAlt ? 'color:white;text-decoration:none;' : 'color: white; text-decoration: none;';
+---
+
+<footer>
+  <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
+    <img src="./images/whatsapp.svg" style={iconStyle} alt={iconAlt ? 'WhatsApp' : undefined} />
+  </a>
+  <a
+    href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr"
+    target="_blank"
+  >
+    <img src="./images/instagram.svg" style={iconStyle} alt={iconAlt ? 'Instagram' : undefined} />
+  </a>
+  <a href="./contact" style={linkStyle}>
+    {lead}Contact
+  </a>
+  <a href="./termeni-si-conditii" style={linkStyle}>
+    {lead}Termeni si conditii
+  </a>
+  <a href="./politica-confidentialitate" style={linkStyle}>
+    Politica de Confidentialitate
+  </a>
+  <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
+</footer>

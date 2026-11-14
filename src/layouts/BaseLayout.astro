@@ -20,6 +20,7 @@
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import SeoHead, { type FontSet } from '../components/SeoHead.astro';
 
@@ -38,6 +39,8 @@ interface Props {
   headerVariant?: 'modern' | 'classic';
   /** Legacy `profil` and `404` have no footer. */
   footer?: boolean;
+  /** Only `exercitii-video` has alt texts on the footer icons. */
+  footerIconAlt?: boolean;
   /** WhatsApp popup. Ten legacy pages do not include it (simulations, legal pages, profil, ...). */
   popup?: boolean;
   /** Firebase auth module (sign-up button, gates). Only `404` lacks it. */
@@ -55,6 +58,7 @@ const {
   header = true,
   headerVariant = bodyClass === '' ? 'classic' : 'modern',
   footer = true,
+  footerIconAlt,
   popup = true,
   auth = true,
 } = Astro.props;
@@ -78,7 +82,7 @@ const parts = { cookieConsent, header, footer, popup, auth };
   >
     {parts.header && <Header variant={headerVariant} />}
     <slot />
-    {/* PLACEHOLDER footer (issue #15). Uses parts.footer. */}
+    {parts.footer && <Footer iconAlt={footerIconAlt} />}
     <slot name="scripts" />
     {/* PLACEHOLDER newsletter popup (issue #16). Uses parts.popup. */}
     {/* PLACEHOLDER auth entry script (issue #19). Uses parts.auth. */}
