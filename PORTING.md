@@ -110,7 +110,7 @@ gh pr create --base typescript-port --title "<issue title>" --body "Closes #<N>"
 gh pr merge --auto --squash
 ```
 
-CI (`.github/workflows/port-ci.yml`, job `ci`) runs build, check, lint, css:check, seo:check, unit tests and a site smoke test; `typescript-port` is protected and the PR merges by itself when `ci` is green. Merging can lag CI by up to a minute. If the PR conflicts, rebase on `origin/typescript-port` and push again. Never push to `typescript-port` or `main` directly, and never merge with failing checks.
+CI (`.github/workflows/port-ci.yml`, job `ci`) runs build, check, lint, css:check, seo:check, unit tests and a site smoke test; `typescript-port` is protected and the PR merges by itself when `ci` is green. Merging can lag CI by up to a minute. When the PR merges, a workflow closes the issue named in `Closes #<N>` and removes `in-progress`, so the PR body must contain that line exactly. If the PR conflicts, rebase on `origin/typescript-port` and push again. Never push to `typescript-port` or `main` directly, and never merge with failing checks.
 
 **7. If you get stuck.** Release the issue so someone else can take it: post a comment that starts with `🤖 RELEASED —` followed by what you found, remove `in-progress` and your assignment, and move on. If the blocker needs a secret, a repository setting or a decision that affects SEO, add the `needs-human` label.
 
