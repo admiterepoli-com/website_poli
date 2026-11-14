@@ -1,0 +1,4 @@
+# Links that are already broken on the live site. They are tolerated so the
+# port keeps parity; fixing them is a separate, deliberate change.
+# Format: <page file> <link>
+rezolvare-simulare-2023-matematica.html ./rezolvare-simulare-2023-informatica-video

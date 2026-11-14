@@ -1,0 +1,62 @@
+name: Port CI
+
+# Runs on every merge (push) into typescript-port and on every PR targeting it.
+on:
+  push:
+    branches: [typescript-port]
+  pull_request:
+    branches: [typescript-port]
+
+concurrency:
+  group: port-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The npm steps switch on by themselves once the Astro project exists (issue #6).
+      # `--if-present` skips scripts that have not been added yet.
+      - name: Install dependencies
+        if: hashFiles('package-lock.json') != ''
+        run: npm ci
+
+      - name: Build
+        if: hashFiles('package.json') != ''
+        run: npm run build --if-present
+
+      - name: Type check
+        if: hashFiles('package.json') != ''
+        run: npm run check --if-present
+
+      - name: Lint
+        if: hashFiles('package.json') != ''
+        run: npm run lint --if-present
+
+      - name: CSS equivalence
+        if: hashFiles('package.json') != ''
+        run: npm run css:check --if-present
+
+      - name: SEO parity
+        if: hashFiles('package.json') != ''
+        run: npm run seo:check --if-present
+
+      - name: Unit tests
+        if: hashFiles('package.json') != ''
+        run: npm test --if-present
+
+      # Always runs: every known URL exists, pages have titles, internal links,
+      # assets and sitemap URLs resolve. Uses dist/ once it contains the pages.
+      - name: Site smoke test
+        run: node .github/scripts/site-smoke.mjs
