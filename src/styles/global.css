@@ -1,0 +1,19 @@
+/*
+ * Global stylesheet of the site: the old styles.css split into ordered partials.
+ * ORDER MATTERS. The cascade decides how the site looks, so partials must stay in
+ * this order and rules must not be moved between them. `npm run css:check`
+ * verifies that the partials, concatenated in this order, equal legacy/styles.css.
+ */
+@import './00-base.css';
+@import './01-badge.css';
+@import './02-shared-buttons-brilliant-style.css';
+@import './03-countdown-in-cardul-de.css';
+@import './04-despre-noi.css';
+@import './05-newsletter-popup-dark-cartoonish.css';
+@import './06-timer-sticky.css';
+@import './07-barem-cod.css';
+@import './08-firebase-auth.css';
+@import './09-plan-picker-light.css';
+@import './10-carduri-rezultate-simulari.css';
+@import './11-cookie-consent-banner.css';
+@import './12-exam-content-gate.css';

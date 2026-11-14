@@ -14,3 +14,4 @@ seo-baseline.json
 *.md
 firebase.json
 .firebaserc
+src/styles/

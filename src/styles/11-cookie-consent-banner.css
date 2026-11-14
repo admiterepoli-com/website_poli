@@ -1,0 +1,904 @@
+/* ── Cookie consent banner ──────────────────────── */
+
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-panel);
+  border-top: 1px solid var(--glass-border);
+  padding: 1rem 1.5rem;
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+#cookie-banner.cookie-banner-visible {
+  transform: translateY(0);
+}
+
+.cookie-banner-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cookie-banner-text {
+  color: var(--text);
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cookie-banner-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.cookie-banner-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cookie-btn-accept {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+
+.cookie-btn-accept:hover { opacity: 0.85; }
+
+.cookie-btn-reject {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.cookie-btn-reject:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+/* ── Pagini legale ───────────────────────────────── */
+
+.legal-page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-page-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 0.4rem;
+}
+
+.legal-page-header .legal-date {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.legal-section {
+  margin-bottom: 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.legal-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.legal-section h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.legal-section h2::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: var(--accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legal-section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 1.1rem 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.legal-section p {
+  color: var(--text);
+  font-size: 0.93rem;
+  line-height: 1.75;
+  margin-bottom: 0.6rem;
+}
+
+.legal-section ul {
+  padding-left: 0;
+  margin-bottom: 0.75rem;
+  list-style: none;
+}
+
+.legal-section ul li {
+  color: var(--text);
+  font-size: 0.93rem;
+  line-height: 1.75;
+  margin-bottom: 0.35rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.legal-section ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.legal-section a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Email verification warning ─────────────────── */
+
+.profile-verify-banner {
+  background: rgba(251, 191, 36, 0.07);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-verify-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--gold);
+  border-radius: 99px 0 0 99px;
+}
+
+.profile-verify-banner p {
+  color: var(--gold);
+  font-size: 0.875rem;
+  margin: 0;
+  flex: 1;
+  padding-left: 0.25rem;
+}
+
+.profile-verify-resend {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(255, 202, 75, 0.35);
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.profile-verify-resend:hover { background: rgba(255, 202, 75, 0.08); opacity: 0.9; }
+.profile-verify-resend:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ═══════════════════════════════════════════════════════════════
+   INNER PAGES — colors via --lp-* (no duplicate dark/light rules)
+   ═══════════════════════════════════════════════════════════════ */
+
+.lp-body .titlu-info-box {
+  color: var(--lp-text-muted);
+  background: var(--lp-titlu-bg) !important;
+  border: 2px solid var(--lp-titlu-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 0 var(--lp-shadow-3d) !important;
+}
+
+.lp-body .dropdown-section.show {
+  background: var(--lp-dropdown-open-bg) !important;
+  box-shadow: 0 4px 16px var(--lp-dropdown-open-shadow) !important;
+  border: 1px solid var(--lp-dropdown-open-border) !important;
+  border-radius: 16px !important;
+}
+
+.lp-body .legal-section {
+  border-bottom-color: var(--lp-legal-divider) !important;
+}
+
+.lp-body .pag-intro {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Linkuri utile — cartoonish card */
+.pag-links-box {
+  margin-top: 1.5rem;
+  background: var(--lp-surface, rgba(57,62,70,0.55));
+  border: 2px solid var(--lp-border, rgba(255,255,255,0.1));
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 5px 0 var(--lp-shadow-3d, rgba(0,0,0,0.4));
+}
+
+.pag-links-box h3 {
+  color: var(--lp-heading, #e2e8f0) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.pag-links-box ul {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+  font-size: 1rem;
+}
+
+.pag-links-box li {
+  margin-bottom: 0.4rem;
+  color: var(--lp-text-muted, #94a3b8) !important;
+}
+
+.pag-links-box a {
+  color: var(--lp-accent, #5b9cf6) !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.pag-links-box a:hover {
+  color: var(--lp-accent-border, #7baef8) !important;
+}
+
+/* Smooth transitions for inner page elements on theme toggle */
+body.theme-transitions-on .titlu-info-box,
+body.theme-transitions-on .dropdown-section,
+body.theme-transitions-on .subiecte-box-info,
+body.theme-transitions-on .subiecte-box,
+body.theme-transitions-on .sfat-info,
+body.theme-transitions-on .warning-info,
+body.theme-transitions-on .sim-rules,
+body.theme-transitions-on .sim-archive-card,
+body.theme-transitions-on .sim-archive-empty,
+body.theme-transitions-on .pag-intro,
+body.theme-transitions-on .barem-table-wrapper,
+body.theme-transitions-on form,
+body.theme-transitions-on .input-box .field {
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease !important;
+}
+
+/* ==========================================
+   REDESIGN: lp-fold, category dock
+   ========================================== */
+
+.lp-fold {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - 85px);
+  overflow-x: hidden;
+}
+
+.lp-fold .lp-hero {
+  flex: 1;
+  min-height: 0 !important;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lp-category-dock {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+  background: transparent;
+  /* Full-bleed without triggering horizontal overflow */
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  overflow-x: auto;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.lp-cat-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 18px 48px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--card-accent, #a78bfa);
+  cursor: pointer;
+  transition: background 0.18s ease;
+  text-decoration: none;
+}
+
+.lp-cat-item:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.lp-cat-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  /* color inherits from parent (.lp-cat-item) — stays accent-colored */
+}
+
+.lp-cat-label {
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+/* ==========================================
+   REDESIGN: info cards (informatii.html)
+   ========================================== */
+
+.info-page-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+}
+
+.info-page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 0.75rem;
+}
+
+.info-page-subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.info-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0 2rem;
+}
+
+.lp-body .info-card {
+  --card-accent: #a78bfa;
+  --card-shadow: #5b21b6;
+  border: 2px solid var(--card-accent);
+  border-radius: 20px;
+  box-shadow: 0 3px 0 var(--card-shadow);
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: box-shadow 0.18s ease, background 0.18s ease;
+  overflow: hidden;
+  user-select: none;
+}
+
+.lp-body .info-card:hover {
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 3px 0 var(--card-shadow),
+              0 0 0 3px color-mix(in srgb, var(--card-accent) 30%, transparent);
+}
+
+.lp-body .info-card:active {
+  transform: translateY(2px);
+  box-shadow: 0 0px 0 var(--card-shadow);
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.info-card-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 14px;
+  border: 2px solid var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  flex-shrink: 0;
+}
+
+.info-card-body {
+  flex: 1;
+}
+
+.info-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 0.2rem;
+}
+
+.info-card-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.info-card-chevron {
+  color: var(--muted);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.info-card.active .info-card-chevron {
+  transform: rotate(180deg);
+}
+
+.info-card-content {
+  display: none;
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+}
+
+.info-card.active .info-card-content {
+  display: block;
+}
+
+.info-card-content .sub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  /* Reset animația SimpleDropdown — sub-links global are opacity:0 */
+  opacity: 1;
+  transform: none;
+  padding: 0;
+  margin-left: 0;
+  margin-top: 0.4rem;
+  width: auto;
+  transition: none;
+}
+
+.info-card-content .sub-links span {
+  flex: 1;
+  min-width: 220px;
+}
+
+.info-card-tip {
+  background: color-mix(in srgb, var(--card-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 30%, transparent);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-top: 0.5rem;
+}
+
+.info-card-tip a {
+  color: var(--card-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info-card-tip a:hover { color: #fff; }
+
+.info-card-warn {
+  background: rgba(255, 202, 75, 0.08);
+  border: 1px solid rgba(255, 202, 75, 0.35);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-top: 0.5rem;
+}
+
+.info-card-content p {
+  font-size: 0.97rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.info-card-content a {
+  color: var(--card-accent);
+  text-decoration: none;
+}
+.info-card-content a:hover { color: #fff; }
+
+/* ==========================================
+   REDESIGN: year cards (subiecte.html)
+   ========================================== */
+
+.subiecte-page-header {
+  text-align: center;
+  padding: 0.5rem 1rem 0.5rem;
+}
+
+.subiecte-page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 0.75rem;
+}
+
+.subiecte-page-subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.subiecte-section-block {
+  margin-bottom: 0.35rem;
+}
+
+.subiecte-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-heading);
+}
+
+.subiecte-section-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+
+.year-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.lp-body .subiecte-box.year-card {
+  --card-accent: #34d399;
+  --card-shadow: #1a7a56;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid var(--card-accent);
+  border-radius: 20px;
+  box-shadow: 0 3px 0 var(--card-shadow);
+  background: rgba(255,255,255,0.03);
+  padding: 1rem 1.4rem;
+  cursor: pointer;
+  transition: box-shadow 0.18s ease, background 0.18s ease;
+  user-select: none;
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.lp-body .subiecte-box.year-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--card-accent) !important;
+  transform: none;
+  box-shadow: 0 3px 0 var(--card-shadow),
+              0 0 0 3px color-mix(in srgb, var(--card-accent) 30%, transparent);
+}
+
+.lp-body .subiecte-box.year-card:active {
+  transform: translateY(2px);
+  box-shadow: 0 0px 0 var(--card-shadow);
+}
+
+/* Override the global .active state which hijacks colors for year-cards */
+.lp-body .subiecte-box.year-card.active {
+  background: rgba(255,255,255,0.04) !important;
+  border-color: var(--card-accent) !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  color: var(--text-heading) !important;
+  box-shadow: 0 0 0 0 transparent !important;
+}
+
+.lp-body .subiecte-box.year-card.active:hover {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: var(--card-accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--card-accent) 20%, transparent) !important;
+}
+
+.lp-body .subiecte-box.year-card.active .year-card-year {
+  color: var(--card-accent) !important;
+}
+
+.lp-body .subiecte-box.year-card.active .info-card-chevron {
+  color: var(--muted) !important;
+}
+
+.year-card-year {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--card-accent);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.year-card-desc {
+  flex: 1;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.year-card-badge-new {
+  background: var(--gold);
+  color: #1a1a1a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 0.75rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.year-card .info-card-chevron {
+  margin-left: 1rem;
+}
+
+.year-card.active .info-card-chevron {
+  transform: rotate(180deg);
+}
+
+.lp-body .year-card + .dropdown-section.show {
+  border: 2px solid var(--card-accent, #34d399);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  margin-top: -8px;
+  padding: 1rem 1.4rem 1.2rem;
+  background: rgba(255,255,255,0.02);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   NAV HEADER LAYOUT — logo | nav pill | actions
+   ═════════════════════════════════════════════════════════════════ */
+
+/* 3-column grid: logo (spre dreapta) | nav centrat | sign up (spre stânga) */
+.lp-body header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-logo-link {
+  grid-column: 1;
+  justify-self: end; /* logo lipit de nav, nu de marginea stângă */
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+  text-decoration: none;
+}
+
+/* Nav pill — coloana din mijloc, centrat exact */
+.lp-body nav {
+  grid-column: 2;
+  position: relative;
+  width: auto !important;
+  max-width: none;
+  margin: 0 !important;
+}
+
+.nav-header-actions {
+  grid-column: 3;
+  justify-self: start; /* sign up lipit de nav, nu de marginea dreaptă */
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+}
+
+/* Hamburger — coloana 3 pe mobile */
+.lp-body header .hamburger {
+  grid-column: 3;
+  justify-self: end;
+  pointer-events: all;
+}
+
+/* Sliding cursor pill — se mișcă prin JS la hover pe link-uri */
+.nav-cursor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  transition:
+    left   0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    width  0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.18s ease;
+  pointer-events: none;
+  opacity: 0;
+  width: 0;
+}
+
+/* Sign Up actions container */
+.nav-header-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+}
+
+.nav-header-signup {
+  padding: 0.42rem 1.1rem;
+  background: var(--lp-accent, #5b9cf6);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  box-shadow: 0 3px 0 var(--lp-accent-border, #3b7de8);
+  transition: filter 0.18s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.nav-header-signup:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 var(--lp-accent-border, #3b7de8), 0 6px 16px rgba(91, 156, 246, 0.25);
+}
+
+.nav-header-signup:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--lp-accent-border, #3b7de8);
+}
+
+@media (max-width: 768px) {
+  /* Container-ul lp-body e transparent — elimină padding-ul lateral pe mobile
+     ca să nu strângă conținutul inutil (fiecare secțiune are propriul padding) */
+  .lp-body .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Header: logo stânga, hamburger dreapta — nav pill ascuns */
+  .lp-body header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: none;
+    background: #1a1e26 !important;
+  }
+
+  .nav-logo-link {
+    justify-self: unset;
+  }
+
+  /* Ascunde nav pill pe mobile — links sunt în fullscreen overlay */
+  /* Nu folosim display:none — ar ascunde și ul.nav-elements (position:fixed) din interior */
+  .lp-body nav {
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible;
+    flex: 0 0 0;
+    /* will-change:transform creates a containing block for position:fixed children.
+       On mobile the nav collapses to width:0, which makes .nav-elements inherit
+       that 0-width and lose its background. Reset it so the overlay uses the viewport. */
+    will-change: auto;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Ascunde sign up */
+  .nav-header-actions {
+    display: none;
+  }
+
+  /* Hamburger vizibil și la dreapta */
+  .lp-body header .hamburger {
+    display: block;
+    grid-column: unset;
+    justify-self: unset;
+    margin-left: auto;
+  }
+
+  /* Dock pe mobile: items se reduc */
+  .lp-category-dock {
+    width: 100%;
+    min-width: 0;
+    left: 0;
+    transform: none;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .lp-cat-item {
+    padding: 14px 20px;
+    font-size: 0.8rem;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  /* Below 540px the 4 dock items overflow. Make them fill the width equally. */
+  .lp-category-dock {
+    overflow-x: hidden;
+  }
+
+  .lp-cat-item {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 12px 6px;
+    font-size: 0.68rem;
+    gap: 0.3rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .lp-cat-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
