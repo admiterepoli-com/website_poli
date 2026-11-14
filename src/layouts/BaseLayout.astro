@@ -19,6 +19,7 @@
  */
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import SeoHead, { type FontSet } from '../components/SeoHead.astro';
 
 interface Props {
@@ -61,7 +62,8 @@ const parts = { cookieConsent, header, footer, popup, auth };
 <!doctype html>
 <html lang="ro">
   <head>
-    {/* PLACEHOLDER cookie-consent (issue #13): must stay first, before Analytics. Uses parts.cookieConsent. */}
+    {/* Cookie consent must stay first, before Analytics: it decides whether analytics may run. */}
+    {parts.cookieConsent && <CookieConsent />}
     <Analytics />
     <SeoHead title={title} description={description} canonical={canonical} noindex={noindex} fonts={fonts} />
     <slot name="head" />
