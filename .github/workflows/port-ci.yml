@@ -26,8 +26,7 @@ jobs:
         with:
           node-version: 22
 
-      # The npm steps switch on by themselves once the Astro project exists (issue #6).
-      # `--if-present` skips scripts that have not been added yet.
+      # `--if-present` skips scripts that have not been added yet (for example `test`).
       - name: Install dependencies
         if: hashFiles('package-lock.json') != ''
         run: npm ci
