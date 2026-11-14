@@ -29,6 +29,25 @@ Two behaviours must survive exactly as they are:
 - The cookie-consent script is a render-blocking inline script placed before the Google Analytics tag.
 - The exam-gate safety net (top of the old `main.js`) is a classic inline script that does not depend on the ES module bundle. It exists for visitors whose network blocks the module.
 
+## What wave 0 built, and what it taught us
+
+Read this before porting anything; each point cost a debugging session.
+
+- **`BaseLayout`** (`src/layouts/BaseLayout.astro`) renders the head, cookie consent, analytics, header, footer, popup and auth script. A page passes `title`, `description` and its own `<main>`. Legacy pages are not uniform, so the layout has props for the differences. Check your legacy page against each one:
+  - `bodyClass`: 46 pages use `lp-body lp-dark` (default), 21 have none (`bodyClass=""`). The header markup follows from it (`modern` vs `classic`).
+  - `fonts`: `jakarta` (default, 43 pages) or `dm-sans` (22 pages). Extra font links go in the `head` slot.
+  - `popupNoscript`: `weekly` (default), `info` or `title`. The `<noscript>` text is in the SEO baseline.
+  - `popup={false}`, `footer={false}`, `cookieConsent={false}`, `auth={false}`, `footerIconAlt`, `canonical`, `noindex`: only where the legacy page differs.
+- **The reference example is `src/pages/cti-vs-is.astro`.** Its header comment describes the steps.
+- **Do not load `main.js` on a ported page.** Its features are being split into `src/scripts/`; loading it too would bind handlers twice.
+- **CSS is not minified and HTML whitespace is not compressed** (`astro.config.ts`). Both changed rendering or the extracted text. Do not turn them back on.
+- **Prettier ignores `src/pages/`.** Paste legacy markup as it is. In Astro templates, a literal `{` or `}` in text must be written as `{'{'}` / `{'}'}`.
+- **Scripts that must run as classic inline scripts** (before analytics, or when the module bundle fails) use `compileInlineScript` from `src/lib/inline-script.ts`. See `CookieConsent.astro`.
+- **Global functions in inline scripts**: do not use `define:vars` on a script that defines globals; it wraps the code in a closure.
+- **Compare markup against legacy before trusting it.** Header, footer and popup each turned out to have two or three variants. When you build a shared component, group all legacy pages by their normalised markup first and report the variants in the PR.
+- **`npm run visual` needs a browser once:** `npx playwright install chromium`. Use `--keep` to save screenshots even when the page passes. It hides PDF canvases and freezes time, so date-based gates render as of 1 November 2026.
+- **Scripts in `scripts/` run directly with Node 22** (`node scripts/x.ts`, type stripping). Use only erasable TypeScript syntax there: no enums, no parameter properties.
+
 ## Workflow for one issue
 
 All commands run against `admiterepoli-com/website_poli`.
@@ -77,9 +96,10 @@ npm ci
 ```bash
 npm run build
 npm run check          # astro check + tsc
-npm run lint
+npm run lint           # eslint + prettier; fix formatting with `npm run format`
+npm run css:check
 npm run seo:check
-npm run visual -- <slug>   # for every page your change affects
+npm run visual -- <slug>   # for every page your change affects (not run in CI)
 ```
 
 **6. Ship.**
@@ -90,7 +110,7 @@ gh pr create --base typescript-port --title "<issue title>" --body "Closes #<N>"
 gh pr merge --auto --squash
 ```
 
-CI merges the PR when it is green. If the PR conflicts, rebase on `origin/typescript-port` and push again. Never push to `typescript-port` or `main` directly, and never merge with failing checks.
+CI (`.github/workflows/port-ci.yml`, job `ci`) runs build, check, lint, css:check, seo:check, unit tests and a site smoke test; `typescript-port` is protected and the PR merges by itself when `ci` is green. Merging can lag CI by up to a minute. If the PR conflicts, rebase on `origin/typescript-port` and push again. Never push to `typescript-port` or `main` directly, and never merge with failing checks.
 
 **7. If you get stuck.** Release the issue so someone else can take it: post a comment that starts with `🤖 RELEASED —` followed by what you found, remove `in-progress` and your assignment, and move on. If the blocker needs a secret, a repository setting or a decision that affects SEO, add the `needs-human` label.
 
