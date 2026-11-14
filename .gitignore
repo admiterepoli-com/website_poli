@@ -3,11 +3,11 @@
 pdfs/popica_test.png
 sub_info/
 update_newsletter.py
-CLAUDE.md
 .superpowers/
 docs/
 .agents/
-.claude/
+.claude/*
+!.claude/agents/
 skills-lock.json
 .cursor/
 design-system/
