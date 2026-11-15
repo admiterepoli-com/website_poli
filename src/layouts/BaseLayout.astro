@@ -90,9 +90,11 @@ const parts = { cookieConsent, header, footer, popup, auth };
     <slot name="scripts" />
     {parts.popup && <NewsletterPopup noscript={popupNoscript} />}
     {
-      /* PLACEHOLDER auth entry script (issue #19). Until that issue replaces it, ported pages load the
-         legacy auth module, which the passthrough still copies to the site root. */
-      parts.auth && <script is:inline type="module" src="./firebase-auth.js" />
+      /* Auth entry module (npm Firebase SDK, bundled). Replaces the legacy
+         `<script type="module" src="./firebase-auth.js">`, which only legacy pages still load. */
+      parts.auth && <script>
+        import '../lib/firebase/entry';
+      </script>
     }
   </body>
 </html>
