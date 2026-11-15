@@ -1,0 +1,19 @@
+---
+/**
+ * Small coloured pill, for example `<span class="tag tag-cti">CTI</span>`.
+ * It is inline, so the template must not emit whitespace around or inside the
+ * `<span>`: the expression wrapper and `prettier-ignore` below keep it on one line.
+ */
+import type { TagVariant } from './types';
+
+interface Props {
+  variant: TagVariant;
+}
+
+const { variant } = Astro.props;
+---
+
+{
+  // prettier-ignore
+  <span class={`tag tag-${variant}`}><slot /></span>
+}

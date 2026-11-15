@@ -1,0 +1,51 @@
+---
+/**
+ * Comparison table with a pill tag in every header cell.
+ *
+ * Legacy markup: `.comparison-table-wrapper > table.comparison-table`.
+ * `etti-vs-cti` adds the class `table-etti` to the table (`tableClass`).
+ */
+import PillTag from './PillTag.astro';
+import type { ComparisonColumn, ComparisonRow } from './types';
+
+interface Props {
+  /** Header of the first column, for example `Criteriu`. */
+  criterion: string;
+  columns: readonly ComparisonColumn[];
+  rows: readonly ComparisonRow[];
+  /** Extra class on the `<table>`, after `comparison-table`. */
+  tableClass?: string;
+}
+
+const { criterion, columns, rows, tableClass } = Astro.props;
+const className = tableClass === undefined ? 'comparison-table' : `comparison-table ${tableClass}`;
+
+/**
+ * Line break written between cells and rows. Elements produced by `map` are
+ * otherwise glued together (`</td><td>`), and text extraction would then join
+ * the last word of a cell with the first word of the next one.
+ */
+const NL = '\n';
+---
+
+<div class="comparison-table-wrapper">
+  <table class={className}>
+    <thead>
+      <tr>
+        <th>{criterion}</th>
+        {columns.map((column) =>
+          // prettier-ignore
+          <Fragment>{NL}<th><PillTag variant={column.tag.variant}>{column.tag.label}</PillTag> {column.label}</th></Fragment>,
+        )}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) =>
+        // prettier-ignore
+        <Fragment>{NL}<tr>{NL}<td><strong>{row.label}</strong></td>{row.cells.map((cell) => (
+            <Fragment>{NL}<td>{cell}</td></Fragment>
+          ))}{NL}</tr></Fragment>,
+      )}
+    </tbody>
+  </table>
+</div>

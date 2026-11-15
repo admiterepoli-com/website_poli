@@ -10,6 +10,10 @@
  *    differs from the default (see BaseLayout.astro for the list).
  * 3. Everything between <main> and </main> is copied as it is: same tags,
  *    classes, inline styles, texts and links. Do not tidy it up.
+ *    Blocks that repeat across content pages (section cards, pill tags,
+ *    grids, comparison table, CTA box) use the components in
+ *    src/components/content/. They render the same tags and classes; texts,
+ *    links and inline styles are passed as props, unchanged.
  * 4. legacy/cti-vs-is.html is deleted in the same PR.
  *
  * Before opening the PR:
@@ -19,6 +23,46 @@
  * hence popupNoscript="title".
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AccentCard from '../components/content/AccentCard.astro';
+import CardGrid from '../components/content/CardGrid.astro';
+import ComparisonTable from '../components/content/ComparisonTable.astro';
+import CtaBox from '../components/content/CtaBox.astro';
+import MateriiBox from '../components/content/MateriiBox.astro';
+import SectionCard from '../components/content/SectionCard.astro';
+import type { ComparisonColumn, ComparisonRow } from '../components/content/types';
+
+const columns: ComparisonColumn[] = [
+  { tag: { variant: 'cti', label: 'CTI' }, label: 'Calculatoare' },
+  { tag: { variant: 'is', label: 'IS' }, label: 'Ingineria Sistemelor' },
+];
+
+const rows: ComparisonRow[] = [
+  {
+    label: 'Focus Principal',
+    cells: [
+      'Software, Algoritmi, Arhitectura calculatoarelor',
+      'Hardware, Automatizări, Robotică, Controlul sistemelor',
+    ],
+  },
+  {
+    label: 'Materiile studiate',
+    cells: [
+      'Mai multă Programare, Baze de Date, Rețele',
+      'Mai multă Fizică, Electronică, Matematică aplicată',
+    ],
+  },
+  {
+    label: 'Concurența la Admitere',
+    cells: ['Medii de intrare de obicei mai mari', 'Medii de intrare ușor mai mici'],
+  },
+  {
+    label: 'Joburi tipice',
+    cells: [
+      'Software Developer, DevOps, Data Engineer, Cybersecurity',
+      'Automation Engineer, System Integrator, Embedded Developer',
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -38,49 +82,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- TABEL COMPARATIV -->
-          <div class="section-card" style="animation-delay:0.1s">
-              <h2>Tabel Comparativ Rapid</h2>
-              <div class="comparison-table-wrapper">
-                  <table class="comparison-table">
-                      <thead>
-                          <tr>
-                              <th>Criteriu</th>
-                              <th><span class="tag tag-cti">CTI</span> Calculatoare</th>
-                              <th><span class="tag tag-is">IS</span> Ingineria Sistemelor</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td><strong>Focus Principal</strong></td>
-                              <td>Software, Algoritmi, Arhitectura calculatoarelor</td>
-                              <td>Hardware, Automatizări, Robotică, Controlul sistemelor</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Materiile studiate</strong></td>
-                              <td>Mai multă Programare, Baze de Date, Rețele</td>
-                              <td>Mai multă Fizică, Electronică, Matematică aplicată</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Concurența la Admitere</strong></td>
-                              <td>Medii de intrare de obicei mai mari</td>
-                              <td>Medii de intrare ușor mai mici</td>
-                          </tr>
-                          <tr>
-                              <td><strong>Joburi tipice</strong></td>
-                              <td>Software Developer, DevOps, Data Engineer, Cybersecurity</td>
-                              <td>Automation Engineer, System Integrator, Embedded Developer</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
+          <SectionCard title="Tabel Comparativ Rapid" delay="0.1s">
+              <ComparisonTable criterion="Criteriu" columns={columns} rows={rows} />
+          </SectionCard>
 
           <!-- CE VREI SA STUDIEZI -->
-          <div class="section-card" style="animation-delay:0.15s">
-              <h2>Ce vei studia efectiv?</h2>
-              <div class="materii-grid">
-                  <div class="materii-box">
-                      <h3 style="color:var(--accent2)">Materiile de la CTI</h3>
+          <SectionCard title="Ce vei studia efectiv?" delay="0.15s">
+              <CardGrid kind="materii">
+                  <MateriiBox title="Materiile de la CTI" titleStyle="color:var(--accent2)">
                       <p>Vei aprofunda modul în care funcționează software-ul și cum comunică cu componentele fizice ale unui calculator.</p>
                       <ul>
                           <li>Programare (C, C++, Java, Python)</li>
@@ -89,9 +98,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                           <li>Proiectarea Microprocesoarelor</li>
                           <li>Inteligență Artificială și Machine Learning</li>
                       </ul>
-                  </div>
-                  <div class="materii-box">
-                      <h3 style="color:var(--accent3)">Materiile de la IS</h3>
+                  </MateriiBox>
+                  <MateriiBox title="Materiile de la IS" titleStyle="color:var(--accent3)">
                       <p>Focusul pică pe interacțiunea dintre programe și lumea fizică (procese industriale, roboți, semafoare inteligente).</p>
                       <ul>
                           <li>Teoria Sistemelor (matematică avansată aplicată)</li>
@@ -100,53 +108,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                           <li>Robotică și control industrial</li>
                           <li>Programarea micro-controlerelor (C/C++)</li>
                       </ul>
-                  </div>
-              </div>
-          </div>
+                  </MateriiBox>
+              </CardGrid>
+          </SectionCard>
 
           <!-- MITURI SI REALITATE -->
-          <div class="section-card" style="animation-delay:0.2s">
-              <h2>Mituri și Realitate</h2>
-              <div class="myth-grid">
-                  <div class="triple-card card-myth">
-                      <h3>Mit: „Dacă termin IS, nu pot să mă angajez ca programator web/software."</h3>
+          <SectionCard title="Mituri și Realitate" delay="0.2s">
+              <CardGrid kind="myth">
+                  <AccentCard variant="myth" title='Mit: „Dacă termin IS, nu pot să mă angajez ca programator web/software."'>
                       <p><strong style="color:var(--accent3)">Realitate:</strong> Nu este imposibil, dar nici garantat. La IS, facultatea te pregătește în principal pentru hardware, automatizări și programare low-level (C/C++). Dacă vrei să te angajezi ca Web Developer sau Software Engineer pe tehnologii moderne (Java, Python, Web), va trebui să înveți destul de mult singur. E un mic „trap": vei avea multă matematică și fizică pentru facultate, în timp ce va trebui să îți găsești timp și pentru proiecte personale de programare.</p>
-                  </div>
-                  <div class="triple-card card-myth">
-                      <h3>Mit: „La CTI e doar programare și zero fizică."</h3>
+                  </AccentCard>
+                  <AccentCard variant="myth" title='Mit: „La CTI e doar programare și zero fizică."'>
                       <p><strong style="color:var(--accent3)">Realitate:</strong> Fiind o facultate de inginerie (UPB), vei face fizică și electronică și la CTI (mai ales în primii doi ani), dar ponderea acestor materii este mult mai mică în comparație cu IS.</p>
-                  </div>
-              </div>
-          </div>
+                  </AccentCard>
+              </CardGrid>
+          </SectionCard>
 
           <!-- VERDICT / PENTRU CINE -->
-          <div class="section-card" style="animation-delay:0.25s">
-              <h2>Pentru cine este fiecare secție?</h2>
-              <div class="triple-grid">
-                  <div class="triple-card card-cti">
-                      <h3>Alege CTI dacă…</h3>
+          <SectionCard title="Pentru cine este fiecare secție?" delay="0.25s">
+              <CardGrid kind="triple">
+                  <AccentCard variant="cti" title="Alege CTI dacă…">
                       <ul>
                           <li>Ți-a plăcut foarte mult informatica în liceu și vrei să scrii cod</li>
                           <li>Te pasionează crearea de aplicații complexe, AI și rețelele de calculatoare</li>
                           <li>Vrei să înțelegi cum funcționează un calculator „sub capotă" la nivel de software</li>
                           <li>Ești atras de startup-uri tech sau roluri de Software Engineer</li>
                       </ul>
-                  </div>
-                  <div class="triple-card card-is">
-                      <h3>Alege IS dacă…</h3>
+                  </AccentCard>
+                  <AccentCard variant="is" title="Alege IS dacă…">
                       <ul>
                           <li>Ești pasionat de cum interacționează tehnologia cu lumea reală (hardware, senzori, roboți)</li>
                           <li>Te atrag drone, mașini autonome și sisteme de automatizare</li>
                           <li>Îți place fizica și ești dispus să înveți multă matematică aplicată</li>
                           <li>Vrei să automatizezi sisteme complexe din industrie</li>
                       </ul>
-                  </div>
-              </div>
-          </div>
+                  </AccentCard>
+              </CardGrid>
+          </SectionCard>
 
           <!-- PROGRAME OFICIALE -->
-          <div class="section-card" style="animation-delay:0.3s">
-              <h2>Programe oficiale & resurse</h2>
+          <SectionCard title="Programe oficiale & resurse" delay="0.3s">
               <div class="sfat-info" style="margin:0 0 1rem 0">
                   <p>Consultă programa detaliată : <em>Programa Oficială UPB ACS –</em>
                       <span class="links">
@@ -156,11 +157,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                       </span>
                   </p>
               </div>
-              <div class="cta-back">
-                  <p>Vrei să explorezi și alte informații despre admitere?</p>
-                  <a href="./informatii" class="lp-btn lp-btn-fill">Vezi toate informațiile</a>
-              </div>
-          </div>
+              <CtaBox
+                  text="Vrei să explorezi și alte informații despre admitere?"
+                  href="./informatii"
+                  label="Vezi toate informațiile"
+              />
+          </SectionCard>
 
       </section>
   </main>
