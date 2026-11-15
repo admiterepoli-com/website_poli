@@ -1,0 +1,16 @@
+---
+/**
+ * Inlines the exam-gate safety net as a classic (non-module) script. Use it on every page that
+ * has `#exam-gate` and `#exam-content`: if the auth module never loads, it shows an error in the
+ * gate after 10 seconds instead of leaving the page blank.
+ *
+ * It must stay inline and independent of the module bundle; do not turn it into a processed
+ * `<script>` or import it from another script.
+ */
+import { compileInlineScript } from '../lib/inline-script';
+import source from '../scripts/gate-fallback.ts?raw';
+
+const code = compileInlineScript(source);
+---
+
+<script is:inline set:html={code} />
