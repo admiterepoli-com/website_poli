@@ -1,0 +1,49 @@
+---
+/**
+ * KaTeX for the pages with formulas: the simulation pages and
+ * `rezolvare-simulare-admiterepoli-4`. Replaces the three tags of the legacy
+ * <head>:
+ *
+ *   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+ *   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+ *   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"
+ *           onload="renderMathInElement(document.body);"></script>
+ *
+ * Put it in the `head` slot, where the legacy page had those tags (after the
+ * fonts, before the page's own <style>), so the stylesheet keeps its place in
+ * the cascade:
+ *
+ *   <Katex slot="head" />
+ *
+ * What it does, as on the legacy pages:
+ * - loads the KaTeX stylesheet (and its fonts) from the `katex` package
+ *   instead of the CDN, as a <link> at the place of the component;
+ * - renders every formula in `document.body` once the document is parsed,
+ *   with the default auto-render options (delimiters `$$ … $$`, `\( … \)`,
+ *   `\[ … \]` and the AMS environments), which is what the legacy
+ *   `renderMathInElement(document.body)` call used;
+ * - defines `window.renderMathInElement`, which the exam engine calls after it
+ *   inserts questions or results (`src/lib/exam/render.ts`). Scripts that may
+ *   run before this one must check that it exists, as the legacy pages did.
+ *
+ * The version is pinned in package.json to the one the unversioned CDN URL
+ * served when the pages were ported.
+ */
+import stylesheetUrl from 'katex/dist/katex.min.css?url';
+---
+
+<link rel="stylesheet" href={stylesheetUrl} />
+
+<script>
+  import renderMathInElement from 'katex/contrib/auto-render';
+
+  /** The global that the CDN build of auto-render defined. */
+  type KatexWindow = Window & { renderMathInElement?: typeof renderMathInElement };
+
+  const katexWindow: KatexWindow = window;
+  katexWindow.renderMathInElement = renderMathInElement;
+
+  // Module scripts run after the document is parsed, like the legacy `defer`
+  // script whose onload made this call.
+  renderMathInElement(document.body);
+</script>

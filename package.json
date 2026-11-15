@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "firebase": "12.11.0",
+    "katex": "0.19.1",
     "pdfjs-dist": "3.11.174"
   }
 }
