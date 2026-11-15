@@ -1,0 +1,74 @@
+---
+/**
+ * Collapsible year / session entry used on `subiecte` and `simulari`:
+ * a clickable header, followed by the section it opens.
+ *
+ *   <p class="subiecte-box" data-set="X">…header…</p>
+ *   <div class="dropdown-section" id="dropdown-X">
+ *     <div class="sub-links">…body…</div>
+ *   </div>
+ *
+ * The markup is the legacy one; the CSS, `src/scripts/dropdown.ts` and the
+ * auth script (which locks the simulation archive by header and section id)
+ * all depend on these class names, the `data-set` / `dropdown-<set>` pair and
+ * the `.sub-links` wrapper.
+ *
+ * The two legacy usages differ only in attributes:
+ * - `subiecte`: header class `subiecte-box year-card`, the same `--card-accent`
+ *   / `--card-shadow` inline style on header and section, header content
+ *   passed through the `header` slot (year, description, badge, chevron).
+ *
+ *     <Dropdown set="2026" headerClass="year-card" style="--card-accent: #34d399; --card-shadow: #1a7a56;">
+ *       <Fragment slot="header">…spans…</Fragment>
+ *       <section>…</section>
+ *     </Dropdown>
+ *
+ * - `simulari`: plain header with a bold label, an optional header id
+ *   (`sim3-header`, `sim4-header`) and an inline style on `.sub-links`.
+ *
+ *     <Dropdown set="arhiva-sim-4" headerId="sim4-header" label="Simulare #4 — 21–24 Iulie 2026"
+ *       bodyStyle="display: flex; justify-content: center; margin: 0; padding: 0;">
+ *       <section>…</section>
+ *     </Dropdown>
+ *
+ * The component renders no <script> of its own. Astro would print it in place,
+ * after the first section, which would add a sibling the legacy list does not
+ * have (the CSS uses sibling selectors here, and the auth script rewrites the
+ * sections). The page loads the toggle logic once, where legacy loaded
+ * main.js, through the layout's `scripts` slot:
+ *
+ *     <Fragment slot="scripts">
+ *       <script>
+ *         import { initDropdowns } from '../scripts/dropdown';
+ *
+ *         initDropdowns();
+ *       </script>
+ *     </Fragment>
+ */
+interface Props {
+  /** Value of `data-set` on the header; the section gets the id `dropdown-<set>`. */
+  set: string;
+  /** Bold header text. Use the `header` slot instead for richer header content. */
+  label?: string | undefined;
+  /** Extra class names on the header, after `subiecte-box` (e.g. `year-card`). */
+  headerClass?: string | undefined;
+  /** `id` of the header. */
+  headerId?: string | undefined;
+  /** Inline style repeated on the header and on the section (the card colours on `subiecte`). */
+  style?: string | undefined;
+  /** Inline style of the `.sub-links` wrapper. */
+  bodyStyle?: string | undefined;
+}
+
+const { set, label, headerClass, headerId, style, bodyStyle } = Astro.props;
+const headerClasses = headerClass ? `subiecte-box ${headerClass}` : 'subiecte-box';
+---
+
+<p class={headerClasses} data-set={set} id={headerId} style={style}>
+  <slot name="header">{label && <strong>{label}</strong>}</slot>
+</p>
+<div class="dropdown-section" id={`dropdown-${set}`} style={style}>
+  <div class="sub-links" style={bodyStyle}>
+    <slot />
+  </div>
+</div>
