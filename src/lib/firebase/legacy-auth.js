@@ -20,6 +20,7 @@ import { hasSimulationAccess, isSaleClosed } from './access';
 import { STUDENT_PLUS_URL, applyExamGate, scheduleGateUnlock, stopGateCountdown } from './exam-gate';
 import { applySimulariPaidLinks } from './simulari-lock';
 import { syncUserToFirestore } from './user-sync';
+import { updatePricingButtons, updatePlanHighlight, bindPlanPicker, openUpgradeModal } from './plans';
 import {
   injectModal,
   openModal,
@@ -31,67 +32,10 @@ import {
   onPlanStepShown,
 } from './modal';
 
-// showStep('plan') repositions the plan highlight, which still lives in this file.
+// showStep('plan') repositions the plan highlight (./plans).
 onPlanStepShown(updatePlanHighlight);
 
 const googleProvider = new GoogleAuthProvider();
-
-/* ── Butoane pricing index.html ───────────────────────────────── */
-
-async function updatePricingButtons(user) {
-  const btnStandard = document.getElementById('oferim-btn-standard');
-  const btnPlus = document.getElementById('oferim-btn-plus');
-  if (!btnStandard || !btnPlus) return; // nu suntem pe index.html
-
-  const heroBtn = document.getElementById('hero-register-btn');
-
-  if (!user) {
-    // Deconectat — stare implicită
-    if (heroBtn) heroBtn.textContent = 'Începe Acum';
-
-    btnStandard.textContent = 'Creează cont';
-    btnStandard.disabled = false;
-    btnStandard.classList.remove('lp-btn-current');
-
-    btnPlus.textContent = 'Începe cu Student Plus';
-    btnPlus.disabled = false;
-    btnPlus.classList.remove('lp-btn-current');
-    return;
-  }
-
-  if (heroBtn) heroBtn.textContent = 'Intră în contul meu';
-
-  let plan = 'standard';
-  try {
-    const snap = await getDoc(doc(db, 'users', user.uid));
-    if (snap.exists()) {
-      const data = snap.data();
-      const isPaid = data.status === 'paid' || data.status === 'pending_cancellation';
-      plan = isPaid ? 'student-plus' : 'standard';
-    }
-  } catch (e) {
-    console.warn('[Auth] Nu s-a putut citi planul din Firestore:', e.message);
-  }
-
-  if (plan === 'student-plus') {
-    btnStandard.textContent = 'Creează cont';
-    btnStandard.disabled = false;
-    btnStandard.classList.remove('lp-btn-current');
-
-    btnPlus.textContent = 'Planul tău actual';
-    btnPlus.disabled = true;
-    btnPlus.classList.add('lp-btn-current');
-  } else {
-    // standard (gratuit)
-    btnStandard.textContent = 'Planul tău actual';
-    btnStandard.disabled = true;
-    btnStandard.classList.add('lp-btn-current');
-
-    btnPlus.textContent = 'Începe cu Student Plus';
-    btnPlus.disabled = false;
-    btnPlus.classList.remove('lp-btn-current');
-  }
-}
 
 /* ── HTML injectat în DOM ─────────────────────────────────────── */
 
@@ -275,54 +219,6 @@ async function googleSignIn() {
   }
 }
 
-/* ── Plan picker helpers ────────────────────────────────────── */
-
-let currentBilling = 'monthly';
-
-function updatePlanHighlight() {
-  const cards = document.getElementById('plan-cards');
-  const selected = cards?.querySelector('.plan-card.selected');
-  const box = document.getElementById('plan-highlight-box');
-  if (!selected || !box || !cards) return;
-
-  const cardsRect = cards.getBoundingClientRect();
-  const cardRect = selected.getBoundingClientRect();
-  box.style.transform = `translateY(${cardRect.top - cardsRect.top}px)`;
-  box.style.height = `${cardRect.height}px`;
-}
-
-function updatePlanPrices() {
-  document.querySelectorAll('.plan-amount').forEach((el) => {
-    const value = el.getAttribute(`data-${currentBilling}`);
-    animateNumber(el, parseInt(el.textContent), parseInt(value));
-  });
-  document
-    .querySelectorAll('.plan-amount-old[data-monthly], .plan-sale-badge[data-monthly]')
-    .forEach((el) => {
-      el.textContent = el.getAttribute(`data-${currentBilling}`);
-    });
-  // Lunar e preţul de referinţă — rândul cu preţul tăiat apare doar la planurile fixe.
-  document.querySelectorAll('.plan-price-old-row').forEach((el) => {
-    el.hidden = currentBilling === 'monthly';
-  });
-  document.querySelectorAll('.plan-period').forEach((el) => {
-    el.textContent = el.getAttribute(`data-${currentBilling}`);
-  });
-}
-
-function animateNumber(el, from, to) {
-  if (from === to) return;
-  const duration = 400;
-  const start = performance.now();
-  function tick(now) {
-    const t = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    el.textContent = Math.round(from + (to - from) * eased);
-    if (t < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
 /* ── Actualizează navbar după schimbarea stării auth ─────────── */
 
 function updateNavButton(user) {
@@ -429,33 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Plan billing toggle (Lunar / Preadmitere / Admitere) ──── */
-  const planToggleBtns = document.querySelectorAll('.plan-toggle-btn');
-  planToggleBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('active')) return;
-      planToggleBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentBilling = btn.dataset.billing;
-
-      const toggle = document.getElementById('plan-toggle');
-      const slider = toggle.querySelector('.plan-toggle-slider');
-      const idx = [...planToggleBtns].indexOf(btn);
-      slider.style.transform = `translateX(${idx * 100}%)`;
-
-      updatePlanPrices();
-    });
-  });
-
-  /* ── Plan card selection ───────────────────────────────────── */
-  const planCards = document.querySelectorAll('.plan-card');
-  planCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      planCards.forEach((c) => c.classList.remove('selected'));
-      card.classList.add('selected');
-      updatePlanHighlight();
-    });
-  });
+  bindPlanPicker();
 
   // Enter pe câmpurile de login/register
   ['login-email', 'login-password'].forEach((id) => {
@@ -546,51 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Plan selection confirm ────────────────────────────────── */
-  document.getElementById('btn-select-plan').addEventListener('click', async () => {
-    const selected = document.querySelector('.plan-card.selected');
-    const plan = selected ? selected.dataset.plan : 'standard';
-    const billing = currentBilling;
-    const btn = document.getElementById('btn-select-plan');
-    btn.disabled = true;
-
-    const user = auth.currentUser;
-
-    // Gumroad se deschide în tab nou SINCRON, direct în handler-ul de click —
-    // după un await, browserul nu mai consideră deschiderea iniţiată de user
-    // şi o blochează ca popup.
-    if (plan === 'student-plus' && user) {
-      const returnUrl = encodeURIComponent(`${window.location.origin}/profil?upgraded=1`);
-      const gumroadUrls = {
-        monthly: `https://admiterepoli.gumroad.com/l/student-plus-lunar?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
-        preadmitere: `https://admiterepoli.gumroad.com/l/student-plus-preadmitere?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
-        admitere: `https://admiterepoli.gumroad.com/l/student-plus-admitere?wanted=true&email=${encodeURIComponent(user.email)}&redirect_url=${returnUrl}`,
-      };
-      window.open(gumroadUrls[billing] || gumroadUrls.monthly, '_blank', 'noopener,noreferrer');
-    }
-
-    if (user) {
-      try {
-        const userRef = doc(db, 'users', user.uid);
-        await setDoc(
-          userRef,
-          {
-            selectedPlan: plan,
-            selectedBilling: billing,
-          },
-          { merge: true },
-        );
-      } catch (e) {
-        console.error('[Auth] Nu s-a putut salva în Firestore:', e.code, e.message);
-      }
-    } else {
-      console.warn('[Auth] auth.currentUser este null la selectarea planului');
-    }
-
-    btn.disabled = false;
-    closeModal();
-  });
-
   // Logout
   document.getElementById('btn-logout').addEventListener('click', async () => {
     try {
@@ -676,19 +501,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Expune openUpgradeModal global pentru alte pagini (ex: exercitii-video)
-  window.openUpgradeModal = () => {
-    // Resetează la monthly și pre-selectează Student Plus
-    currentBilling = 'monthly';
-    document.querySelectorAll('.plan-toggle-btn').forEach((b) => {
-      b.classList.toggle('active', b.dataset.billing === 'monthly');
-    });
-    const slider = document.querySelector('#plan-toggle .plan-toggle-slider');
-    if (slider) slider.style.transform = 'translateX(0)';
-    document.querySelectorAll('.plan-card').forEach((c) => {
-      c.classList.toggle('selected', c.dataset.plan === 'student-plus');
-    });
-    updatePlanPrices();
-    showStep('plan');
-    document.getElementById('auth-modal-overlay').classList.add('open');
-  };
+  window.openUpgradeModal = openUpgradeModal;
 });
