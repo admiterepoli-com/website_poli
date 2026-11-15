@@ -1,0 +1,53 @@
+---
+/**
+ * Layout of the two legal pages: `termeni-si-conditii` and
+ * `politica-confidentialitate`.
+ *
+ * Usage:
+ *   <LegalLayout
+ *     title="Termeni și Condiții | AdmiterePoli"
+ *     heading="Termeni și Condiții"
+ *     updated="Ultima actualizare: 4 aprilie 2026"
+ *   >
+ *     <div class="legal-section"> ...copied from the legacy file... </div>
+ *     ...
+ *   </LegalLayout>
+ *
+ * The wrapper markup (main, grid, the 760px container with its inline style,
+ * the header block with h1 and date line) is the legacy one, attribute for
+ * attribute, and is identical on both pages. Only three things differ between
+ * them: the <title>, the h1 text and the `.legal-section` blocks (default slot).
+ *
+ * What both legacy pages have in common, and the layout fixes:
+ * - `<meta name="robots" content="noindex">` and no meta description;
+ * - body class `lp-body lp-dark`, modern header, Plus Jakarta Sans, footer;
+ * - cookie consent and the auth module, but NO WhatsApp popup.
+ */
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  /** Full <title> text, including the " | AdmiterePoli" suffix. */
+  title: string;
+  /** Text of the <h1>. */
+  heading: string;
+  /** Full text of the date line, e.g. "Ultima actualizare: 4 aprilie 2026". */
+  updated: string;
+}
+
+const { title, heading, updated } = Astro.props;
+---
+
+<BaseLayout title={title} noindex popup={false}>
+  <main>
+    <div class="grid-main-content">
+      <section class="container" style="max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem 3.5rem;">
+        <div class="legal-page-header">
+          <h1>{heading}</h1>
+          <p class="legal-date">{updated}</p>
+        </div>
+
+        <slot />
+      </section>
+    </div>
+  </main>
+</BaseLayout>
