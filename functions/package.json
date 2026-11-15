@@ -6,6 +6,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "lint": "eslint .",
+    "test": "tsc && node --test lib/gumroad.test.js",
     "deploy": "firebase deploy --only functions"
   },
   "engines": {
