@@ -85,21 +85,19 @@ const COUNTDOWN = makeConfig('countdown');
 const DEADLINE = makeConfig('deadline');
 
 function running(config: ExamConfig, now = T0): ExamState {
-  return startExam(createExamState(config), config, 'info', now);
+  const state = createExamState(config);
+  startExam(state, config, 'info', now);
+  return state;
 }
 
 /** A started exam wired to a timer, recording what the timer calls. */
-function harness(config: ExamConfig, initial: ExamState = running(config)) {
-  let state = initial;
+function harness(config: ExamConfig, state: ExamState = running(config)) {
   let slept = 0;
   const events: string[] = [];
   const options = {
     config,
+    state,
     now: () => Date.now() + slept,
-    getState: () => state,
-    setState: (next: ExamState) => {
-      state = next;
-    },
     onDisplay: (shown: ExamState) => {
       events.push(formatClock(shown.secondsLeft));
     },
@@ -110,15 +108,10 @@ function harness(config: ExamConfig, initial: ExamState = running(config)) {
   return {
     options,
     events,
+    state,
     /** The tab is suspended: the wall clock moves on, no interval tick runs. */
     sleep: (milliseconds: number) => {
       slept += milliseconds;
-    },
-    get state() {
-      return state;
-    },
-    set state(next: ExamState) {
-      state = next;
     },
   };
 }
@@ -154,7 +147,8 @@ describe('exam state', () => {
   });
 
   it('startExam creates blank sheets for the chosen track', () => {
-    const state = startExam(createExamState(COUNTDOWN), COUNTDOWN, 'fizica', T0);
+    const state = createExamState(COUNTDOWN);
+    assert.equal(startExam(state, COUNTDOWN, 'fizica', T0), true);
     assert.equal(state.phase, 'running');
     assert.equal(state.trackId, 'fizica');
     assert.deepEqual(state.answers, { info: [null, null, null, null], mate: [null, null] });
@@ -164,14 +158,28 @@ describe('exam state', () => {
     assert.equal(countTotalUnanswered(state), 6);
   });
 
+  it('startExam keeps the sheets that selectTrack of render.ts put in place', () => {
+    const state = createExamState(DEADLINE);
+    const sheets = { info: [null, null, null], mate: [null, null] } satisfies ExamState['answers'];
+    state.trackId = 'info';
+    state.answers = sheets;
+    assert.equal(startExam(state, DEADLINE, 'info', T0), true);
+    assert.equal(state.answers, sheets);
+    assert.equal(state.phase, 'running');
+    assert.equal(state.endsAt, T0 + DURATION * 1000);
+  });
+
   it('startExam fixes the deadline only in deadline mode', () => {
     assert.equal(running(COUNTDOWN).endsAt, null);
     assert.equal(running(DEADLINE).endsAt, T0 + DURATION * 1000);
   });
 
-  it('startExam is a no-op once the exam has started', () => {
-    const first = running(DEADLINE);
-    assert.equal(startExam(first, DEADLINE, 'fizica', T0 + 60_000), first);
+  it('startExam changes nothing once the exam has started', () => {
+    const state = running(DEADLINE);
+    selectAnswer(state, 'info', 0, 'a');
+    const before = structuredClone(state);
+    assert.equal(startExam(state, DEADLINE, 'fizica', T0 + 60_000), false);
+    assert.deepEqual(state, before);
   });
 
   it('startExam rejects a track the simulation does not have', () => {
@@ -179,83 +187,99 @@ describe('exam state', () => {
     assert.throws(() => startExam(createExamState(oneTrack), oneTrack, 'fizica', T0), /no track "fizica"/);
   });
 
-  it('selectAnswer records, replaces and counts answers without mutating', () => {
-    const before = running(COUNTDOWN);
-    let state = selectAnswer(before, 'info', 1, 'c');
-    state = selectAnswer(state, 'mate', 0, 'a');
-    state = selectAnswer(state, 'info', 1, 'f');
+  it('selectAnswer records, replaces and counts answers in place', () => {
+    const state = running(COUNTDOWN);
+    selectAnswer(state, 'info', 1, 'c');
+    selectAnswer(state, 'mate', 0, 'a');
+    selectAnswer(state, 'info', 1, 'f');
     assert.deepEqual(state.answers, { info: [null, 'f', null], mate: ['a', null] });
-    assert.deepEqual(before.answers, { info: [null, null, null], mate: [null, null] });
     assert.equal(countAnswered(state, 'info'), 1);
     assert.equal(countAnswered(state, 'mate'), 1);
     assert.equal(countTotalAnswered(state), 2);
     assert.equal(countTotalUnanswered(state), 3);
   });
 
-  it('selectAnswer ignores indexes outside the sheet and repeated choices', () => {
-    const state = selectAnswer(running(COUNTDOWN), 'info', 0, 'a');
-    assert.equal(selectAnswer(state, 'info', 3, 'a'), state);
-    assert.equal(selectAnswer(state, 'info', -1, 'a'), state);
-    assert.equal(selectAnswer(state, 'info', 0.5, 'a'), state);
-    assert.equal(selectAnswer(state, 'info', 0, 'a'), state);
-    assert.equal(selectAnswer(createExamState(COUNTDOWN), 'info', 0, 'a').answers.info, undefined);
+  it('selectAnswer ignores indexes outside the sheet and exams that have not started', () => {
+    const state = running(COUNTDOWN);
+    selectAnswer(state, 'info', 3, 'a');
+    selectAnswer(state, 'info', -1, 'a');
+    selectAnswer(state, 'info', 0.5, 'a');
+    assert.deepEqual(state.answers, { info: [null, null, null], mate: [null, null] });
+
+    const selecting = createExamState(COUNTDOWN);
+    selectAnswer(selecting, 'info', 0, 'a');
+    assert.deepEqual(selecting.answers, {});
   });
 
   it('switchTab changes the active slot', () => {
     const state = running(COUNTDOWN);
-    assert.equal(switchTab(state, 'info'), state);
-    assert.equal(switchTab(state, 'mate').activeSlot, 'mate');
+    switchTab(state, 'mate');
+    assert.equal(state.activeSlot, 'mate');
   });
 
   it('moves through running, confirming and finished', () => {
     const selecting = createExamState(COUNTDOWN);
-    assert.equal(pauseForConfirmation(selecting), selecting);
-    assert.equal(finishExam(selecting), selecting);
+    assert.equal(pauseForConfirmation(selecting), false);
+    assert.equal(finishExam(selecting), false);
+    assert.equal(selecting.phase, 'selecting');
 
-    const confirming = pauseForConfirmation(running(COUNTDOWN));
-    assert.equal(confirming.phase, 'confirming');
-    assert.equal(resumeExam(confirming).phase, 'running');
+    const state = running(COUNTDOWN);
+    assert.equal(resumeExam(state), false);
+    assert.equal(pauseForConfirmation(state), true);
+    assert.equal(state.phase, 'confirming');
+    assert.equal(resumeExam(state), true);
+    assert.equal(state.phase, 'running');
 
-    const finished = finishExam(confirming);
-    assert.equal(finished.phase, 'finished');
-    assert.equal(resumeExam(finished), finished);
-    assert.equal(finishExam(running(COUNTDOWN)).phase, 'finished');
+    pauseForConfirmation(state);
+    assert.equal(finishExam(state), true);
+    assert.equal(state.phase, 'finished');
+    assert.equal(resumeExam(state), false);
+    assert.equal(finishExam(state), false);
+
+    const direct = running(COUNTDOWN);
+    assert.equal(finishExam(direct), true);
   });
 });
 
-/* ── Pure timer logic ─────────────────────────────────────────── */
+/* ── Timer logic ─────────────────────────────────────────── */
 
 describe('timer logic', () => {
   it('syncSecondsLeft derives the time left from the deadline', () => {
     const state = running(DEADLINE);
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0), state);
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 61_000).secondsLeft, DURATION - 61);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0), DURATION);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 61_000), DURATION - 61);
+    assert.equal(state.secondsLeft, DURATION - 61);
     // Rounded to the nearest second, as the legacy Math.round.
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_499).secondsLeft, DURATION - 1);
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_500).secondsLeft, DURATION - 1);
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_501).secondsLeft, DURATION - 2);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_499), DURATION - 1);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_500), DURATION - 1);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + 1_501), DURATION - 2);
     // Never negative.
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + (DURATION + 500) * 1000).secondsLeft, 0);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0 + (DURATION + 500) * 1000), 0);
   });
 
   it('syncSecondsLeft gives the full duration while there is no deadline', () => {
     const state = { ...createExamState(DEADLINE), secondsLeft: 5 };
-    assert.equal(syncSecondsLeft(state, DEADLINE, T0).secondsLeft, DURATION);
+    assert.equal(syncSecondsLeft(state, DEADLINE, T0), DURATION);
   });
 
   it('syncSecondsLeft leaves a countdown exam alone', () => {
     const state = { ...running(COUNTDOWN), secondsLeft: 100 };
-    assert.equal(syncSecondsLeft(state, COUNTDOWN, T0 + 3_600_000), state);
+    assert.equal(syncSecondsLeft(state, COUNTDOWN, T0 + 3_600_000), 100);
+    assert.equal(state.secondsLeft, 100);
   });
 
   it('tickTimer subtracts one second in countdown mode, whatever the wall clock says', () => {
     const state = running(COUNTDOWN);
-    assert.equal(tickTimer(state, COUNTDOWN, T0 + 3_600_000).secondsLeft, DURATION - 1);
-    assert.equal(tickTimer({ ...state, secondsLeft: 0 }, COUNTDOWN, T0).secondsLeft, 0);
+    assert.equal(tickTimer(state, COUNTDOWN, T0 + 3_600_000), DURATION - 1);
+    assert.equal(state.secondsLeft, DURATION - 1);
+    state.secondsLeft = 0;
+    assert.equal(tickTimer(state, COUNTDOWN, T0), 0);
   });
 
   it('tickTimer follows the wall clock in deadline mode', () => {
-    assert.equal(tickTimer(running(DEADLINE), DEADLINE, T0 + 3_600_000).secondsLeft, DURATION - 3600);
+    const state = running(DEADLINE);
+    assert.equal(tickTimer(state, DEADLINE, T0 + 3_600_000), DURATION - 3600);
+    assert.equal(state.secondsLeft, DURATION - 3600);
   });
 
   it('formats the elapsed time like legacy', () => {
@@ -434,11 +458,11 @@ describe('exam timer', () => {
     advance(100);
 
     timer.stop();
-    exam.state = pauseForConfirmation(exam.state);
+    pauseForConfirmation(exam.state);
     advance(300);
     assert.equal(exam.state.secondsLeft, DURATION - 100);
 
-    exam.state = resumeExam(exam.state);
+    resumeExam(exam.state);
     timer.start();
     assert.equal(exam.events.at(-1), formatClock(DURATION - 100));
     advance(20);
@@ -451,11 +475,11 @@ describe('exam timer', () => {
     advance(100);
 
     timer.stop();
-    exam.state = pauseForConfirmation(exam.state);
+    pauseForConfirmation(exam.state);
     advance(300);
     assert.equal(exam.state.secondsLeft, DURATION - 100);
 
-    exam.state = resumeExam(exam.state);
+    resumeExam(exam.state);
     timer.start();
     assert.equal(exam.state.secondsLeft, DURATION - 400);
     assert.equal(exam.events.at(-1), formatClock(DURATION - 400));
@@ -478,7 +502,7 @@ describe('exam timer', () => {
     const exam = harness(DEADLINE);
     timer = startTimer(exam.options);
     advance(600);
-    exam.state = selectAnswer(exam.state, 'info', 0, 'b');
+    selectAnswer(exam.state, 'info', 0, 'b');
     timer.stop();
 
     // What the page does on load: a fresh state, a fresh deadline.

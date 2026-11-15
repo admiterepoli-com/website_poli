@@ -15,35 +15,39 @@
  *
  * Neither mode survives a reload: legacy stores nothing, a reload is a new exam.
  *
- * The first half of the file is pure (state in, state out). `createExamTimer`
- * owns the interval; `updateTimerDisplay` is the only function that writes to
- * the page, through a structural type so it does not need a real DOM.
+ * The first half of the file is logic without DOM or timers: it reads and
+ * updates `secondsLeft` of the sitting's one `ExamState` object, in place, as
+ * `state.ts` and `render.ts` do. `createExamTimer` owns the interval;
+ * `updateTimerDisplay` is the only function that writes to the page, through a
+ * structural type so it does not need a real DOM.
  */
 
 import type { ExamConfig, ExamState, TimerRules } from './types';
 
-/* ── Pure logic ───────────────────────────────────────────────── */
+/* ── Logic ───────────────────────────────────────────────── */
 
 /**
  * `deadline` mode: recomputes `secondsLeft` from `endsAt` and the wall clock,
  * rounded to the nearest second and never negative; the full duration while
  * there is no deadline yet. `countdown` mode has no wall-clock reference, so
- * the state is returned as it is.
+ * nothing changes. Returns the seconds left.
  */
-export function syncSecondsLeft(state: ExamState, config: ExamConfig, now: number): ExamState {
-  if (config.timer.mode !== 'deadline') return state;
-  const secondsLeft =
-    state.endsAt === null ? config.durationSeconds : Math.max(0, Math.round((state.endsAt - now) / 1000));
-  return secondsLeft === state.secondsLeft ? state : { ...state, secondsLeft };
+export function syncSecondsLeft(state: ExamState, config: ExamConfig, now: number): number {
+  if (config.timer.mode === 'deadline') {
+    state.secondsLeft =
+      state.endsAt === null ? config.durationSeconds : Math.max(0, Math.round((state.endsAt - now) / 1000));
+  }
+  return state.secondsLeft;
 }
 
 /**
  * One interval tick: `countdown` subtracts a second (not below zero),
- * `deadline` syncs with the wall clock.
+ * `deadline` syncs with the wall clock. Returns the seconds left.
  */
-export function tickTimer(state: ExamState, config: ExamConfig, now: number): ExamState {
+export function tickTimer(state: ExamState, config: ExamConfig, now: number): number {
   if (config.timer.mode === 'deadline') return syncSecondsLeft(state, config, now);
-  return { ...state, secondsLeft: Math.max(0, state.secondsLeft - 1) };
+  state.secondsLeft = Math.max(0, state.secondsLeft - 1);
+  return state.secondsLeft;
 }
 
 /** `true` when no time is left. */
@@ -113,11 +117,9 @@ export function updateTimerDisplay(element: ClockElement, secondsLeft: number, r
 
 export interface ExamTimerOptions {
   config: ExamConfig;
-  /** Reads the current state. */
-  getState: () => ExamState;
-  /** Stores the state after a tick. */
-  setState: (state: ExamState) => void;
-  /** Called on start and on every tick with the fresh state; the place for `updateTimerDisplay`. */
+  /** The state of the sitting; the timer updates its `secondsLeft`. */
+  state: ExamState;
+  /** Called on start and on every tick; the place for `updateTimerDisplay`. */
   onDisplay: (state: ExamState) => void;
   /** Called once when the time runs out (legacy `submitAll(true)`); the interval is already stopped. */
   onExpire: () => void;
@@ -147,7 +149,7 @@ export interface ExamTimer {
  * for both modes.
  */
 export function createExamTimer(options: ExamTimerOptions): ExamTimer {
-  const { config, getState, setState, onDisplay, onExpire } = options;
+  const { config, state, onDisplay, onExpire } = options;
   const now = options.now ?? (() => Date.now());
   let interval: ReturnType<typeof setInterval> | null = null;
 
@@ -157,8 +159,7 @@ export function createExamTimer(options: ExamTimerOptions): ExamTimer {
   }
 
   function tick(): void {
-    const state = tickTimer(getState(), config, now());
-    setState(state);
+    tickTimer(state, config, now());
     if (config.timer.mode === 'deadline') {
       onDisplay(state);
       if (isTimeUp(state)) {
@@ -170,23 +171,18 @@ export function createExamTimer(options: ExamTimerOptions): ExamTimer {
         stop();
         onExpire();
       }
-      onDisplay(getState());
+      onDisplay(state);
     }
   }
 
   function start(): void {
     stop();
-    if (config.timer.mode === 'deadline') {
-      const state = syncSecondsLeft(getState(), config, now());
-      setState(state);
-      onDisplay(state);
-      // Started again after the deadline passed, e.g. back from the warning.
-      if (isTimeUp(state)) {
-        onExpire();
-        return;
-      }
-    } else {
-      onDisplay(getState());
+    syncSecondsLeft(state, config, now());
+    onDisplay(state);
+    // Deadline mode, started again after the deadline passed, e.g. back from the warning.
+    if (config.timer.mode === 'deadline' && isTimeUp(state)) {
+      onExpire();
+      return;
     }
     interval = setInterval(tick, 1000);
   }
