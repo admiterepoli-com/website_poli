@@ -1,0 +1,21 @@
+---
+/**
+ * Call-to-action box at the end of a content page: `<div class="cta-back">`.
+ */
+interface Props {
+  /** Text of the paragraph. */
+  text: string;
+  /** Link target, exactly as in the legacy page (for example `./informatii`). */
+  href: string;
+  /** Text of the button. */
+  label: string;
+}
+
+const { text, href, label } = Astro.props;
+---
+
+<div class="cta-back">
+  <p>{text}</p>
+  {/* prettier-ignore */}
+  <a href={href} class="lp-btn lp-btn-fill">{label}</a>
+</div>

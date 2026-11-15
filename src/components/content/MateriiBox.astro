@@ -1,0 +1,19 @@
+---
+/**
+ * Box that lists the subjects of one programme: `<div class="materii-box">`.
+ * Used inside `CardGrid` with `kind="materii"`.
+ */
+interface Props {
+  /** Text of the `<h3>`. */
+  title: string;
+  /** Legacy inline style of the `<h3>`, copied as it is (for example `color:var(--accent2)`). */
+  titleStyle?: string;
+}
+
+const { title, titleStyle } = Astro.props;
+---
+
+<div class="materii-box">
+  <h3 style={titleStyle}>{title}</h3>
+  <slot />
+</div>

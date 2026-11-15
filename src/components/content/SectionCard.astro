@@ -1,0 +1,25 @@
+---
+/**
+ * Glass card that wraps one section of a content page.
+ *
+ * Legacy markup:
+ *   <div class="section-card" style="animation-delay:0.1s">
+ *     <h2>Title</h2>
+ *     ...
+ *   </div>
+ */
+interface Props {
+  /** Text of the `<h2>`. Leave it out when the card has no heading. */
+  title?: string;
+  /** Value of `animation-delay`, exactly as in the legacy inline style (for example `0.1s`). */
+  delay?: string;
+}
+
+const { title, delay } = Astro.props;
+const style = delay === undefined ? undefined : `animation-delay:${delay}`;
+---
+
+<div class="section-card" style={style}>
+  {title !== undefined && <h2>{title}</h2>}
+  <slot />
+</div>

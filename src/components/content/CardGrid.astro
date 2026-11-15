@@ -1,0 +1,19 @@
+---
+/**
+ * Grid wrapper from the "Grid Variations" CSS section:
+ * `triple` -> `.triple-grid`, `materii` -> `.materii-grid`, `myth` -> `.myth-grid`.
+ */
+import type { GridKind } from './types';
+
+interface Props {
+  kind: GridKind;
+  /** Legacy inline style, copied as it is (for example `grid-template-columns:1fr 1fr`). */
+  style?: string;
+}
+
+const { kind, style } = Astro.props;
+---
+
+<div class={`${kind}-grid`} style={style}>
+  <slot />
+</div>

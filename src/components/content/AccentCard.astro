@@ -1,0 +1,20 @@
+---
+/**
+ * Card with a coloured left border: `<div class="triple-card card-cti">`.
+ * Used inside `CardGrid` with `kind="triple"` or `kind="myth"`.
+ */
+import type { CardVariant } from './types';
+
+interface Props {
+  variant: CardVariant;
+  /** Text of the `<h3>`. */
+  title: string;
+}
+
+const { variant, title } = Astro.props;
+---
+
+<div class={`triple-card card-${variant}`}>
+  <h3>{title}</h3>
+  <slot />
+</div>
