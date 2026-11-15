@@ -15,7 +15,8 @@
     "format": "prettier --write .",
     "seo:check": "node scripts/seo-check.ts",
     "visual": "node scripts/visual.ts",
-    "css:check": "node scripts/css-check.ts"
+    "css:check": "node scripts/css-check.ts",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
@@ -32,7 +33,8 @@
     "prettier": "^3.10.1",
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.2"
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
   },
   "dependencies": {
     "firebase": "12.11.0",

@@ -16,6 +16,8 @@ import {
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 import { auth, db } from './app';
+import { hasSimulationAccess, isSaleClosed } from './access';
+import { syncUserToFirestore } from './user-sync';
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -312,76 +314,9 @@ function friendlyError(code) {
   return map[code] || `A apărut o eroare (${code || 'necunoscută'}). Încearcă din nou.`;
 }
 
-/* ── Sincronizare utilizator cu Firestore ───────────────────── */
-
-async function syncUserToFirestore(user, plan, billing) {
-  try {
-    const userRef = doc(db, 'users', user.uid);
-    const snap = await getDoc(userRef);
-    const emailLower = (user.email || '').toLowerCase();
-    if (!snap.exists()) {
-      await setDoc(userRef, {
-        email: user.email,
-        emailLower,
-        status: 'free',
-        selectedPlan: plan || 'standard',
-        selectedBilling: billing || 'monthly',
-        createdAt: serverTimestamp(),
-      });
-      console.log('[Auth] Firestore: document creat pentru', user.uid);
-    } else if (emailLower && snap.data().emailLower !== emailLower) {
-      // Backfill: conturile create înainte de introducerea câmpului nu îl au, iar
-      // webhook-ul Gumroad se bazează pe el ca fallback când getUserByEmail (care e
-      // case-sensitive) nu găseşte un email salvat cu majuscule în Auth. Scriem o
-      // singură dată, la primul onAuthStateChanged de după deploy.
-      // Catch local: dacă regulile Firestore nu permit update-ul, scrierea ar eşua
-      // la FIECARE încărcare de pagină pentru fiecare cont vechi. E o îmbunătăţire
-      // oportunistă, nu are voie să rupă fluxul de autentificare.
-      try {
-        await setDoc(userRef, { emailLower }, { merge: true });
-        console.log('[Auth] Firestore: emailLower completat pentru', user.uid);
-      } catch (e) {
-        console.warn('[Auth] Nu am putut completa emailLower:', e.code || e.message);
-      }
-    } else {
-      console.log('[Auth] Firestore: document deja existent pentru', user.uid);
-    }
-  } catch (e) {
-    console.error('[Auth] Firestore sync error:', e.code, e.message, e);
-    throw e;
-  }
-}
-
 /* ── Content gate pentru paginile de simulare ───────────────── */
 
 const STUDENT_PLUS_URL = 'https://admiterepoli.gumroad.com/l/student-plus-lunar';
-
-// Statusuri care dau acces la tot conținutul premium.
-const PAID_STATUSES = ['paid', 'pending_cancellation', 'trial'];
-
-function hasSimulationAccess(data, simId) {
-  const status = data?.status || 'free';
-  if (PAID_STATUSES.includes(status)) return true;
-  return !!simId && Array.isArray(data?.purchasedSimulations) && data.purchasedSimulations.includes(simId);
-}
-
-/* Simulări cu vânzare limitată în timp. După momentul de aici, butoanele de
-   „Cumpără acces" dispar din gate-ul paginii de simulare şi din arhiva de pe
-   simulari.html. Cheia = product_permalink-ul Gumroad (window.simulationId).
-   Atenţie: e doar gating de UI — oprirea reală a vânzării se face din Gumroad
-   (unpublish produs), altfel linkul direct rămâne funcţional. */
-const SIMULATION_SALE_END = {
-  // Vineri, 24 iulie 2026, ora 10:00 — acelaşi moment cu PUBLIC_AT din index.html
-  // şi cu data-reveal-after a blocului de arhivă din simulari.html. Cele trei
-  // trebuie să rămână identice: în clipa în care baremul devine public în arhivă,
-  // butoanele de cumpărare trebuie să dispară.
-  'simulare-21-07': new Date('2026-07-24T10:00:00+03:00'),
-};
-
-function isSaleClosed(simId) {
-  const end = simId ? SIMULATION_SALE_END[simId] : null;
-  return !!end && new Date() >= end;
-}
 
 /* Deblocare automată la ora de start, fără refresh manual. Un singur timer activ
    pe pagină — applyExamGate poate fi re-apelat la fiecare schimbare de stare auth.
