@@ -1,0 +1,32 @@
+---
+/**
+ * Inline PDF viewer (pdf.js) used by the barem, subiect and rezolvare pages.
+ * Replaces the `<div id="pdfViewer"></div>` + pdf.js snippet of the legacy
+ * pages. Put it where the legacy page had the #pdfViewer div:
+ *
+ *   <PdfViewer
+ *     src="pdfs/admitere2025-mate-barem.pdf"
+ *     errorMessage="A apărut o eroare la încărcarea baremului."
+ *   />
+ *
+ * pdf.js and its worker are bundled from `pdfjs-dist` and reach the browser
+ * only on pages that render this component. One viewer per page (the id is
+ * part of the legacy markup and of the styles).
+ */
+interface Props {
+  /** PDF path exactly as in the legacy `const url = "..."`, e.g. `pdfs/admitere2025-mate-barem.pdf`. */
+  src: string;
+  /** Text of the legacy error heading; it differs per page, copy it as it is. */
+  errorMessage: string;
+}
+
+const { src, errorMessage } = Astro.props;
+---
+
+<div id="pdfViewer" data-pdf-src={src} data-error-message={errorMessage}></div>
+
+<script>
+  import { initPdfViewer } from '../scripts/pdf-viewer';
+
+  initPdfViewer();
+</script>

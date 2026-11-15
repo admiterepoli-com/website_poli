@@ -35,6 +35,7 @@
     "typescript-eslint": "^8.72.2"
   },
   "dependencies": {
-    "firebase": "12.11.0"
+    "firebase": "12.11.0",
+    "pdfjs-dist": "3.11.174"
   }
 }
