@@ -1,0 +1,108 @@
+---
+/**
+ * Template of the barem / subiect / rezolvare pages: h1, intro, a box of
+ * useful links, the PDF (or a "coming soon" box) and a list of related pages.
+ * The data comes from `src/data/pdf-pages/<slug>.ts` (see `_schema.ts`).
+ *
+ * The markup is the legacy one, attribute for attribute. What differs between
+ * legacy pages, and where it comes from:
+ *
+ * - `variant`: inline-styled links box (`inline`) or `.pag-links-box`
+ *   (`links-box`); the second also drops the inline styles of the two list
+ *   headings and of every link.
+ * - `pdf` or `pendingMessage`: pages with a PDF use the `lp-body lp-dark` body
+ *   and Plus Jakarta Sans; pages still waiting for their PDF have no body
+ *   class, DM Sans and the classic header. The two always go together on the
+ *   legacy site, so the layout derives the second from the first.
+ * - per link: `target="_blank"` (`external`) and an `<li>` without the
+ *   bottom margin (`noMargin`).
+ * - `strayCommentEnd`: a leftover `-->` after the footer on three pages.
+ *
+ * The lists are written with explicit line breaks between items: elements
+ * produced by `map` are otherwise glued together, and the extracted body text
+ * (SEO baseline) would join one label with the next.
+ */
+import BaseLayout from './BaseLayout.astro';
+import PdfViewer from '../components/PdfViewer.astro';
+import type { PdfPageData } from '../data/pdf-pages/_schema';
+
+interface Props {
+  page: PdfPageData;
+}
+
+const { page } = Astro.props;
+
+const inline = page.variant === 'inline';
+const headingStyle = inline ? 'margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;' : undefined;
+const linkStyle = inline ? 'color: lightblue;' : undefined;
+const itemStyle = (noMargin: boolean | undefined) =>
+  noMargin === true ? undefined : 'margin-bottom: 0.5rem;';
+const target = (external: boolean | undefined) => (external === true ? '_blank' : undefined);
+
+/** Legacy chrome of the pages without a PDF: no body class, DM Sans. */
+const pending = page.pdf === undefined;
+const NL = '\n';
+---
+
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  bodyClass={pending ? '' : 'lp-body lp-dark'}
+  fonts={pending ? 'dm-sans' : 'jakarta'}
+>
+  <main>
+    <section class="grid-main-content">
+      <div class="container" style="margin-bottom: 2rem;">
+        <div class="pag-intro">
+          <h1 style="text-align: left;">{page.h1}</h1>
+
+          <h3
+            class="indented"
+            style="margin-top: 1rem; font-weight: 500; line-height: 1.6; font-size: 1.5rem;"
+          >
+            {page.intro}
+          </h3>
+
+          <div
+            class={inline ? undefined : 'pag-links-box'}
+            style={
+              inline
+                ? 'margin-top: 1.5rem; background: rgba(225, 225, 225, 0.1); padding: 1.5rem; border-radius: 1rem;'
+                : undefined
+            }
+          >
+            <h3 style={headingStyle}>{page.usefulLinksHeading}</h3>
+            <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.3rem;">
+              {page.usefulLinks.map((link) =>
+                // prettier-ignore
+                <Fragment>{NL}<li style={itemStyle(link.noMargin)}><a href={link.href} target={target(link.external)} style={linkStyle}>{link.label}</a></li></Fragment>,
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {page.pdf !== undefined ? (
+        <PdfViewer src={page.pdf} errorMessage={page.errorMessage} />
+      ) : (
+        <div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+          <div style="text-align: center; background: rgba(225, 225, 225, 0.05); padding: 3rem 2rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1);">
+            <h2 style="color: #C3D5F0; margin-bottom: 0.5rem;">{page.pendingMessage}</h2>
+          </div>
+        </div>
+      )}
+
+      <div class="container" style="margin-top: 2rem;">
+        <h3 style={headingStyle}>{page.relatedHeading}</h3>
+        <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.3rem;">
+          {page.related.map((link) =>
+            // prettier-ignore
+            <Fragment>{NL}<li style={itemStyle(link.noMargin)}><a href={link.href} target={target(link.external)} style={linkStyle}>{link.label}</a></li></Fragment>,
+          )}
+        </ul>
+      </div>
+    </section>
+  </main>
+  {/* Leftover text of three legacy pages; it sits between the footer and the popup. */}
+  {page.strayCommentEnd === true && <Fragment slot="scripts">{'-->'}</Fragment>}
+</BaseLayout>
