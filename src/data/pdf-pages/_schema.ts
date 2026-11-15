@@ -13,6 +13,19 @@
  *
  * Copy every text, href and path from the legacy page character for
  * character: all of it is in the SEO baseline.
+ *
+ * Rezolvare pages need no fields of their own. The 20 legacy `rezolvare-*`
+ * pages fall into these groups:
+ *
+ * - 11 with a PDF: `variant: 'links-box'` + `pdf` (video links are ordinary
+ *   `usefulLinks` with `external: true`). Example:
+ *   `rezolvare-admitere-2025-matematica.ts`. The two `rezolvare-preadmitere-2026-*`
+ *   pages also set `strayCommentEnd`; their HTML comments inside `<main>` are
+ *   not rendered and are dropped.
+ * - 8 without a PDF yet (e.g. `rezolvare-admitere-2023-informatica`):
+ *   `variant: 'inline'` + `pendingMessage` (`Rezolvarea va fi disponibilă în curând.`).
+ * - `rezolvare-simulare-admiterepoli-4` does not fit: other inline font sizes
+ *   and margins, plus KaTeX. It is ported as its own page, not from this schema.
  */
 
 export interface PdfPageLink {
