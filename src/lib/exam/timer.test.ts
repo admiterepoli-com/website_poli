@@ -1,12 +1,7 @@
-/**
- * Unit tests of the exam timer and state. No test runner is installed yet, so
- * they use the one built into Node 22 and its fake timers:
- *
- *     node --test src/lib/exam/timer.test.ts
- */
+/** Unit tests of the exam timer and state, with Vitest fake timers. */
 
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it, mock } from 'node:test';
+import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 
 import {
   countAnswered,
@@ -23,7 +18,7 @@ import {
   selectAnswer,
   startExam,
   switchTab,
-} from './state.ts';
+} from './state';
 import {
   createExamTimer,
   formatClock,
@@ -37,8 +32,8 @@ import {
   updateTimerDisplay,
   type ClockElement,
   type ExamTimer,
-} from './timer.ts';
-import type { ExamConfig, ExamState, Problem, Section, TimerRules } from './types.ts';
+} from './timer';
+import type { ExamConfig, ExamState, Problem, Section, TimerRules } from './types';
 
 /* ── Fixtures ─────────────────────────────────────────────────── */
 
@@ -320,18 +315,18 @@ describe('exam timer', () => {
   let timer: ExamTimer | null = null;
 
   beforeEach(() => {
-    mock.timers.enable({ apis: ['setInterval', 'Date'], now: T0 });
+    vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'Date'], now: T0 });
   });
 
   afterEach(() => {
     timer?.stop();
     timer = null;
-    mock.timers.reset();
+    vi.useRealTimers();
   });
 
   /** Lets `seconds` pass one tick at a time, as a tab in the foreground does. */
   function advance(seconds: number): void {
-    for (let i = 0; i < seconds; i++) mock.timers.tick(1000);
+    for (let i = 0; i < seconds; i++) vi.advanceTimersByTime(1000);
   }
 
   for (const config of [COUNTDOWN, DEADLINE]) {
@@ -342,9 +337,9 @@ describe('exam timer', () => {
         assert.equal(timer.isRunning(), true);
         assert.deepEqual(exam.events, ['03:00:00']);
 
-        mock.timers.tick(999);
+        vi.advanceTimersByTime(999);
         assert.deepEqual(exam.events, ['03:00:00']);
-        mock.timers.tick(1);
+        vi.advanceTimersByTime(1);
         assert.deepEqual(exam.events, ['03:00:00', '02:59:59']);
 
         advance(2);
