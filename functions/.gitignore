@@ -72,3 +72,6 @@ node_modules/
 .agents/
 .claude/
 skills-lock.json
+
+# TypeScript build output (functions/src -> functions/lib)
+lib/
