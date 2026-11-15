@@ -18,6 +18,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from './app';
 import { hasSimulationAccess, isSaleClosed } from './access';
 import { STUDENT_PLUS_URL, applyExamGate, scheduleGateUnlock, stopGateCountdown } from './exam-gate';
+import { applySimulariPaidLinks } from './simulari-lock';
 import { syncUserToFirestore } from './user-sync';
 import {
   injectModal,
@@ -135,138 +136,6 @@ function injectMobileAuthItem() {
 function closeHamburger() {
   document.querySelector('.hamburger')?.classList.remove('active');
   document.querySelector('.nav-elements')?.classList.remove('active');
-}
-
-/* ── Gate blocuri simulări plătite pe simulari.html ──────────── */
-
-// Simulările plătite listate în arhivă. `simId` = product_permalink-ul Gumroad.
-// `startsAt` (opţional) = simulare încă nedeschisă: intrarea apare în arhivă, dar
-// cu lăcăt pentru toată lumea, inclusiv plătitori. Trebuie să rămână identic cu
-// window.examGateStart din pagina simulării şi cu startsAt din pagina de barem.
-const PAID_SIMULATIONS = [
-  {
-    headerId: 'sim3-header',
-    dropdownId: 'dropdown-arhiva-sim-3',
-    simId: 'simulare_09_05',
-    label: 'Simularea #3',
-    buyUrl: null,
-  },
-  {
-    headerId: 'sim4-header',
-    dropdownId: 'dropdown-arhiva-sim-4',
-    simId: 'simulare-21-07',
-    label: 'Simularea #4',
-    buyUrl: 'https://admiterepoli.gumroad.com/l/simulare-21-07',
-    startsAt: new Date('2026-07-21T17:00:00+03:00'),
-    startLabel: '21 iulie, ora 17:00',
-  },
-];
-
-async function applySimulariPaidLinks(user) {
-  const blocks = PAID_SIMULATIONS.map((cfg) => ({
-    ...cfg,
-    header: document.getElementById(cfg.headerId),
-    dropdown: document.getElementById(cfg.dropdownId),
-  })).filter((b) => b.header && b.dropdown);
-
-  if (!blocks.length) return;
-
-  let data = null;
-  let fetchFailed = false;
-
-  if (user) {
-    try {
-      const snap = await getDoc(doc(db, 'users', user.uid));
-      data = snap.exists() ? snap.data() : {};
-    } catch (e) {
-      console.warn('[SimulariGate] Nu s-a putut verifica statusul:', e.message);
-      fetchFailed = true;
-    }
-  }
-
-  for (const block of blocks) {
-    // fail-open: dacă citirea din Firestore crapă, nu blocăm userul autentificat
-    const isPaid = fetchFailed || (!!data && hasSimulationAccess(data, block.simId));
-    applySimulariLock(block, user, isPaid);
-  }
-}
-
-function applySimulariLock({ header, dropdown, label, simId, buyUrl, startsAt, startLabel }, user, isPaid) {
-  // După închiderea vânzării separate rămâne doar ruta Student Plus.
-  if (isSaleClosed(simId)) buyUrl = null;
-
-  if (!dropdown._originalHTML) dropdown._originalHTML = dropdown.innerHTML;
-
-  // Fiecare randare porneşte de la markup-ul original. Altfel, odată înlocuit
-  // dropdown-ul, `.sub-links` dispare şi nu mai putem comuta între stări — iar
-  // la ora de start chiar trebuie să comutăm (aşteptare → cumpără / linkuri).
-  dropdown.innerHTML = dropdown._originalHTML;
-  header.querySelector('.sim-lock-badge')?.remove();
-
-  // Înainte de start intrarea se vede în arhivă, dar închisă pentru toată lumea:
-  // linkurile de barem/rezolvare n-au ce căuta la îndemână cât timp simularea
-  // nu a început. Acelaşi prag ca applyBaremGate şi ca gate-ul paginii de simulare.
-  const beforeStart = !!startsAt && new Date() < startsAt;
-
-  if (isPaid && !beforeStart) return;
-
-  const strong = header.querySelector('strong');
-  if (strong) {
-    const badge = document.createElement('span');
-    badge.className = 'sim-lock-badge';
-    badge.style.cssText = 'margin-left:0.6rem;font-size:1rem;opacity:0.8;vertical-align:middle;';
-    badge.textContent = beforeStart ? '🕐' : '🔒';
-    strong.appendChild(badge);
-  }
-
-  const subLinks = dropdown.querySelector('.sub-links');
-  if (!subLinks) return;
-
-  const buyBtn = buyUrl
-    ? `<a href="${buyUrl}${user ? '?wanted=true&email=' + encodeURIComponent(user.email || '') : ''}" target="_blank" rel="noopener" style="display:inline-block;padding:0.6rem 1.4rem;background:var(--accent2);color:#fff;border-radius:8px;font-weight:600;font-size:0.95rem;text-decoration:none;">
-        Cumpără acces
-       </a>`
-    : `<button onclick="openUpgradeModal()" style="padding:0.6rem 1.4rem;background:var(--accent2);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:0.95rem;cursor:pointer;">
-        Cumpără acces
-       </button>`;
-
-  const authButtons = user
-    ? buyBtn
-    : `<div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
-        <button onclick="openModal()" style="padding:0.6rem 1.4rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:0.95rem;cursor:pointer;">
-          Autentifică-te
-        </button>
-        ${buyBtn}
-      </div>`;
-
-  const card = (icon, title, desc, actions) =>
-    `<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2rem 1.5rem;text-align:center;">
-      <div style="font-size:2.5rem;line-height:1;">${icon}</div>
-      <h3 style="margin:0;color:#fff;font-size:1.15rem;">${title}</h3>
-      <p style="margin:0;color:var(--muted);font-size:0.95rem;max-width:280px;line-height:1.5;">${desc}</p>
-      ${actions}
-    </div>`;
-
-  if (beforeStart) {
-    subLinks.outerHTML = card(
-      '🕐',
-      'Nu a început încă',
-      `${label} se deschide pe <strong style="color:#C3D5F0;">${startLabel}</strong>. Subiectul, baremul şi rezolvarea apar aici în acel moment.`,
-      isPaid
-        ? `<span style="padding:0.6rem 1.4rem;color:var(--accent3);font-weight:600;font-size:0.95rem;">Ai deja acces ✓</span>`
-        : authButtons,
-    );
-    // La ora de start re-randăm: plătitorii primesc linkurile fără refresh.
-    scheduleGateUnlock(startsAt, () => applySimulariPaidLinks(user));
-    return;
-  }
-
-  subLinks.outerHTML = card(
-    '🔒',
-    'Acces restricționat',
-    `${label} este disponibilă membrilor <strong style="color:#C3D5F0;">Student Plus</strong> sau prin cumpărare separată.`,
-    authButtons,
-  );
 }
 
 /* ── Gate pagină de barem ───────────────────────────────────── */
