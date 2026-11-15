@@ -1,0 +1,36 @@
+---
+/**
+ * Route of the barem / subiect / rezolvare pages.
+ *
+ * Every `src/data/pdf-pages/<slug>.ts` becomes `/<slug>` (file names starting
+ * with `_`, such as `_schema.ts`, are skipped). To add a page, add its data
+ * file and delete `legacy/<slug>.html`; nothing is registered here.
+ */
+import type { GetStaticPaths } from 'astro';
+import PdfPageLayout from '../layouts/PdfPageLayout.astro';
+import type { PdfPageData } from '../data/pdf-pages/_schema';
+
+export const getStaticPaths = (() => {
+  const modules = import.meta.glob<{ default: PdfPageData }>(
+    ['../data/pdf-pages/*.ts', '!../data/pdf-pages/_*.ts'],
+    { eager: true },
+  );
+
+  return Object.entries(modules).map(([path, module]) => {
+    const fileSlug = path.slice(path.lastIndexOf('/') + 1).replace(/\.ts$/, '');
+    const page = module.default;
+    if (page.slug !== fileSlug) {
+      throw new Error(`${path}: slug "${page.slug}" must equal the file name "${fileSlug}".`);
+    }
+    return { params: { slug: fileSlug }, props: { page } };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: PdfPageData;
+}
+
+const { page } = Astro.props;
+---
+
+<PdfPageLayout page={page} />
