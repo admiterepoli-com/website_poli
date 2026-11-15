@@ -33,5 +33,8 @@
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.2"
+  },
+  "dependencies": {
+    "firebase": "12.11.0"
   }
 }
