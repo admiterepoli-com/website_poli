@@ -12,18 +12,14 @@ import {
 } from 'firebase-admin/firestore';
 import { onSchedule } from 'firebase-functions/v2/scheduler';
 
-import { DATABASE_ID, type SimulationPermalink } from './gumroad.js';
+import type { PaidSimulationId, UserDoc, UserStatus } from '../../shared/firestore.js';
+import { DATABASE_ID } from './gumroad.js';
 
-/** The `users.status` values these jobs read and write. */
-type TrialStatus = 'trial' | 'trial_pending';
+/** The historical trial values of `users.status` that expireTrialUsers moves to "free". */
+type TrialStatus = Extract<UserStatus, 'trial' | 'trial_pending'>;
 
-/** Fields of users/{uid} the jobs touch. */
-interface UserDoc {
-  status: TrialStatus | 'paid' | 'free';
-  purchasedSimulations: SimulationPermalink[];
-  accessUntil: Timestamp;
-  accessExpiredAt: Timestamp;
-}
+/** An update to users/{uid}, as the admin SDK writes it. */
+type UserUpdate = UpdateData<UserDoc<Timestamp>>;
 
 /** Firestore batches accept at most 500 operations. */
 const BATCH_LIMIT = 500;
@@ -50,10 +46,10 @@ export const expireTrialUsers = onSchedule(
       return;
     }
 
-    const migrated: SimulationPermalink = 'simulare_09_05';
+    const migrated: PaidSimulationId = 'simulare_09_05';
     const batch = db.batch();
     snap.docs.forEach((docSnap) => {
-      const update: UpdateData<UserDoc> = {
+      const update: UserUpdate = {
         status: 'free',
         purchasedSimulations: FieldValue.arrayUnion(migrated),
       };
@@ -87,7 +83,7 @@ export const expireFixedTermUsers = onSchedule(
     for (let i = 0; i < expired.length; i += BATCH_LIMIT) {
       const batch = db.batch();
       expired.slice(i, i + BATCH_LIMIT).forEach((d) => {
-        const update: UpdateData<UserDoc> = {
+        const update: UserUpdate = {
           status: 'free',
           accessExpiredAt: FieldValue.serverTimestamp(),
         };

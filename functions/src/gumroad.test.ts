@@ -5,12 +5,15 @@ import { beforeEach, describe, it, mock } from 'node:test';
 
 import { FieldValue, Timestamp } from 'firebase-admin/firestore';
 
+import type { PaidSimulationId } from '../../shared/firestore.js';
 import {
   FIXED_TERM_PLANS,
   handleGumroadWebhook,
   matchFixedTermPlan,
   matchSimulationPermalink,
+  SIMULATION_PERMALINKS,
   type MergeOption,
+  type SimulationPermalink,
   type UserDocRef,
   type UserTransaction,
   type UserWrite,
@@ -578,6 +581,14 @@ describe('gumroadWebhook', () => {
       assert.equal(matchFixedTermPlan('student-plus-admitere'), 'student-plus-admitere');
       assert.equal(matchFixedTermPlan('u/student-plus-preadmitere'), 'student-plus-preadmitere');
       assert.equal(matchFixedTermPlan('student-plus'), null);
+    });
+
+    it('grants every PaidSimulationId', () => {
+      // Compile-time check: fails to build if PaidSimulationId gains a value
+      // that SIMULATION_PERMALINKS does not list (the reverse is checked in gumroad.ts).
+      const everyIdListed: [Exclude<PaidSimulationId, SimulationPermalink>] extends [never] ? true : false = true;
+      assert.equal(everyIdListed, true);
+      for (const id of SIMULATION_PERMALINKS) assert.equal(matchSimulationPermalink(id), id);
     });
   });
 });
