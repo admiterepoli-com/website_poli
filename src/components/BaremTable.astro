@@ -1,0 +1,75 @@
+---
+/**
+ * Answer table of the AdmiterePoli simulation barem pages
+ * (`barem-simulare-admiterepoli-1` … `-4`).
+ *
+ * Legacy markup: `.barem-table-wrapper > table.barem-table`, one header row
+ * (`Număr Problemă` followed by one cell per subject) and one row per problem
+ * (its label followed by one answer per subject). Pages 1 and 2 have the
+ * columns Mate and Info; pages 3 and 4 add Fizică.
+ *
+ * The table's look comes from the page's own inline `<style>` block (copied
+ * from the legacy page, it differs between pages) on top of the global
+ * `07-barem-cod.css` rules.
+ *
+ * Usage:
+ *   <BaremTable columns={['Mate', 'Info']} rows={rows} />
+ */
+
+/** One answer letter of the multiple-choice tests (variants A–F). */
+export type BaremAnswer = 'a' | 'b' | 'c' | 'd' | 'e' | 'f';
+
+export interface BaremRow {
+  /** First cell, for example `Problema 1`. */
+  label: string;
+  /** One answer per column, in the order of `columns`. */
+  answers: readonly BaremAnswer[];
+}
+
+interface Props {
+  /** Header of the first column. Every legacy barem page uses the default. */
+  labelHeader?: string;
+  /** Subject headers after the first column, for example `['Mate', 'Info']`. */
+  columns: readonly string[];
+  rows: readonly BaremRow[];
+}
+
+const { labelHeader = 'Număr Problemă', columns, rows } = Astro.props;
+
+for (const row of rows) {
+  if (row.answers.length !== columns.length) {
+    throw new Error(
+      `BaremTable: rândul „${row.label}” are ${row.answers.length} răspunsuri, dar tabelul are ${columns.length} coloane.`,
+    );
+  }
+}
+
+/**
+ * Line break written between cells and rows. Elements produced by `map` are
+ * otherwise glued together (`</td><td>`), and text extraction would then join
+ * one cell with the next one.
+ */
+const NL = '\n';
+---
+
+<div class="barem-table-wrapper">
+  <table class="barem-table">
+    <thead>
+      <tr>
+        <th>{labelHeader}</th>
+        {columns.map((column) =>
+          // prettier-ignore
+          <Fragment>{NL}<th>{column}</th></Fragment>,
+        )}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) =>
+        // prettier-ignore
+        <Fragment>{NL}<tr>{NL}<td>{row.label}</td>{row.answers.map((answer) => (
+            <Fragment>{NL}<td>{answer}</td></Fragment>
+          ))}{NL}</tr></Fragment>,
+      )}
+    </tbody>
+  </table>
+</div>
