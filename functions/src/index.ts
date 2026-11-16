@@ -3,7 +3,7 @@
 // The exported names are the deployed function names: renaming or dropping one
 // here renames or deletes the function in Firebase on the next deploy.
 //
-// gumroadWebhook is typed (src/gumroad.ts). The scheduled jobs still live,
-// unchanged, in the legacy file until #46 moves them.
+// Every function is typed: the webhook in src/gumroad.ts, the scheduled jobs in
+// src/trials.ts. src/legacy.js is no longer loaded.
 export { gumroadWebhook } from './gumroad.js';
-export { expireTrialUsers, expireFixedTermUsers } from './legacy.js';
+export { expireTrialUsers, expireFixedTermUsers } from './trials.js';
