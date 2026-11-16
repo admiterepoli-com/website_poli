@@ -15,17 +15,6 @@ import { hasSimulationAccess, isSaleClosed } from './access';
 import { db } from './app';
 import { STUDENT_PLUS_URL, scheduleGateUnlock, stopGateCountdown } from './exam-gate';
 
-/**
- * `window.baremConfig` as the barem pages set it. `simUrl` and `publicLabel` are set by every gated
- * barem page but are not declared on the global type yet.
- */
-type BaremGateConfig = NonNullable<Window['baremConfig']> & {
-  /** Relative URL of the matching simulation page. */
-  simUrl?: string;
-  /** When the barem becomes public, as shown to the visitor. */
-  publicLabel?: string;
-};
-
 /** `message` of a caught value, for the log line the legacy code printed. */
 function errorMessage(e: unknown): unknown {
   return typeof e === 'object' && e !== null && 'message' in e ? e.message : undefined;
@@ -41,7 +30,7 @@ function errorMessage(e: unknown): unknown {
    ci împiedicarea drumului uşor către ele cât timp fereastra e deschisă. */
 
 export async function applyBaremGate(user: Pick<User, 'uid' | 'email'> | null): Promise<void> {
-  const cfg: BaremGateConfig | undefined = window.baremConfig;
+  const cfg = window.baremConfig;
   const content = document.getElementById('barem-content');
   const gate = document.getElementById('barem-gate');
   if (!cfg || !content || !gate) return;
