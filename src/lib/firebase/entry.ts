@@ -36,7 +36,8 @@ function openModalOnRegister(): void {
 
 /* ── Inițializare ────────────────────────────────────────────── */
 
-document.addEventListener('DOMContentLoaded', () => {
+/** Wires the header, the modal and the auth state once the document is parsed. */
+function init(): void {
   injectNavButton();
   injectMobileAuthItem();
   injectModal();
@@ -127,4 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expune openUpgradeModal global pentru alte pagini (ex: exercitii-video)
   window.openUpgradeModal = openUpgradeModal;
-});
+}
+
+// The module is loaded after the first paint (see BaseLayout), usually after DOMContentLoaded.
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
