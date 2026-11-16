@@ -1,0 +1,45 @@
+---
+/**
+ * Simulation 4, ported from legacy/simulare-2026-07-21.html onto ExamLayout: problems,
+ * gate config, results titles and Sheets endpoint are in
+ * src/data/simulations/2026-07-21.ts. The track-selector contents are the legacy
+ * markup (`{ }` written as `{'{ }'}`).
+ * - The result is saved with its track (`saveTrack: true`), as on the legacy
+ *   page; the timer runs against an absolute deadline.
+ */
+import ExamLayout from '../layouts/ExamLayout.astro';
+import exam from '../data/simulations/2026-07-21';
+---
+
+<ExamLayout title="Simulare #4 — 21–24 Iulie 2026 | AdmiterePoli" description="A patra simulare AdmiterePoli — Matematică + Informatică sau Fizică." config={exam}>
+  <Fragment slot="track-selector">
+                    <div class="sim-badge-date">&#128197; 21 – 24 Iulie 2026 &bull; intrare oricând</div>
+                    <h1>Simulare #4</h1>
+                    <p class="sim-start-subtitle">
+                        Aceasta este a <strong>patra simulare</strong> AdmiterePoli.<br>
+                        Alege varianta pe care o susții la admitere.
+                    </p>
+                    <div class="track-grid">
+                        <div class="track-card track-info" onclick="selectTrack('info')">
+                            <div class="track-icon">{'{ }'}</div>
+                            <p class="track-title">Matematică<br>&amp; Informatică</p>
+                            <p class="track-desc">Probleme de informatică (C++) + probleme de matematică</p>
+                            <span class="track-cta">Intră în simulare &rarr;</span>
+                        </div>
+                        <div class="track-card track-fizica" onclick="selectTrack('fizica')">
+                            <div class="track-icon">&#934;</div>
+                            <p class="track-title">Matematică<br>&amp; Fizică</p>
+                            <p class="track-desc">Probleme de fizică + probleme de matematică</p>
+                            <span class="track-cta">Intră în simulare &rarr;</span>
+                        </div>
+                    </div>
+  </Fragment>
+  <Fragment slot="scripts">
+    <script>
+      import exam from '../data/simulations/2026-07-21';
+      import { mountExam } from '../lib/exam/results';
+
+      mountExam(exam, { saveTrack: true });
+    </script>
+  </Fragment>
+</ExamLayout>
