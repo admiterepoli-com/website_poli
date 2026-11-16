@@ -39,6 +39,7 @@
   "dependencies": {
     "firebase": "12.11.0",
     "katex": "0.19.1",
-    "pdfjs-dist": "3.11.174"
+    "pdfjs-dist": "3.11.174",
+    "sweetalert2": "11.26.25"
   }
 }
