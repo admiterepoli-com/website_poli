@@ -1,0 +1,22 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 5,
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/subiecte.html",
+        "http://localhost/admitere-2025-matematica-barem.html",
+        "http://localhost/simulare-2026-03-21.html",
+        "http://localhost/exercitii-video.html"
+      ],
+      "settings": {
+        "onlyCategories": ["performance"],
+        "chromeFlags": "--headless=new --no-sandbox"
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci/reports"
+    }
+  }
+}

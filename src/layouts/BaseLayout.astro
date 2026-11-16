@@ -98,7 +98,11 @@ const parts = { cookieConsent, header, footer, popup, auth };
       /* Auth entry module (npm Firebase SDK, bundled). Replaces the legacy
          `<script type="module" src="./firebase-auth.js">`, which only legacy pages still load. */
       parts.auth && <script>
-        import '../lib/firebase/entry';
+        // Loaded after the first frame so that evaluating the Firebase SDK does not delay the first
+        // paint (#89). The legacy pages got the SDK from the CDN, which also arrived after it.
+        requestAnimationFrame(() => {
+          setTimeout(() => void import('../lib/firebase/entry'), 0);
+        });
       </script>
     }
   </body>
