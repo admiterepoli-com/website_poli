@@ -14,9 +14,6 @@ import { hasSimulationAccess, isSaleClosed } from './access';
 import { db } from './app';
 import { STUDENT_PLUS_OFFERS } from './offers';
 
-/** KaTeX auto-render, loaded by the simulation pages as a classic script. */
-type MathWindow = Window & { renderMathInElement?: (element: HTMLElement) => void };
-
 /** `message` of a caught value, for the log line the legacy code printed. */
 function errorMessage(e: unknown): unknown {
   return typeof e === 'object' && e !== null && 'message' in e ? e.message : undefined;
@@ -73,8 +70,7 @@ export async function applyExamGate(user: Pick<User, 'uid' | 'email'> | null): P
     stopGateCountdown();
     content.style.display = '';
     gate.style.display = 'none';
-    const mathWindow: MathWindow = window;
-    if (mathWindow.renderMathInElement) mathWindow.renderMathInElement(content);
+    if (window.renderMathInElement) window.renderMathInElement(content);
   }
 
   // Înainte de ora de start → blocat pentru toată lumea. Ora vine din fișierul de date al

@@ -53,9 +53,6 @@ const HIGHLIGHT_MS = 1500;
 /** Class that recolours the `info` slot when it holds the physics section. */
 const FIZICA_MODE_CLASS = 'fizica-mode';
 
-/** KaTeX auto-render, loaded with `defer` from the CDN by the page head. */
-type KatexWindow = Window & { renderMathInElement?: (element: HTMLElement) => void };
-
 /* ── Helpers ──────────────────────────────────────────────────── */
 
 function byId(id: string): HTMLElement | null {
@@ -132,8 +129,7 @@ export function renderQuestions(section: Section): void {
   container.innerHTML = questionsHtml(section);
   // KaTeX se încarcă cu defer; dacă scriptul ăsta rulează înaintea lui,
   // auto-render.min.js trece oricum peste tot body-ul la onload.
-  const katexWindow: KatexWindow = window;
-  katexWindow.renderMathInElement?.(container);
+  window.renderMathInElement?.(container);
 }
 
 /** Markup of a section's minimap: one numbered dot per problem. */

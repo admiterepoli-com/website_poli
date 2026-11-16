@@ -276,9 +276,6 @@ function postResult(config: ExamConfig, result: ExamResult): void {
     .catch((err: unknown) => console.error('Eroare:', err));
 }
 
-/** KaTeX auto-render, defined by the `Katex` component. */
-type KatexWindow = Window & { renderMathInElement?: (element: HTMLElement) => void };
-
 /**
  * Shows the results (legacy `finalizeExam`): closes the warning, hides the
  * quiz, posts the payload, fills `#results-screen`, scrolls to the top and
@@ -304,8 +301,7 @@ export function finalizeExam(context: ExamContext, track: Track, result: ExamRes
 
   if (resultsEl) {
     resultsEl.innerHTML = resultsHtml(track, result);
-    const katexWindow: KatexWindow = window;
-    katexWindow.renderMathInElement?.(resultsEl);
+    window.renderMathInElement?.(resultsEl);
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 

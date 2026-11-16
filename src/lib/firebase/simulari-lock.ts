@@ -26,10 +26,11 @@ export interface PaidSimulationConfig {
   label: string;
   /** Gumroad page of the separate purchase; `null` = only through the upgrade modal. */
   buyUrl: string | null;
-  /** Simulation not opened yet: until then the entry is locked for everyone, payers included. */
-  startsAt?: Date;
-  /** Start time as shown in the "not started yet" card. */
-  startLabel?: string;
+  /**
+   * Simulation not opened yet: until then the entry is locked for everyone, payers included.
+   * The "not started yet" card shows it as Bucharest time (`21 iulie, ora 17:00`).
+   */
+  unlocksAtTimestamp?: Date;
 }
 
 /** A configured simulation whose header and dropdown exist on the current page. */
@@ -49,7 +50,7 @@ const originalDropdownHTML = new WeakMap<HTMLElement, string>();
 /* ── Gate blocuri simulări plătite pe simulari.html ──────────── */
 
 // Simulările plătite listate în arhivă. `simId` = product_permalink-ul Gumroad.
-// `startsAt` (opţional) = simulare încă nedeschisă: intrarea apare în arhivă, dar
+// `unlocksAtTimestamp` (opţional) = simulare încă nedeschisă: intrarea apare în arhivă, dar
 // cu lăcăt pentru toată lumea, inclusiv plătitori. Trebuie să rămână identic cu
 // window.examGateStart din pagina simulării şi cu startsAt din pagina de barem.
 export const PAID_SIMULATIONS: readonly PaidSimulationConfig[] = [
@@ -66,10 +67,23 @@ export const PAID_SIMULATIONS: readonly PaidSimulationConfig[] = [
     simId: 'simulare-21-07',
     label: 'Simularea #4',
     buyUrl: 'https://admiterepoli.gumroad.com/l/simulare-21-07',
-    startsAt: new Date('2026-07-21T17:00:00+03:00'),
-    startLabel: '21 iulie, ora 17:00',
   },
 ];
+
+/** Unlock time as the lock card shows it, in Bucharest time: `21 iulie, ora 17:00`. */
+export function formatUnlockLabel(at: Date): string {
+  const parts = new Intl.DateTimeFormat('ro-RO', {
+    timeZone: 'Europe/Bucharest',
+    day: 'numeric',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(at);
+  const part = (type: Intl.DateTimeFormatPartTypes): string =>
+    parts.find((p) => p.type === type)?.value ?? '';
+  return `${part('day')} ${part('month')}, ora ${part('hour')}:${part('minute')}`;
+}
 
 export async function applySimulariPaidLinks(user: GateUser | null): Promise<void> {
   const blocks: SimulariBlock[] = [];
@@ -102,7 +116,7 @@ export async function applySimulariPaidLinks(user: GateUser | null): Promise<voi
 }
 
 export function applySimulariLock(block: SimulariBlock, user: GateUser | null, isPaid: boolean): void {
-  const { header, dropdown, label, simId, startsAt, startLabel } = block;
+  const { header, dropdown, label, simId, unlocksAtTimestamp } = block;
   // După închiderea vânzării separate rămâne doar ruta Student Plus.
   const buyUrl = isSaleClosed(simId) ? null : block.buyUrl;
 
@@ -121,7 +135,7 @@ export function applySimulariLock(block: SimulariBlock, user: GateUser | null, i
   // Înainte de start intrarea se vede în arhivă, dar închisă pentru toată lumea:
   // linkurile de barem/rezolvare n-au ce căuta la îndemână cât timp simularea
   // nu a început. Acelaşi prag ca applyBaremGate şi ca gate-ul paginii de simulare.
-  const beforeStart = !!startsAt && new Date() < startsAt;
+  const beforeStart = !!unlocksAtTimestamp && new Date() < unlocksAtTimestamp;
 
   if (isPaid && !beforeStart) return;
 
@@ -162,17 +176,17 @@ export function applySimulariLock(block: SimulariBlock, user: GateUser | null, i
       ${actions}
     </div>`;
 
-  if (startsAt && beforeStart) {
+  if (unlocksAtTimestamp && beforeStart) {
     subLinks.outerHTML = card(
       '🕐',
       'Nu a început încă',
-      `${label} se deschide pe <strong style="color:#C3D5F0;">${startLabel}</strong>. Subiectul, baremul şi rezolvarea apar aici în acel moment.`,
+      `${label} se deschide pe <strong style="color:#C3D5F0;">${formatUnlockLabel(unlocksAtTimestamp)}</strong>. Subiectul, baremul şi rezolvarea apar aici în acel moment.`,
       isPaid
         ? `<span style="padding:0.6rem 1.4rem;color:var(--accent3);font-weight:600;font-size:0.95rem;">Ai deja acces ✓</span>`
         : authButtons,
     );
     // La ora de start re-randăm: plătitorii primesc linkurile fără refresh.
-    scheduleGateUnlock(startsAt, () => applySimulariPaidLinks(user));
+    scheduleGateUnlock(unlocksAtTimestamp, () => applySimulariPaidLinks(user));
     return;
   }
 

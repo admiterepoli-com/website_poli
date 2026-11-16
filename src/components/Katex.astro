@@ -42,11 +42,8 @@ import 'katex/dist/katex.min.css';
 <script>
   import renderMathInElement from 'katex/contrib/auto-render';
 
-  /** The global that the CDN build of auto-render defined. */
-  type KatexWindow = Window & { renderMathInElement?: typeof renderMathInElement };
-
-  const katexWindow: KatexWindow = window;
-  katexWindow.renderMathInElement = renderMathInElement;
+  // The global that the CDN build of auto-render defined (typed in global.d.ts).
+  window.renderMathInElement = renderMathInElement;
 
   // Module scripts run after the document is parsed, like the legacy `defer`
   // script whose onload made this call.
