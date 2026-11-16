@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import legacyPassthrough from './integrations/legacy-passthrough';
 
 // SEO-critical settings: the live site is served by GitHub Pages with clean
 // URLs (/informatii is informatii.html). `format: 'file'` keeps every page at
@@ -11,7 +10,6 @@ export default defineConfig({
   // Keep the whitespace of the source markup. Collapsing it changes how inline
   // elements are spaced and makes the text differ from the SEO baseline.
   compressHTML: false,
-  integrations: [legacyPassthrough()],
   vite: {
     build: {
       // The stylesheet must reach the browser rule for rule as it was written: minifiers merge and
