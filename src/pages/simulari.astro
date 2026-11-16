@@ -1,54 +1,29 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <script src="./cookie-consent.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PC1VMXYCRN');
-    </script>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+/**
+ * Ported from legacy/simulari.html.
+ *
+ * - The four archive entries are <Dropdown>s (plain bold label, `headerId`
+ *   on simulations 3 and 4, the legacy inline style on `.sub-links`); their
+ *   sections are copied as they are.
+ * - The scripts legacy main.js ran here are loaded once through the
+ *   `scripts` slot, before the auth module as on the legacy page: dropdown
+ *   toggle, the countdown button (`#glass-countdown-btn`, target from its
+ *   `data-target`) and the scheduled reveal.
+ * - The paid / locked / sale-closed states of the archive entries are set by
+ *   `applySimulariPaidLinks` (src/lib/firebase/simulari-lock.ts), which the
+ *   auth module from BaseLayout runs, using the header and dropdown ids.
+ *
+ * No inline <style> and no other page script on the legacy page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Dropdown from '../components/Dropdown.astro';
+---
 
-    <title>Simulări AdmiterePoli | Testează-te pentru Preadmitere</title>
-    <meta name="description" content="Simulări gratuite pentru admiterea la Universitatea Politehnica București. Testează-ți cunoștințele la matematică și informatică în condiții reale de examen.">
-
-    <link rel="icon" type="image/png" href="logosquared.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-</head>
-<body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
-
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
-
+<BaseLayout
+  popupNoscript="info"
+  title="Simulări AdmiterePoli | Testează-te pentru Preadmitere"
+  description="Simulări gratuite pentru admiterea la Universitatea Politehnica București. Testează-ți cunoștințele la matematică și informatică în condiții reale de examen."
+>
     <main>
         <div class="grid-main-content">
             <section class="container" style="padding-bottom: 1rem; overflow: visible;">
@@ -110,9 +85,8 @@
                              neplătitori. Pe 24 iulie la 10:00 baremul devine public.
                              Fără firebase-auth.js linkurile rămân la vedere — de aceea subiectul
                              şi baremul au gate propriu pe pagina lor. -->
-                        <p class="subiecte-box" data-set="arhiva-sim-4" id="sim4-header"><strong>Simulare #4 — 21–24 Iulie 2026</strong></p>
-                        <div class="dropdown-section" id="dropdown-arhiva-sim-4">
-                            <div class="sub-links" style="display: flex; justify-content: center; margin: 0; padding: 0;">
+                        <Dropdown set="arhiva-sim-4" headerId="sim4-header" label="Simulare #4 — 21–24 Iulie 2026"
+                            bodyStyle="display: flex; justify-content: center; margin: 0; padding: 0;">
                                 <section style="display: flex; flex-direction: column; align-items: center;">
                                     <h3 style="color: #ffffff; margin-bottom: 0.8rem; text-align: center;">Simulare 4 2026 — Informatică</h3>
 
@@ -127,11 +101,9 @@
                                         <span class="links" style="margin: 0;"><a href="./rezolvare-simulare-admiterepoli-4" target="_blank">Apasă aici</a></span>
                                     </div>
                                 </section>
-                            </div>
-                        </div>
-                        <p class="subiecte-box" data-set="arhiva-sim-3" id="sim3-header"><strong>Simulare #3 — 9 Mai 2026</strong></p>
-                        <div class="dropdown-section" id="dropdown-arhiva-sim-3">
-                            <div class="sub-links" style="display: flex; justify-content: center; margin: 0; padding: 0;">
+                        </Dropdown>
+                        <Dropdown set="arhiva-sim-3" headerId="sim3-header" label="Simulare #3 — 9 Mai 2026"
+                            bodyStyle="display: flex; justify-content: center; margin: 0; padding: 0;">
                                 <section style="display: flex; flex-direction: column; align-items: center;">
                                     <h3 style="color: #ffffff; margin-bottom: 0.8rem; text-align: center;">Simulare 3 2026</h3>
 
@@ -146,11 +118,9 @@
                                         <span class="links" style="margin: 0;"><a href="./rezolvare-simulare-admiterepoli-3" target="_blank">Apasă aici</a></span>
                                     </div>
                                 </section>
-                            </div>
-                        </div>
-                        <p class="subiecte-box" data-set="arhiva-sim-2"><strong>Simulare #2 — 26 Martie 2026</strong></p>
-                        <div class="dropdown-section" id="dropdown-arhiva-sim-2">
-                            <div class="sub-links" style="display: flex; justify-content: center; margin: 0; padding: 0;">
+                        </Dropdown>
+                        <Dropdown set="arhiva-sim-2" label="Simulare #2 — 26 Martie 2026"
+                            bodyStyle="display: flex; justify-content: center; margin: 0; padding: 0;">
                                 <section style="display: flex; flex-direction: column; align-items: center;">
                                     <h3 style="color: #ffffff; margin-bottom: 0.8rem; text-align: center;">Simulare 2 2026</h3>
 
@@ -165,11 +135,9 @@
                                         <span class="links" style="margin: 0;"><a href="./rezolvare-simulare-admiterepoli-2" target="_blank">Apasă aici</a></span>
                                     </div>
                                 </section>
-                            </div>
-                        </div>
-                        <p class="subiecte-box" data-set="arhiva-sim-1"><strong>Simulare #1 — 21 Martie 2026</strong></p>
-                        <div class="dropdown-section" id="dropdown-arhiva-sim-1">
-                            <div class="sub-links" style="display: flex; justify-content: center; margin: 0; padding: 0;">
+                        </Dropdown>
+                        <Dropdown set="arhiva-sim-1" label="Simulare #1 — 21 Martie 2026"
+                            bodyStyle="display: flex; justify-content: center; margin: 0; padding: 0;">
                                 <section style="display: flex; flex-direction: column; align-items: center;">
                                     <h3 style="color: #ffffff; margin-bottom: 0.8rem; text-align: center;">Simulare  1 2026</h3>
 
@@ -184,49 +152,22 @@
                                         <span class="links" style="margin: 0;"><a href="./rezolvare-simulare-admiterepoli-1" target="_blank">Apasă aici</a></span>
                                     </div>
                                 </section>
-                            </div>
-                        </div>
+                        </Dropdown>
                     </div>
                 </div>
                 </div>
             </section>
         </div>
     </main>
+  <Fragment slot="scripts">
+    <script>
+      import { initDropdowns } from '../scripts/dropdown';
+      import { initCountdown } from '../scripts/countdown';
+      import { initScheduledReveal } from '../scripts/reveal';
 
-    <footer>   
-        <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-            <img src="./images/whatsapp.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-            <img src="./images/instagram.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="./contact" style="color: white; text-decoration: none;"> Contact</a>
-        <a href="./termeni-si-conditii" style="color: white; text-decoration: none;"> Termeni si conditii</a>
-        <a href="./politica-confidentialitate" style="color: white; text-decoration: none;">Politica de Confidentialitate</a>
-        <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-    </footer>
-
-    <script src="main.js"></script>
-    <div id="newsletter-popup">
-                <div class="newsletter-content">
-            <button class="close-btn" aria-label="Close">&times;</button>
-            <h3 class="glass-headline">Antrenament zilnic pentru&nbsp;admitere</h3>
-            <div class="popup-benefits">
-                <p><strong>Seturi noi de probleme</strong> la mate, info și&nbsp;fizică</p>
-                <p>Sesiuni LIVE de simulări pe Google&nbsp;Meet</p>
-            </div>
-            <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank" class="whatsapp-btn" id="whatsapp-link">Intră&nbsp;în&nbsp;grupul de&nbsp;WhatsApp</a>
-            <a href="#" class="dismiss-link popup-microcopy">Nu acum &middot; Fără spam</a>
-        </div>
-    </div>
-
-    <noscript>
-        <div style="padding: 20px; background: #f8f9fa; border: 1px solid #ddd; text-align: center; color: #333;">
-            <h3>Rămâi la curent cu AdmiterePoli</h3>
-            <p>Abonează-te la newsletter-ul nostru pentru informații despre admitere, subiecte rezolvate și resurse utile.</p>
-        </div>
-    </noscript>
-
-    <script type="module" src="./firebase-auth.js"></script>
-</body>
-</html>
+      initScheduledReveal();
+      initCountdown();
+      initDropdowns();
+    </script>
+  </Fragment>
+</BaseLayout>
