@@ -9,15 +9,22 @@
  *   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"
  *           onload="renderMathInElement(document.body);"></script>
  *
- * Put it in the `head` slot, where the legacy page had those tags (after the
- * fonts, before the page's own <style>), so the stylesheet keeps its place in
- * the cascade:
+ * Use it anywhere in a page or layout that renders `BaseLayout`, and import it
+ * after `BaseLayout`:
  *
- *   <Katex slot="head" />
+ *   <Katex />
+ *
+ * The stylesheet is imported, so Astro bundles it with the page CSS in import
+ * order: after `global.css` (imported by `BaseLayout`), as on the legacy pages,
+ * where the KaTeX stylesheet came after `styles.css`. Both set
+ * `.katex { font-size }` with the same specificity and the later rule must win
+ * (KaTeX's 1.21em, not the 1.1em in 05-newsletter-popup-dark-cartoonish.css).
+ * Do not write it as a `<link>` in the `head` slot: Astro links the bundled CSS
+ * at the end of `<head>`, after the slot, so the site rule would win (#168).
  *
  * What it does, as on the legacy pages:
  * - loads the KaTeX stylesheet (and its fonts) from the `katex` package
- *   instead of the CDN, as a <link> at the place of the component;
+ *   instead of the CDN, bundled after the site CSS;
  * - renders every formula in `document.body` once the document is parsed,
  *   with the default auto-render options (delimiters `$$ … $$`, `\( … \)`,
  *   `\[ … \]` and the AMS environments), which is what the legacy
@@ -29,10 +36,8 @@
  * The version is pinned in package.json to the one the unversioned CDN URL
  * served when the pages were ported.
  */
-import stylesheetUrl from 'katex/dist/katex.min.css?url';
+import 'katex/dist/katex.min.css';
 ---
-
-<link rel="stylesheet" href={stylesheetUrl} />
 
 <script>
   import renderMathInElement from 'katex/contrib/auto-render';

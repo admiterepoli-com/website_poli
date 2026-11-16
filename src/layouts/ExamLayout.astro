@@ -24,10 +24,12 @@
  * - head: for paid simulations, the classic inline script that sets
  *   `window.simulationId` and, when the config has them, the label, buy URL
  *   and gate start (`examGateStart`, `examGateStartLabel`), so the gate reads
- *   them before any module runs; then KaTeX; then, on pages with track
- *   selection, the page stylesheet that the legacy pages carried in an inline
- *   `<style>` (track cards, `fizica-mode` recolouring, circuit figures);
- * - body: `#exam-gate` and `#exam-content` with the `GateFallback` safety net
+ *   them before any module runs. KaTeX's stylesheet is bundled after the
+ *   site CSS (see `Katex.astro`);
+ * - body: on pages with track selection, first the page stylesheet that the
+ *   legacy pages carried in an inline `<style>` (track cards, `fizica-mode`
+ *   recolouring, circuit figures), placed here so it comes after the bundled
+ *   site CSS as it did on the legacy pages; then `#exam-gate` and `#exam-content` with the `GateFallback` safety net
  *   (paid simulations only: on a free page nothing would ever show the
  *   content), `#track-selector` around the `track-selector` slot, the sticky
  *   timer, the tabs and panels, the submit summary and `#results-screen`.
@@ -50,11 +52,6 @@ import BaseLayout from './BaseLayout.astro';
 import GateFallback from '../components/GateFallback.astro';
 import Katex from '../components/Katex.astro';
 import type { ExamConfig } from '../lib/exam/types';
-// KaTeX's stylesheet must come after the site stylesheet, as on the legacy pages: both set
-// `.katex { font-size }` and the later one wins (1.21em from KaTeX, not 1.1em from styles.css).
-// Astro puts bundled CSS at the end of <head>, after the <link> that <Katex> writes in place,
-// so the stylesheet is also imported here, after BaseLayout and its global.css.
-import 'katex/dist/katex.min.css';
 
 interface Props {
   title: string;
@@ -201,8 +198,9 @@ const pageStyles = `
 
 <BaseLayout title={title} description={description} popup={false}>
   {startScript !== '' && <script is:inline slot="head" set:html={startScript} />}
-  <Katex slot="head" />
-  {tracks && <style is:inline slot="head" set:html={pageStyles} />}
+  <Katex />
+  {/* Page styles come after the bundled site CSS (end of <head>), as on the legacy pages: top of <body>. */}
+  {tracks && <style is:inline set:html={pageStyles} />}
 
   {/* Markup copied from the legacy pages; the inline whitespace is part of the extracted text. */}
   <!-- prettier-ignore -->
