@@ -1,52 +1,16 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <script src="./cookie-consent.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PC1VMXYCRN');
-    </script>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profilul meu | AdmiterePoli</title>
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/png" href="logosquared.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-</head>
-<body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
+---
+/**
+ * Ported from legacy/profil.html (+ legacy/profile.js, now src/scripts/profile/).
+ *
+ * The legacy page has `noindex`, no meta description, no footer and no
+ * WhatsApp popup. <main> is copied as it is; the three cards are filled by
+ * `initProfile()` once Firebase knows the user (a visitor who is not signed
+ * in is sent to the home page, as before).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
 
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
-
+<BaseLayout title="Profilul meu | AdmiterePoli" noindex footer={false} popup={false}>
     <main>
         <div class="grid-main-content">
             <section class="container profile-page">
@@ -95,9 +59,11 @@
             </section>
         </div>
     </main>
+  <Fragment slot="scripts">
+    <script>
+      import { initProfile } from '../scripts/profile/init';
 
-    <script src="./main.js"></script>
-    <script type="module" src="./firebase-auth.js"></script>
-    <script type="module" src="./profile.js"></script>
-</body>
-</html>
+      initProfile();
+    </script>
+  </Fragment>
+</BaseLayout>
