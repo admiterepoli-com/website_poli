@@ -1,52 +1,24 @@
-<!DOCTYPE html>
-<html lang="ro">
-    <head>
-        <script src="./cookie-consent.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+---
+/**
+ * Ported from legacy/informatii.html (see src/pages/cti-vs-is.astro for the
+ * general pattern).
+ *
+ * Notes for this page:
+ * - DM Sans fonts and the default body class "lp-body lp-dark".
+ * - The <noscript> popup text is the `weekly` version (the default).
+ * - The <main> markup is copied as it is. The info cards have no matching
+ *   component in src/components/content/, so they stay as plain markup.
+ * - The accordion is the typed initInfoCards() from src/scripts/info-cards.ts;
+ *   main.js is not loaded.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
 
-          gtag('config', 'G-PC1VMXYCRN');
-        </script>
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Informații importante pentru admitere</title>
-        <meta name="description" content="Informații importante despre admiterea la Politehnică – colectate și explicate de studenți, pentru viitorii studenți.">
-        <link rel="icon" type="image/png" href="logosquared.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    </head>
-    <body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
-
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
+<BaseLayout
+  title="Informații importante pentru admitere"
+  description="Informații importante despre admiterea la Politehnică – colectate și explicate de studenți, pentru viitorii studenți."
+  fonts="dm-sans"
+>
         <main>
             <div class="grid-main-content">
                 <div class="container">
@@ -317,41 +289,11 @@
                 </div>
             </div>
         </main>
-        <footer>   
-        <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-            <img src="./images/whatsapp.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-            <img src="./images/instagram.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="./contact" style="color: white; text-decoration: none;"> Contact</a>
-        <a href="./termeni-si-conditii" style="color: white; text-decoration: none;"> Termeni si conditii</a>
-        <a href="./politica-confidentialitate" style="color: white; text-decoration: none;">Politica de Confidentialitate</a>
-        <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-    </footer>
-        <script src="main.js"></script>
-    
-        <!-- Newsletter Popup Liquid Glass -->
-     <div id="newsletter-popup">
-                <div class="newsletter-content">
-            <button class="close-btn" aria-label="Close">&times;</button>
-            <h3 class="glass-headline">Antrenament zilnic pentru&nbsp;admitere</h3>
-            <div class="popup-benefits">
-                <p><strong>Seturi noi de probleme</strong> la mate, info și&nbsp;fizică</p>
-                <p>Sesiuni LIVE de simulări pe Google&nbsp;Meet</p>
-            </div>
-            <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank" class="whatsapp-btn" id="whatsapp-link">Intră&nbsp;în&nbsp;grupul de&nbsp;WhatsApp</a>
-            <a href="#" class="dismiss-link popup-microcopy">Nu acum &middot; Fără spam</a>
-        </div>
-    </div>
-    <noscript>
-        <div style="padding: 20px; background: #f8f9fa; border: 1px solid #ddd; text-align: center; color: #333;">
-            <h3>Rămâi la curent cu AdmiterePoli</h3>
-            <p>Abonează-te la newsletter-ul nostru pentru a primi săptămânal noutăți despre admitere, subiecte rezolvate și resurse utile.</p>
-        </div>
-    </noscript>
-    </div>
+  <Fragment slot="scripts">
+    <script>
+      import { initInfoCards } from '../scripts/info-cards';
 
-        <script type="module" src="./firebase-auth.js"></script>
-</body>
-</html>
+      initInfoCards();
+    </script>
+  </Fragment>
+</BaseLayout>
