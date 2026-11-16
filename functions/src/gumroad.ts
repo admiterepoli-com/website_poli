@@ -414,8 +414,9 @@ export async function handleGumroadWebhook(
   }
 }
 
-// Created on the first request, not at module load: until #46 lands, the default
-// app is initialised by legacy.js, and a second initializeApp() would throw.
+// Created on the first request, not at module load: the default app may already
+// exist (the scheduled jobs in trials.ts initialise it lazily too), and a second
+// initializeApp() would throw.
 function productionDeps(): WebhookDeps {
   const app = getApps().length === 0 ? initializeApp() : getApp();
   return {
