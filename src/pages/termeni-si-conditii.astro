@@ -1,61 +1,18 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <script src="./cookie-consent.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PC1VMXYCRN');
-    </script>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termeni și Condiții | AdmiterePoli</title>
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/png" href="logosquared.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-</head>
-<body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
+---
+/**
+ * Ported from legacy/termeni-si-conditii.html on LegalLayout: the layout renders the
+ * wrapper, the h1 and the date line; the `.legal-section` blocks are copied
+ * as they are. The legacy page has no inline <style> and no inline script
+ * besides analytics.
+ */
+import LegalLayout from '../layouts/LegalLayout.astro';
+---
 
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
-
-    <main>
-        <div class="grid-main-content">
-            <section class="container" style="max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem 3.5rem;">
-
-                <div class="legal-page-header">
-                    <h1>Termeni și Condiții</h1>
-                    <p class="legal-date">Ultima actualizare: 4 aprilie 2026</p>
-                </div>
-
+<LegalLayout
+  title="Termeni și Condiții | AdmiterePoli"
+  heading="Termeni și Condiții"
+  updated="Ultima actualizare: 4 aprilie 2026"
+>
                 <div class="legal-section">
                     <h2>1. Acceptarea termenilor</h2>
                     <p>Prin accesarea sau utilizarea site-ului <strong>admiterepoli.com</strong>, confirmi că ai citit, înțeles și ești de acord cu acești Termeni și Condiții, precum și cu <a href="./politica-confidentialitate">Politica de Confidențialitate</a>. Dacă nu ești de acord, te rugăm să nu utilizezi site-ul.</p>
@@ -202,25 +159,4 @@
                     <p>Pentru orice întrebare, solicitare sau plângere legată de acești termeni:<br>
                     <a href="mailto:admiterepoli@gmail.com">admiterepoli@gmail.com</a></p>
                 </div>
-
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-            <img src="./images/whatsapp.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-            <img src="./images/instagram.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="./contact" style="color: white; text-decoration: none;"> Contact</a>
-        <a href="./termeni-si-conditii" style="color: white; text-decoration: none;"> Termeni si conditii</a>
-        <a href="./politica-confidentialitate" style="color: white; text-decoration: none;">Politica de Confidentialitate</a>
-        <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-    </footer>
-
-    <script src="main.js"></script>
-    <script type="module" src="./firebase-auth.js"></script>
-</body>
-</html>
+</LegalLayout>
