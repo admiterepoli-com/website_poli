@@ -1,0 +1,73 @@
+name: Deploy site
+
+# Builds the Astro site and publishes dist/ to GitHub Pages.
+#
+# Inactive until the cutover (#94):
+# - it only triggers on pushes to `main` and on manual dispatch, and this file reaches `main`
+#   only with the cutover merge, so nothing runs from `typescript-port`;
+# - a manual dispatch from any other branch is skipped by the `if` on the job;
+# - deploying with actions/deploy-pages also needs the repository's Pages source switched from
+#   "Deploy from a branch" (`main`, /) to "GitHub Actions", which is a step of the cutover.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deployment at a time; a newer push waits for the running one instead of cancelling it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Same gates as the port CI: never publish a build that changed what Google sees.
+      - name: SEO parity
+        run: npm run seo:check
+
+      - name: Site smoke test
+        run: node .github/scripts/site-smoke.mjs dist
+
+      # public/ provides both; the custom domain and the Jekyll opt-out must ship with the site.
+      - name: Check CNAME and .nojekyll
+        run: |
+          test "$(cat dist/CNAME)" = "admiterepoli.com"
+          test -f dist/.nojekyll
+          test -f dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: deploy
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
