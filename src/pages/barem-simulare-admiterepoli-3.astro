@@ -1,0 +1,127 @@
+---
+/**
+ * Barem of the AdmiterePoli simulation III, ported from
+ * legacy/barem-simulare-admiterepoli-3.html.
+ *
+ * Like baremele 1 and 2, this page has no gate: the answer table is public and
+ * there is no `window.baremConfig` / `#barem-gate`.
+ *
+ * The legacy inline <style> block is kept unchanged at the top of the body
+ * (not in the head slot) so that it still comes after the global stylesheet,
+ * which Astro links at the end of <head>, and keeps overriding the
+ * `.barem-table` rules of 07-barem-cod.css as it did on the legacy page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BaremTable, { type BaremRow } from '../components/BaremTable.astro';
+
+const columns = ['Mate', 'Info', 'Fizică'] as const;
+
+const rows: BaremRow[] = [
+  { label: 'Problema 1', answers: ['c', 'd', 'e'] },
+  { label: 'Problema 2', answers: ['d', 'a', 'a'] },
+  { label: 'Problema 3', answers: ['b', 'c', 'c'] },
+  { label: 'Problema 4', answers: ['b', 'a', 'b'] },
+  { label: 'Problema 5', answers: ['f', 'c', 'd'] },
+  { label: 'Problema 6', answers: ['c', 'a', 'a'] },
+  { label: 'Problema 7', answers: ['e', 'c', 'f'] },
+  { label: 'Problema 8', answers: ['d', 'a', 'b'] },
+  { label: 'Problema 9', answers: ['c', 'c', 'a'] },
+  { label: 'Problema 10', answers: ['f', 'b', 'b'] },
+];
+---
+
+<BaseLayout
+  title="Barem Simulare AdmiterePoli 3 2026 – Mate-Fizică | AdmiterePoli"
+  description="Baremul oficial pentru simularea #3 de admitere la Universitatea Politehnica București (UPB) 2026 – Matematică și Fizică. Verifică-ți răspunsurile!"
+  popupNoscript="info"
+>
+    <style is:inline>
+        .barem-table-wrapper {
+            overflow-x: auto;
+            margin: 2rem auto;
+            max-width: 700px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-shine);
+            backdrop-filter: blur(16px) saturate(1.5);
+            -webkit-backdrop-filter: blur(16px) saturate(1.5);
+        }
+
+        .barem-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            color: var(--text-heading);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .barem-table th, .barem-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .barem-table th {
+            background: rgba(123, 160, 217, 0.1);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .barem-table th:nth-child(2) { color: var(--accent2); }  /* Mate */
+        .barem-table th:nth-child(3) { color: var(--accent3); }  /* Info */
+        .barem-table th:nth-child(4) { color: #fbbf24; }         /* Fizică */
+
+        .barem-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .barem-table tr:hover td {
+            background: rgba(123, 160, 217, 0.05);
+        }
+
+        .barem-table td {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .barem-table td:first-child {
+            text-align: left;
+            padding-left: 25px;
+            color: var(--muted);
+        }
+    </style>
+    <main>
+        <section class="grid-main-content">
+            <div class="container" style="margin-bottom: 1rem;">
+                <div class="pag-intro">
+                    <h1 style="text-align: left;">Barem Simulare AdmiterePoli III</h1>
+                    <h3 class="indented" style="margin-top: 1rem; font-weight: 500; line-height: 1.6; font-size: 1.3rem;">
+                        Aici găsești baremul pentru a treia simulare organizată de noi, AdmiterePoli. Simularea a inclus atât varianta Informatică, cât și varianta Fizică. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.
+                    </h3>
+
+                    <div style="margin-top: 1.5rem; background: rgba(225, 225, 225, 0.1); padding: 1.5rem; border-radius: 1rem;">
+                        <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.2rem;">🔗 Linkuri utile:</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.1rem;">
+                            <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-05-09" style="color: lightblue;">Rezolvă Simularea</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="./rezolvare-simulare-admiterepoli-3" style="color: lightblue;">Vezi rezolvarea scrisă la Matematică, Informatică și Fizică</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabel Barem -->
+            <BaremTable columns={columns} rows={rows} />
+
+            <div class="container" style="margin-top: 1rem;">
+                <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;">Subiecte similare care te-ar putea ajuta:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.2rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-informatica-barem" style="color: lightblue;">Barem Simulare 2026 Informatică</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-matematica-barem" style="color: lightblue;">Barem Simulare 2026 Matematică</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-1" style="color: lightblue;">Barem Simulare AdmiterePoli I</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-2" style="color: lightblue;">Barem Simulare AdmiterePoli II</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
