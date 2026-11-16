@@ -15,11 +15,13 @@
     "format": "prettier --write .",
     "seo:check": "node scripts/seo-check.ts",
     "visual": "node scripts/visual.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^22.20.5",
     "@types/pngjs": "^6.0.5",
     "astro": "^7.4.1",
