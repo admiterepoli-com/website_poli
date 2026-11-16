@@ -15,11 +15,14 @@
     }
   ],
   "hosting": {
-    "public": ".",
+    "public": "dist",
+    "predeploy": [
+      "npm ci",
+      "npm run build"
+    ],
     "cleanUrls": true,
     "trailingSlash": false,
     "ignore": [
-      "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
