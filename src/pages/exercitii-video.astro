@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="ro">
-    <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-PC1VMXYCRN');
-        </script>
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Exerciții Video · AdmiterePoli</title>
-        <meta name="description" content="Exerciții video pas cu pas pentru admiterea la Politehnica București — matematică și informatică.">
-        <link rel="icon" type="image/png" href="logosquared.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <style>
+---
+/**
+ * Ported from legacy/exercitii-video.html.
+ *
+ * Differences of the legacy page that BaseLayout props reproduce: no cookie
+ * consent script (`cookieConsent={false}`), no WhatsApp popup, alt texts on
+ * the footer icons, and its own font link (DM Sans + Plus Jakarta Sans, in the
+ * head slot with `fonts="none"`).
+ *
+ * - The 700-line page <style> is kept unchanged at the top of the body, so it
+ *   comes after the bundled site CSS as on the legacy page (PORTING.md).
+ * - <main> and the video modal markup are copied as they are; the modal sat
+ *   after the footer, so it is in the `scripts` slot (also after the footer).
+ * - The inline module is now src/scripts/exercitii-video/ (catalog data in
+ *   src/data/exercitii-video.ts).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Exerciții Video · AdmiterePoli"
+  description="Exerciții video pas cu pas pentru admiterea la Politehnica București — matematică și informatică."
+  fonts="none"
+  cookieConsent={false}
+  popup={false}
+  footerIconAlt
+>
+  <Fragment slot="head">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </Fragment>
+        <style is:inline>
         /* ── Keyframes ── */
         @keyframes ev-fadeUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         @keyframes ev-fadeIn  { from{opacity:0} to{opacity:1} }
@@ -719,35 +730,6 @@
             .ev-play-btn { opacity: 0; }
         }
         </style>
-    </head>
-    <body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
-
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
-
         <main>
             <div class="grid-main-content">
 
@@ -818,20 +800,7 @@
 
             </div>
         </main>
-
-        <footer>
-            <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-                <img src="./images/whatsapp.svg" style="width:24px;height:24px;filter:brightness(0) invert(1);" alt="WhatsApp">
-            </a>
-            <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-                <img src="./images/instagram.svg" style="width:24px;height:24px;filter:brightness(0) invert(1);" alt="Instagram">
-            </a>
-            <a href="./contact" style="color:white;text-decoration:none;">Contact</a>
-            <a href="./termeni-si-conditii" style="color:white;text-decoration:none;">Termeni si conditii</a>
-            <a href="./politica-confidentialitate" style="color:white;text-decoration:none;">Politica de Confidentialitate</a>
-            <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-        </footer>
-
+  <Fragment slot="scripts">
         <!-- Video Modal -->
         <div class="ev-modal-overlay" id="ev-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ev-modal-title">
             <div class="ev-modal">
@@ -852,341 +821,10 @@
             </div>
         </div>
 
-        <script src="main.js"></script>
-        <script type="module" src="./firebase-auth.js"></script>
-        <script type="module">
-            import { getApp }                          from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-            import { getAuth, onAuthStateChanged }     from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
-            import { getFirestore, doc, getDoc }       from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+    <script>
+      import { initExercitiiVideo } from '../scripts/exercitii-video/init';
 
-            const SVG_LOCK = `<svg class="ev-lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
-            const SVG_STAR = `<svg class="ev-lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
-
-            // videoId-urile sunt stocate în Firestore, nu în sursă
-            const exercitiiMate = [
-                { id: 1, docId: "mate-1", title: "Numere complexe",                          access: "account", statement: "Fie z ∈ ℂ cu z + 1/z = 1. Calculați valoarea expresiei E = z²⁰²⁶ + 1/z²⁰²⁶." },
-                { id: 2, docId: "mate-2", title: "Integrală cu modul",                       access: "account", statement: "Aflați t ∈ ℝ* pentru care ∫₀^(π/2) |sin x + t·cos x| dx = 1." },
-                { id: 3, docId: "mate-3", title: "Integrală cu schimbare de variabilă",      access: "plus",    statement: "Calculați integrala nedefinită ∫ (x²−1)/(x⁴+1) dx." },
-                { id: 4, docId: "mate-4", title: "Integrală cu sfârșit interesant",           access: "plus",    statement: "Calculați valoarea integralei I = ∫_(1/e)^e (1 − 1/x²)·e^(x+1/x) dx." },
-                { id: 5, docId: "mate-5", title: "Integrală cu 2 părți întregi",             access: "plus",    statement: "Calculați I = ∫_(1/4)^(1/2) ⌊ln⌊1/x⌋⌋ dx, unde ⌊·⌋ este funcția parte întreagă." },
-                { id: 6, docId: "mate-6", title: "Funcții interesante",                      access: "plus",    statement: "Fie f: ℝ→ℝ continuă cu f(x³+x) = x·eˣ/(3x²+1) + x² pentru orice x ∈ ℝ. Calculați ∫₀² f(t) dt." },
-                { id: 7, docId: "mate-7", title: "Funcție derivabilă — integrală",           access: "plus",    statement: "Fie f: (0,∞)→(0,∞) derivabilă cu ∫₁ˣ f(t) dt = x²f(x) − 1 pentru orice x ∈ ℝ₊*. Determinați f(x)." },
-                { id: 8,  docId: "mate-8",  title: "Număr de soluții și Lagrange",          access: "account", statement: "Să se determine numărul de soluții reale ale ecuației: 2ˣ + 3ˣ = 4ˣ + 1." },
-                { id: 9,  docId: "mate-9",  title: "Limită cu sumă Riemann",        access: "plus",    statement: "Să se calculeze lim(n→∞) Σ(k=1..n) n/(n² + k²x²) pentru orice x > 0." },
-                { id: 10, docId: "mate-10", title: "Arie disc, lucram in complex", access: "plus", statement: "Să se calculeze aria suprafeței, din planul complex determinată de următoarea ecuație: |z − 2 + 3i| ≤ 2" },
-                { id: 11, docId: "mate-11", title: "Functia definita prin ecuatie, derivare ecuatie", access: "plus", statement: "Se considera functia y = y(x), definita implicit de ecuatia x³ + y³ - 3xy = 1, y(0) = 1, aflati y''(0)"},
-                { id: 12, docId: "mate-12", title: "Partea imaginara a unui numar complex ridicat la putere", access: "plus", statement: "Fie numărul complex z ∈ C \\ {1} astfel încât |z| = 1. Se consideră numărul: ω = ((z + 1) / (z − 1))^2026. Să se determine partea imaginară a numărului complex ω (Im(ω))." },
-                { id: 13, docId: "mate-13", title: "Sumă cu combinări", access: "plus", statement: "Să se determine expresia sumei Sₙ = Cₙ¹ · 1/2 + Cₙ² · 1/2² + ... + Cₙⁿ⁻¹ · 1/2ⁿ⁻¹, pentru n ∈ ℕ, n ≥ 2." },
-                { id: 14, docId: "mate-14", title: "Partea intreaga a unei integrale clasice", access: "plus", statement: "Să se determine partea întreagă a următoarei integrale: I = ∫₀¹ eˣ² dx."},
-                { id: 15, docId: "mate-15", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 16, docId: "mate-16", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 17, docId: "mate-17", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 18, docId: "mate-18", title: "În curând", access: "plus", statement: "", comingSoon: true },
-            ];
-            const exercitiiInfo = [
-                { id: 1, docId: "info-1", title: "Indexare vector",              access: "account", statement: "Ce elemente conține v după executarea: int v[]={1,2,3,4,5}; for(int i=0;i<5;i++) v[i]=v[v[i]%5];" },
-                { id: 2, docId: "info-2", title: "Trepte dinamice",             access: "account", statement: "O piramidă cu 10 niveluri. Salt simplu (+1 nivel) sau salt dublu (+2 niveluri). Orice salt dublu trebuie urmat obligatoriu de cel puțin un salt simplu. Câte trasee distincte există de la nivelul 0 la 10?" },
-                { id: 3, docId: "info-3", title: "Anagrame",                    access: "plus",    statement: "În câte moduri pot fi aranjate cele 8 litere din cuvântul TRIANGLE pe un rând, astfel încât să nu apară niciunul dintre șirurile GIA sau NT?" },
-                { id: 4, docId: "info-4", title: "Numere cu proprietăți",       access: "plus",    statement: "int f(int n){if(n==0)return 0; return (n%10)-f(n/10);} Câte numere naturale n de exact 3 cifre îndeplinesc condiția f(n)==0?" },
-                { id: 5, docId: "info-5", title: "Recursivă pe cifre",          access: "plus",    statement: "int f(int n,int &k){if(n==0)return 0; int t=f(n/10,k); k=k*10+n%10; return t+k;} int k=0; cout<<f(123,k); Ce valoare se afișează?" },
-                { id: 6, docId: "info-6", title: "Dulapuri perfecte",           access: "plus",    statement: "1000 de dulapuri inițial închise. Elevul i schimbă starea tuturor dulapurilor cu numărul multiplu de i (i=1..1000). Câte dulapuri rămân deschise la final?" },
-                { id: 7, docId: "info-7", title: "Combinatorică — Stars & Bars", access: "plus",   statement: "Într-o parcare cu 10 locuri consecutive, trebuie parcate 3 mașini distincte astfel încât între oricare două mașini parcate să existe cel puțin 2 locuri libere. În câte moduri?" },
-                { id: 8,  docId: "info-8",  title: "Numărare funcții strict crescătoare",    access: "account", statement: "Fie funcția f : A → B, unde A = {1, 2, 3} și B = {1, 2, 3, 4, 5}. Câte funcții strict crescătoare f cu proprietatea că f(2) ≠ 3 există?" },
-                { id: 9,  docId: "info-9",  title: "Arbore binar colorat",          access: "plus",    statement: "Arbore binar neordonat cu 9 noduri: baza este un arbore perfect cu 7 noduri, iar 2 noduri suplimentare sunt pe nivelul următor. Colorăm nodurile cu 3 culori astfel încât orice nod să aibă culoare diferită de părintele și fratele său (dacă există). În câte moduri distincte poate fi structurat și colorat arborele?" },
-                { id: 10, docId: "info-10", title: "Vector special și parcurgere cu pas variabil", access: "plus", statement: "Considerăm un vector V cu 2026 de elemente, indexat de la 0 la 2025 populat după anumite reguli, ce valoare va fi printată pe ecran la finalul execuției?" },
-                { id: 11, docId: "info-11", title: "Optimizare rute in graf orientat", access: "plus", statement: "Consideram o retea de transmisie a datelor reprezentata de o forma a unui graf orientat, aciclic format din 6 noduri. Datele pleaca exclusiv de la nodul 6 si trebuie sa ajunga la serverele finale A si B, optimizati ruta schimbat orientarea muchiilor"},
-                { id: 12, docId: "info-12", title: "Complexitatea ordonarii elementelor dintr-o matrice", access: "plus", statement: "Fie o matrice pătratică A cu N linii și N coloane. Ce complexitate are algoritmul optim pentru a ordona strict crescător elementele aflate sub diagonala principală, lăsând restul elementelor nemodificate?" },
-                { id: 13, docId: "info-13", title: "Lampadare consecutive", access: "plus", statement: "Pe o alee sunt aliniate 10 lampadare. În câte moduri distincte pot funcționa sau fi defecte, astfel încât să nu existe niciodată două lampadare defecte consecutive?" },
-                { id: 14, docId: "info-14", title: "Numar de cicluri dintr-un graf complet", access: "plus", statement: "Se consideră un graf neorientat complet cu $n = 6$ noduri. Câte cicluri elementare distincte de lungime 4 conține acest graf? (Două cicluri se consideră distincte dacă diferă prin cel puțin o muchie)."},
-                { id: 15, docId: "info-15", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 16, docId: "info-16", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 17, docId: "info-17", title: "În curând", access: "plus", statement: "", comingSoon: true },
-                { id: 18, docId: "info-18", title: "În curând", access: "plus", statement: "", comingSoon: true },
-            ];
-
-            // Map docId -> videoId, populat din Firestore după auth check
-            let videoIdMap = {};
-
-            function buildCard(ex, userLevel, idx) {
-                const numLabel = String(ex.id).padStart(2, '0');
-
-                // Coming soon — thumbnail special, non-interactiv
-                if (ex.comingSoon) {
-                    return `
-                        <article class="ev-card is-coming-soon" style="--i:${idx}" aria-label="Lecția ${numLabel} — în curând">
-                            <div class="ev-thumb">
-                                <div class="ev-thumb-cs">
-                                    <div class="ev-thumb-cs-orbit">
-                                        <div class="ev-thumb-cs-ico">
-                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                        </div>
-                                        <div class="ev-thumb-cs-dot"></div>
-                                    </div>
-                                    <span class="ev-thumb-cs-badge">În curând</span>
-                                </div>
-                            </div>
-                            <div class="ev-card-body">
-                                <p class="ev-card-num">Lecția ${numLabel}</p>
-                                <p class="ev-card-title" style="color:rgba(243,237,227,0.32)">În curând</p>
-                                <div class="ev-card-footer">
-                                    <span class="ev-dur-chip" style="opacity:0.35">
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                        ~5 min
-                                    </span>
-                                </div>
-                            </div>
-                        </article>`;
-                }
-
-                const canWatch =
-                    (ex.access === 'account' && (userLevel === 'account' || userLevel === 'plus')) ||
-                    (ex.access === 'plus'    &&  userLevel === 'plus');
-
-                const videoId = videoIdMap[ex.docId] || null;
-                const media = videoId
-                    ? `<img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${ex.title}" loading="lazy">`
-                    : `<div class="ev-thumb-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>`;
-
-                let lockHtml = '';
-                if (!canWatch) {
-                    if (ex.access === 'account') {
-                        lockHtml = `
-                            <div class="ev-lock is-account">
-                                ${SVG_LOCK}
-                                <p class="ev-lock-text">Necesită cont gratuit</p>
-                                <button type="button" class="ev-lock-btn" data-open-auth>Creează cont</button>
-                            </div>`;
-                    } else {
-                        const email = window._evEmail ? encodeURIComponent(window._evEmail) : '';
-                        const url = `https://admiterepoli.gumroad.com/l/student-plus-lunar?wanted=true${email ? '&email='+email : ''}`;
-                        lockHtml = `
-                            <div class="ev-lock is-plus">
-                                <div class="ev-plus-badge">Student Plus</div>
-                                ${SVG_STAR}
-                                <p class="ev-lock-text">Disponibil cu Student Plus</p>
-                                <button type="button" class="ev-lock-btn" data-upgrade-url="${encodeURIComponent(url)}">Upgrade acum</button>
-                            </div>`;
-                    }
-                }
-
-                const plusCorner = (ex.access === 'plus' && canWatch) ? '<div class="ev-plus-badge">Plus</div>' : '';
-                const playBtn    = canWatch ? `<div class="ev-play-btn" aria-hidden="true"><div class="ev-play-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>` : '';
-
-                // docId în loc de videoId — video ID-ul nu ajunge în DOM
-                const openAttrs = (canWatch && videoId)
-                    ? `data-ev-open data-ev-docid="${ex.docId}" data-ev-num="${numLabel}" data-ev-title="${ex.title.replace(/"/g,'&quot;')}" data-ev-statement="${(ex.statement||'').replace(/"/g,'&quot;')}"`
-                    : '';
-
-                return `
-                    <article class="ev-card" style="--i:${idx}" ${openAttrs}>
-                        <div class="ev-thumb">
-                            ${media}
-                            ${lockHtml}
-                            ${plusCorner}
-                            ${playBtn}
-                        </div>
-                        <div class="ev-card-body">
-                            <p class="ev-card-num">Lecția ${numLabel}</p>
-                            <p class="ev-card-title">${ex.title}</p>
-                            <div class="ev-card-footer">
-                                <span class="ev-dur-chip">
-                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    ~5 min
-                                </span>
-                            </div>
-                        </div>
-                    </article>`;
-            }
-
-            function renderCatalog(list, userLevel) {
-                const free = list.filter(e => e.access === 'account');
-                const plus = list.filter(e => e.access === 'plus');
-
-                const freeStatus = userLevel === 'none'    ? 'Cont gratuit necesar'
-                                 : userLevel === 'plus'    ? 'Deblocat'
-                                 :                          'Acces inclus';
-                const plusStatus = userLevel === 'plus'    ? 'Deblocat — abonament activ'
-                                 : userLevel === 'account' ? 'Necesită Student Plus'
-                                 :                          'Disponibil cu Student Plus';
-                let html = '';
-                if (free.length) {
-                    html += `
-                        <div class="ev-group is-free">
-                            <div class="ev-group-header">
-                                <div class="ev-group-name-wrap">
-                                    <span class="ev-group-bar" aria-hidden="true"></span>
-                                    <h3 class="ev-group-name">Cu cont gratuit</h3>
-                                    <span class="ev-group-count">${free.length} lecții</span>
-                                </div>
-                                <span class="ev-group-status">${freeStatus}</span>
-                            </div>
-                            <div class="ev-grid">${free.map((e, i) => buildCard(e, userLevel, i)).join('')}</div>
-                        </div>`;
-                }
-                if (plus.length) {
-                    html += `
-                        <div class="ev-group is-plus">
-                            <div class="ev-group-header">
-                                <div class="ev-group-name-wrap">
-                                    <span class="ev-group-bar" aria-hidden="true"></span>
-                                    <h3 class="ev-group-name">Student Plus</h3>
-                                    <span class="ev-group-count">${plus.length} lecții</span>
-                                </div>
-                                <span class="ev-group-status">${plusStatus}</span>
-                            </div>
-                            <div class="ev-grid">${plus.map((e, i) => buildCard(e, userLevel, i)).join('')}</div>
-                        </div>`;
-                }
-                return html;
-            }
-
-            let _userLevel = 'none';
-
-            function renderGrids(userLevel) {
-                _userLevel = userLevel;
-                document.getElementById('tab-mate').innerHTML = renderCatalog(exercitiiMate, userLevel);
-                document.getElementById('tab-info').innerHTML = renderCatalog(exercitiiInfo, userLevel);
-            }
-
-            function openAuthModal() {
-                const trigger = document.getElementById('nav-auth-trigger');
-                if (trigger) { trigger.click(); return; }
-                const t = setInterval(() => {
-                    const el = document.getElementById('nav-auth-trigger');
-                    if (el) { clearInterval(t); el.click(); }
-                }, 80);
-                setTimeout(() => clearInterval(t), 3000);
-            }
-
-            function setupTabs() {
-                const tabs = document.querySelectorAll('.ev-tab');
-                const activate = (btn) => {
-                    tabs.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-                    document.querySelectorAll('.ev-section').forEach(s => s.classList.remove('active'));
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-selected', 'true');
-                    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-                };
-                tabs.forEach((btn, i) => {
-                    btn.addEventListener('click', () => activate(btn));
-                    btn.addEventListener('keydown', e => {
-                        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-                        e.preventDefault();
-                        const j = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-                        tabs[j].focus();
-                        activate(tabs[j]);
-                    });
-                });
-            }
-
-            // ── Modal logic ──
-            const modalOverlay = document.getElementById('ev-modal-overlay');
-            const modalVideo   = document.getElementById('ev-modal-video');
-            const modalNum     = document.getElementById('ev-modal-num');
-            const modalTitle   = document.getElementById('ev-modal-title');
-            const modalStmt    = document.getElementById('ev-modal-statement');
-
-            function openVideoModal(videoId, num, title, statement) {
-                modalNum.textContent   = `Lecția ${num}`;
-                modalTitle.textContent = title;
-                modalStmt.textContent  = statement || '—';
-                modalVideo.innerHTML   = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" allowfullscreen allow="autoplay; encrypted-media" title="${title}"></iframe>`;
-                modalOverlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeVideoModal() {
-                modalOverlay.classList.remove('open');
-                document.body.style.overflow = '';
-                // stop video
-                modalVideo.innerHTML = '';
-            }
-
-            document.getElementById('ev-modal-close').addEventListener('click', closeVideoModal);
-            modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeVideoModal(); });
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoModal(); });
-
-            function setupClicks() {
-                document.querySelector('.ev-catalog').addEventListener('click', e => {
-                    // "Creează cont" — deschide modal auth
-                    if (e.target.closest('[data-open-auth]')) {
-                        e.preventDefault();
-                        openAuthModal();
-                        return;
-                    }
-                    // "Upgrade acum"
-                    const upBtn = e.target.closest('[data-upgrade-url]');
-                    if (upBtn) {
-                        e.preventDefault();
-                        if (_userLevel === 'none') {
-                            openAuthModal();
-                        } else {
-                            if (typeof window.openUpgradeModal === 'function') {
-                                window.openUpgradeModal();
-                            } else {
-                                const raw = upBtn.getAttribute('data-upgrade-url');
-                                if (raw) try { window.open(decodeURIComponent(raw), '_blank', 'noopener,noreferrer'); } catch(_) {}
-                            }
-                        }
-                        return;
-                    }
-                    // Click pe card deblocat → deschide modal video
-                    const card = e.target.closest('[data-ev-open]');
-                    if (card) {
-                        const videoId = videoIdMap[card.dataset.evDocid];
-                        if (videoId) {
-                            openVideoModal(
-                                videoId,
-                                card.dataset.evNum,
-                                card.dataset.evTitle,
-                                card.dataset.evStatement
-                            );
-                        }
-                    }
-                });
-            }
-
-            setupTabs();
-            setupClicks();
-            renderGrids('none');
-
-            async function fetchVideoIds(db, docIds) {
-                try {
-                    const snaps = await Promise.all(docIds.map(id => getDoc(doc(db, 'videos', id))));
-                    snaps.forEach((snap, i) => {
-                        if (snap.exists()) videoIdMap[docIds[i]] = snap.data().videoId;
-                    });
-                } catch(e) {
-                    console.warn('[exercitii-video] fetchVideoIds error:', e);
-                }
-            }
-
-            try {
-                const app  = getApp();
-                const auth = getAuth(app);
-                const db   = getFirestore(app, 'admiterepoli');
-                onAuthStateChanged(auth, async user => {
-                    if (!user) { videoIdMap = {}; renderGrids('none'); return; }
-                    window._evEmail = user.email;
-                    try {
-                        const snap = await getDoc(doc(db, 'users', user.uid));
-                        const st = snap.exists() ? snap.data().status : null;
-                        const isPaid = st === 'paid' || st === 'pending_cancellation' || st === 'trial';
-                        const level = isPaid ? 'plus' : 'account';
-
-                        // Fetch video IDs doar pentru nivelul de acces al userului
-                        const allVideos = [...exercitiiMate, ...exercitiiInfo];
-                        const accessibleDocIds = allVideos
-                            .filter(v => v.access === 'account' || (v.access === 'plus' && isPaid))
-                            .map(v => v.docId);
-                        await fetchVideoIds(db, accessibleDocIds);
-
-                        renderGrids(level);
-                    } catch { renderGrids('account'); }
-                });
-            } catch(e) {
-                console.warn('[exercitii-video] Firebase unavailable:', e);
-            }
-        </script>
-    </body>
-</html>
+      initExercitiiVideo();
+    </script>
+  </Fragment>
+</BaseLayout>
