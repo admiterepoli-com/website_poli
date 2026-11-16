@@ -6,9 +6,6 @@
  * button switches to `active` and the ticking stops.
  */
 
-/** Used when the page did not set `window.examGateStart` in its `<head>`. */
-const DEFAULT_EXAM_GATE_START = 'May 9, 2026 10:10:00';
-
 const DAY_MS = 86400000;
 const HOUR_MS = 3600000;
 const MINUTE_MS = 60000;
@@ -28,10 +25,6 @@ export function formatCountdown(distance: number): string {
 }
 
 export function initCountdown(): void {
-  // Fallback global — paginile de simulare îşi setează propriul examGateStart în <head>,
-  // aşa că nu îl suprascriem aici (scriptul rulează după acel inline script).
-  window.examGateStart = window.examGateStart ?? new Date(DEFAULT_EXAM_GATE_START);
-
   const btn = document.getElementById('glass-countdown-btn');
   const timerText = document.getElementById('countdown-timer');
   if (!btn || !timerText) return;

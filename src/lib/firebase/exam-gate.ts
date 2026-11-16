@@ -77,10 +77,11 @@ export async function applyExamGate(user: Pick<User, 'uid' | 'email'> | null): P
     if (mathWindow.renderMathInElement) mathWindow.renderMathInElement(content);
   }
 
-  // Înainte de ora de start → blocat pentru toată lumea
-  const examStart = window.examGateStart ?? new Date('2026-05-09T09:50:00+03:00');
-  const startLabel = window.examGateStartLabel ?? '9 Mai 2026, ora 9:50';
-  if (new Date() < examStart) {
+  // Înainte de ora de start → blocat pentru toată lumea. Ora vine din fișierul de date al
+  // simulării (ExamLayout o scrie în <head>); fără ea nu există fază de „nu a început” (#137).
+  const examStart = window.examGateStart;
+  const startLabel = window.examGateStartLabel ?? '';
+  if (examStart && new Date() < examStart) {
     showGate(`
       <div class="exam-gate-inner">
         <div class="exam-gate-icon">🕐</div>
