@@ -1,0 +1,194 @@
+---
+/**
+ * Simulation #4 event card, copied from legacy/index.html, with the two
+ * inline scripts that followed it on the legacy page:
+ *
+ * - the countdown to the start of the simulation, which removes itself (and
+ *   its caption) once the start time has passed;
+ * - the call-to-action, which depends on the signed-in user's access.
+ *
+ * The legacy CTA script loaded the Firebase SDK from gstatic; here it shares
+ * the bundled app from src/lib/firebase/app.ts with the auth entry module.
+ */
+---
+
+<section class="lp-sim-event" id="simulare-iulie-2026">
+  <div class="lp-sim-card">
+    <div class="lp-sim-card-left">
+      <span class="lp-sim-official-badge">Simulare AdmiterePoli #4</span>
+      <h2 class="lp-sim-card-title">Simulare Completă Admitere 2026</h2>
+      <p class="lp-sim-card-desc">Subiecte originale, redactate de noi — rezolvate și baremizate complet.</p>
+      <div class="lp-sim-subjects">
+        <span class="lp-sim-subj lp-sim-subj-mate">Matematică</span>
+        <span class="lp-sim-subj lp-sim-subj-info">Informatică</span>
+        <span class="lp-sim-subj lp-sim-subj-fiz">
+          Fizică <span class="lp-sim-fiz-star">✦</span>
+        </span>
+      </div>
+      <p class="lp-sim-card-meta">
+        21 – 24 iulie 2026, intrare oricând &nbsp;·&nbsp; 3 ore &nbsp;·&nbsp; 20 subiecte
+      </p>
+    </div>
+
+    <div class="lp-sim-card-right">
+      <div class="lp-sim-pricing">
+        <span class="lp-sim-price">
+          30 <small>RON</small>
+        </span>
+        <span class="lp-sim-price-alt">
+          acces permanent, sau inclus în <strong>Student Plus</strong>
+        </span>
+      </div>
+      <!-- Countdown-ul şi legenda se auto-şterg la ora de start
+                     (vezi scriptul de la finalul paginii). -->
+      <div class="lp-sim-countdown" id="sim-countdown">
+        <div class="lp-sim-cd-unit">
+          <span class="lp-sim-cd-num" id="sim-cd-days">
+            --
+          </span>
+          <span class="lp-sim-cd-label">zile</span>
+        </div>
+        <div class="lp-sim-cd-unit">
+          <span class="lp-sim-cd-num" id="sim-cd-hours">
+            --
+          </span>
+          <span class="lp-sim-cd-label">ore</span>
+        </div>
+        <div class="lp-sim-cd-unit">
+          <span class="lp-sim-cd-num" id="sim-cd-mins">
+            --
+          </span>
+          <span class="lp-sim-cd-label">min</span>
+        </div>
+      </div>
+      <span class="lp-sim-cd-caption">până la începerea simulării</span>
+      <div id="sim-event-cta">
+        <button class="lp-btn lp-btn-fill lp-sim-cta-btn" disabled style="opacity:0.45;cursor:default;">
+          Se încarcă...
+        </button>
+      </div>
+      <p class="lp-sim-cta-note" id="sim-event-note"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { onAuthStateChanged } from 'firebase/auth';
+  import { doc, getDoc } from 'firebase/firestore';
+  import { hasSimulationAccess, isSaleClosed } from '../../lib/firebase/access';
+  import { auth, db } from '../../lib/firebase/app';
+  import type { UserDoc } from '../../types/firestore';
+
+  // ── Countdown ──────────────────────────────────────────────────────────────
+  const COUNTDOWN_TARGET = new Date('2026-07-21T14:00:00Z'); // 21 iulie 2026, 17:00 EEST
+  const COUNTDOWN_INTERVAL_MS = 30000;
+  const DAY_MS = 86400000;
+  const HOUR_MS = 3600000;
+  const MINUTE_MS = 60000;
+
+  function pad(n: number): string {
+    return String(n).padStart(2, '0');
+  }
+
+  function setText(id: string, text: string): void {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function tick(): void {
+    const diff = COUNTDOWN_TARGET.getTime() - Date.now();
+    if (diff <= 0) {
+      document.getElementById('sim-countdown')?.remove();
+      document.querySelector('.lp-sim-cd-caption')?.remove();
+      return;
+    }
+    setText('sim-cd-days', pad(Math.floor(diff / DAY_MS)));
+    setText('sim-cd-hours', pad(Math.floor((diff % DAY_MS) / HOUR_MS)));
+    setText('sim-cd-mins', pad(Math.floor((diff % HOUR_MS) / MINUTE_MS)));
+  }
+
+  tick();
+  setInterval(tick, COUNTDOWN_INTERVAL_MS);
+
+  // ── Call-to-action ─────────────────────────────────────────────────────────
+  // Simulare #4 — acces permanent după cumpărare.
+  const SIM_ID = 'simulare-21-07'; // = product_permalink Gumroad
+  const SIM_URL = './simulare-2026-07-21';
+  const ACCESS_START = new Date('2026-07-21T14:00:00Z'); // 21 iulie, 17:00 EEST
+  // Fără ultimă intrare: se poate porni oricând în fereastră. Pe 24 iulie la
+  // 10:00 subiectul + baremul + rezolvarea devin publice în arhiva de pe /simulari.
+  const PUBLIC_AT = new Date('2026-07-24T07:00:00Z'); // 24 iulie, 10:00 EEST
+  // Vânzarea se opreşte odată cu publicarea (SIMULATION_SALE_END din access.ts,
+  // acelaşi moment cu PUBLIC_AT): n-are sens să iei 30 RON pe ceva ce în acelaşi
+  // moment devine gratuit în arhivă.
+  const GUMROAD_BASE = 'https://admiterepoli.gumroad.com/l/simulare-21-07';
+
+  const ctaEl = document.getElementById('sim-event-cta');
+  const noteEl = document.getElementById('sim-event-note');
+
+  function render(html: string, note = ''): void {
+    if (ctaEl) ctaEl.innerHTML = html;
+    if (noteEl) noteEl.innerHTML = note;
+  }
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      render(
+        `<button class="lp-btn lp-btn-fill" id="sim-event-login-btn">Autentifică-te pentru acces</button>`,
+        'Ai nevoie de un cont pentru a accesa sau cumpăra.',
+      );
+      document.getElementById('sim-event-login-btn')?.addEventListener('click', () => {
+        document.getElementById('header-signup-btn')?.click();
+      });
+      return;
+    }
+
+    let data: UserDoc | undefined;
+    try {
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      if (snap.exists()) data = snap.data();
+    } catch {
+      /* fallback */
+    }
+    const status: string = data?.status || 'free';
+
+    if (hasSimulationAccess(data, SIM_ID)) {
+      const now = new Date();
+      if (now < ACCESS_START) {
+        render(
+          `<button class="lp-btn lp-btn-fill" disabled style="opacity:0.6;cursor:default;">Deja aveți acces ✓</button>`,
+          'Simularea se deschide pe 21 iulie la ora 17:00.',
+        );
+      } else {
+        render(
+          `<a href="${SIM_URL}" class="lp-btn lp-btn-fill">Intră în simulare &rarr;</a>`,
+          now < PUBLIC_AT ? 'Poți începe oricând până vineri, 24 iulie, ora 10:00.' : '',
+        );
+      }
+      return;
+    }
+
+    if (status === 'trial_pending') {
+      render(
+        `<button class="lp-btn lp-btn-fill" disabled style="opacity:0.6;cursor:default;">Acces confirmat ✓</button>`,
+        'Simularea se deschide pe 21 iulie la ora 17:00.',
+      );
+      return;
+    }
+
+    if (isSaleClosed(SIM_ID)) {
+      render(
+        `<button class="lp-btn lp-btn-fill" disabled style="opacity:0.45;cursor:default;">Vânzarea s-a încheiat</button>`,
+        'Simularea #4 nu mai poate fi cumpărată. Subiectul, baremul și rezolvările sunt publice în arhivă.',
+      );
+      return;
+    }
+
+    // Ca în legacy: fără email, encodeURIComponent(null) dă "null".
+    const url = `${GUMROAD_BASE}?wanted=true&email=${encodeURIComponent(String(user.email))}`;
+    render(
+      `<a href="${url}" class="lp-btn lp-btn-fill" target="_blank" rel="noopener noreferrer">Cumpără acces &middot; 30 RON</a>`,
+      'Acces permanent la simulare, barem și rezolvări. Se poate cumpăra până vineri, 24 iulie, ora 10:00.',
+    );
+  });
+</script>

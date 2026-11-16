@@ -1,0 +1,175 @@
+---
+/**
+ * Landing hero: the whole `.lp-fold` block (hero section plus category dock),
+ * copied from legacy/index.html. The staggered load animation is pure CSS
+ * (`lp-fade-up` in src/styles/02-shared-buttons-brilliant-style.css).
+ *
+ * The typewriter runs as on the legacy site (main.js ran it on this page), but
+ * the hero has no `data-typewriter` attribute, so it does nothing. Whether to
+ * restore or remove the effect is decided in #139.
+ *
+ * `#hero-register-btn` is wired by the auth entry module (src/lib/firebase/entry.ts).
+ */
+---
+
+<div class="lp-fold">
+  <section class="hero container lp-hero">
+    <div class="badge centrat lp-hero-badge">Preadmiterea 2026 — rezolvată complet</div>
+
+    <div class="lp-title-wrap">
+      <h1 class="centrat lp-big-title">
+        Admitere<span class="lp-title-accent">Poli.</span>
+      </h1>
+
+      <div class="lp-deco lp-deco-chart" aria-hidden="true">
+        <svg width="56" height="48" viewBox="0 0 56 48">
+          <rect x="1" y="28" width="10" height="20" rx="3" fill="#c4b5fd" />
+          <rect x="15" y="16" width="10" height="32" rx="3" fill="#a78bfa" />
+          <rect x="29" y="6" width="10" height="42" rx="3" fill="#5b9cf6" />
+          <rect x="43" y="20" width="10" height="28" rx="3" fill="#c4b5fd" />
+        </svg>
+        <span class="lp-deco-label">31%</span>
+      </div>
+
+      <div class="lp-deco lp-deco-code1" aria-hidden="true">
+        while <span>learning</span> →
+      </div>
+      <div class="lp-deco lp-deco-code2" aria-hidden="true">
+        return <span>admis</span>;
+      </div>
+      <div class="lp-deco lp-deco-code3" aria-hidden="true">
+        ∫ f(x) dx
+      </div>
+      <div class="lp-deco lp-deco-matrix" aria-hidden="true">
+        Σᵢ₌₁ⁿ aᵢ
+      </div>
+
+      <div class="lp-deco lp-deco-dots" aria-hidden="true">
+        <svg width="90" height="70" viewBox="0 0 90 70">
+          <circle cx="12" cy="45" r="4" fill="#fca5a5" opacity="0.6" />
+          <circle cx="28" cy="32" r="3" fill="#f87171" opacity="0.7" />
+          <circle cx="45" cy="18" r="6" fill="#fb923c" opacity="0.6" />
+          <circle cx="60" cy="38" r="3" fill="#fca5a5" opacity="0.5" />
+          <circle cx="72" cy="14" r="4" fill="#f87171" opacity="0.4" />
+          <circle cx="38" cy="52" r="3" fill="#fb923c" opacity="0.5" />
+          <circle cx="78" cy="34" r="5" fill="#fb923c" opacity="0.65" />
+          <circle cx="22" cy="16" r="3" fill="#fca5a5" opacity="0.4" />
+          <circle cx="55" cy="8" r="3" fill="#f87171" opacity="0.5" />
+        </svg>
+      </div>
+
+      <div class="lp-deco lp-deco-circle" aria-hidden="true">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle
+            cx="26"
+            cy="26"
+            r="23"
+            fill="none"
+            stroke="#c7d2fe"
+            stroke-width="1.5"
+            stroke-dasharray="4 3"
+          />
+          <circle cx="40" cy="34" r="6" fill="#5b9cf6" />
+        </svg>
+      </div>
+
+      <div class="lp-deco-line lp-deco-line-1" aria-hidden="true"></div>
+      <div class="lp-deco-line lp-deco-line-2" aria-hidden="true"></div>
+    </div>
+
+    <h2 class="centrat scurtat">Creat de studenți, pentru viitori studenți.</h2>
+    <p class="centrat lp-hero-desc">
+      Subiecte rezolvate pas cu pas, simulări cu autocorectare și resurse verificate — direct de la studenți
+      care au trecut prin admitere.
+    </p>
+    <section class="hero-btn">
+      <button class="lp-btn lp-btn-fill" id="hero-register-btn">
+        Începe Acum
+      </button>
+      <a href="#ce-oferim" class="lp-btn lp-btn-outline-blue" id="hero-oferim-btn">
+        Ce oferim
+      </a>
+    </section>
+  </section>
+
+  <div class="lp-category-dock">
+    <div class="lp-cat-item" style="--card-accent: #a78bfa; cursor: default;">
+      <span class="lp-cat-icon" style="color: #a78bfa;">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+      </span>
+      <span class="lp-cat-label">Matematică</span>
+    </div>
+    <div class="lp-cat-item" style="--card-accent: #5b9cf6; cursor: default;">
+      <span class="lp-cat-icon" style="color: #5b9cf6;">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      </span>
+      <span class="lp-cat-label">Informatică</span>
+    </div>
+    <div class="lp-cat-item" style="--card-accent: #34d399; cursor: default;">
+      <span class="lp-cat-icon" style="color: #34d399;">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      </span>
+      <span class="lp-cat-label">Simulări</span>
+    </div>
+    <div class="lp-cat-item" style="--card-accent: #fb923c; cursor: default;">
+      <span class="lp-cat-icon" style="color: #fb923c;">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polygon points="10 8 16 12 10 16 10 8" />
+        </svg>
+      </span>
+      <span class="lp-cat-label">Exerciții antrenament</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initTypewriter } from '../../scripts/typewriter';
+
+  initTypewriter();
+</script>
