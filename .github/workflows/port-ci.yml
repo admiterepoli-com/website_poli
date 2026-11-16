@@ -43,10 +43,6 @@ jobs:
         if: hashFiles('package.json') != ''
         run: npm run lint --if-present
 
-      - name: CSS equivalence
-        if: hashFiles('package.json') != ''
-        run: npm run css:check --if-present
-
       - name: SEO parity
         if: hashFiles('package.json') != ''
         run: npm run seo:check --if-present

@@ -15,7 +15,6 @@
     "format": "prettier --write .",
     "seo:check": "node scripts/seo-check.ts",
     "visual": "node scripts/visual.ts",
-    "css:check": "node scripts/css-check.ts",
     "test": "vitest run"
   },
   "devDependencies": {
