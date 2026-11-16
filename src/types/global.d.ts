@@ -2,6 +2,7 @@
  * Globals shared between inline scripts, legacy pages and the typed modules.
  * Anything put on `window` must be declared here.
  */
+import type renderMathInElement from 'katex/contrib/auto-render';
 import type { PaidSimulationId, SimulationResultInput } from './firestore';
 
 interface BaremConfig {
@@ -39,6 +40,9 @@ declare global {
     openModal?: () => void;
     openUpgradeModal?: () => void;
     saveSimulationResult?: (simulationId: string, data: SimulationResultInput) => Promise<void>;
+
+    /** KaTeX auto-render, defined by the `Katex` component. Absent until it has run. */
+    renderMathInElement?: typeof renderMathInElement;
   }
 }
 
