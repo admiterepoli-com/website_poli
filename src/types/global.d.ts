@@ -39,9 +39,6 @@ declare global {
     openModal?: () => void;
     openUpgradeModal?: () => void;
     saveSimulationResult?: (simulationId: string, data: SimulationResultInput) => Promise<void>;
-
-    /** Email of the signed-in user, used by the video exercises page. */
-    _evEmail?: string | null;
   }
 }
 

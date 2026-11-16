@@ -99,11 +99,6 @@ export async function updatePricingButtons(user: Pick<User, 'uid'> | null): Prom
 
 let currentBilling: BillingId = 'monthly';
 
-/** Billing option currently selected in the plan picker toggle. */
-export function getCurrentBilling(): BillingId {
-  return currentBilling;
-}
-
 export function updatePlanHighlight(): void {
   const cards = document.getElementById('plan-cards');
   const selected = cards?.querySelector('.plan-card.selected');

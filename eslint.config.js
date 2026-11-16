@@ -4,12 +4,11 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    // Legacy site files are not linted; they are deleted as pages get ported.
+    // Generated output, dependencies, the separately linted Cloud Functions, static files.
     ignores: [
       'dist/',
       '.astro/',
       'node_modules/',
-      'legacy/',
       'functions/',
       'public/',
       '.visual/',
@@ -26,8 +25,15 @@ export default tseslint.config(
     rules: {
       // TypeScript already reports undefined names.
       'no-undef': 'off',
+      // Strictness that must not erode (#84): no `any`, no silenced type errors, no `!` that hides
+      // a real null, and no type assertions in object literals that bypass excess-property checks.
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/ban-ts-comment': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/consistent-type-assertions': [
+        'error',
+        { assertionStyle: 'as', objectLiteralTypeAssertions: 'never' },
+      ],
     },
   },
 );
