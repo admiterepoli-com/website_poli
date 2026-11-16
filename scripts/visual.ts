@@ -5,7 +5,8 @@
  *   npm run build
  *   npm run visual -- cti-vs-is          one page (slug without .html)
  *   npm run visual -- index contact      several pages
- *   npm run visual -- --all              every page in dist/
+ *   npm run visual -- --all              every page in dist/, plus the dynamic STATES below
+ *   npm run visual -- --states           only the dynamic states (open menu, modal, dropdowns)
  *   npm run visual -- --keep <slug>      also save the screenshots when the page passes
  *
  * Diff images are written to .visual/out/ (gitignored). Exit code 1 if any page
@@ -14,6 +15,9 @@
  * Determinism: time is frozen at FIXED_TIME, animations and transitions are
  * disabled, analytics is blocked, and PDF canvases are hidden (their layout box
  * is still compared, their pixels are not).
+ * Before the screenshot it waits for every image and web font; a comparison that
+ * fails is captured once more before it counts, so a long --all run is not
+ * failed by a page caught before it settled.
  */
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
@@ -21,7 +25,7 @@ import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { extname, join, resolve } from 'node:path';
 import pixelmatch from 'pixelmatch';
-import { chromium, type Browser } from 'playwright';
+import { chromium, type Browser, type Page } from 'playwright';
 import { PNG } from 'pngjs';
 import {
   BASE_COMMIT,
@@ -84,7 +88,87 @@ function serve(dir: string): Promise<Server> {
 
 const port = (server: Server): number => (server.address() as AddressInfo).port;
 
-async function capture(browser: Browser, url: string, width: number, height: number): Promise<PNG> {
+/** A state of the page reached after load (open menu, open modal, …), compared like the page itself. */
+export interface VisualState {
+  name: string;
+  slug: string;
+  viewport: (typeof VIEWPORTS)[number]['name'];
+  /** Runs in the page after it has settled; must work on the legacy reference and on the port. */
+  act: (page: Page) => Promise<void>;
+}
+
+/** Longest real (not page-clock) time to wait for images and fonts before taking the screenshot anyway. */
+const ASSET_WAIT_MS = 10_000;
+
+/**
+ * Waits until every eagerly loaded <img> has finished (or failed) and web fonts are ready, for at
+ * most ASSET_WAIT_MS. Lazy images are skipped: below the fold they never start loading. The page
+ * clock is frozen, so the limit is a Node timer, not one inside the page.
+ */
+async function waitForAssets(page: Page): Promise<void> {
+  const settled = page.evaluate(async () => {
+    const pending = [...document.images].filter((img) => !img.complete && img.loading !== 'lazy');
+    await Promise.all(
+      pending.map(
+        (img) =>
+          new Promise<void>((done) => {
+            img.addEventListener('load', () => done(), { once: true });
+            img.addEventListener('error', () => done(), { once: true });
+          }),
+      ),
+    );
+    await document.fonts.ready;
+  });
+  let timer: NodeJS.Timeout | undefined;
+  const limit = new Promise<void>((done) => {
+    timer = setTimeout(done, ASSET_WAIT_MS);
+  });
+  await Promise.race([settled, limit]);
+  clearTimeout(timer);
+}
+
+/**
+ * States reached after load that the per-page screenshots do not show. Each runs the same action
+ * on the legacy reference and on the port (both expose the same ids, classes and globals).
+ */
+const STATES: readonly VisualState[] = [
+  { name: 'hamburger-open', slug: 'informatii', viewport: 'mobile', act: (page) => page.click('.hamburger') },
+  {
+    name: 'auth-modal',
+    slug: 'index',
+    viewport: 'desktop',
+    act: async (page) => {
+      await page.waitForFunction(() => typeof window.openModal === 'function');
+      await page.evaluate(() => window.openModal?.());
+    },
+  },
+  {
+    name: 'subiecte-dropdown',
+    slug: 'subiecte',
+    viewport: 'desktop',
+    act: (page) => page.click('.subiecte-box[data-set="2025"]'),
+  },
+  {
+    name: 'simulari-dropdown',
+    slug: 'simulari',
+    viewport: 'mobile',
+    act: (page) => page.click('.subiecte-box[data-set="arhiva-sim-2"]'),
+  },
+  {
+    name: 'info-cards',
+    slug: 'informatii',
+    viewport: 'desktop',
+    act: (page) => page.click('.info-card >> nth=0'),
+  },
+];
+
+async function capture(
+  browser: Browser,
+  url: string,
+  width: number,
+  height: number,
+  act?: (page: Page) => Promise<void>,
+): Promise<PNG> {
   const context = await browser.newContext({
     viewport: { width, height },
     deviceScaleFactor: 1,
@@ -105,8 +189,13 @@ async function capture(browser: Browser, url: string, width: number, height: num
   });
   await page.waitForLoadState('networkidle').catch(() => undefined);
   await page.clock.runFor(SETTLE_MS);
-  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  await waitForAssets(page);
   await page.waitForLoadState('networkidle').catch(() => undefined);
+  if (act) {
+    await act(page);
+    await page.clock.runFor(1000);
+    await waitForAssets(page);
+  }
   const buffer = await page.screenshot({ fullPage: true, animations: 'disabled' });
   await context.close();
   return PNG.sync.read(buffer);
@@ -156,8 +245,8 @@ async function main(): Promise<void> {
     .map((name) => name.replace(/\.html$/, ''))
     .sort();
   const slugs = args.includes('--all') ? all : args.filter((arg) => !arg.startsWith('--'));
-  if (slugs.length === 0) {
-    console.error('usage: npm run visual -- <slug> [slug ...] | --all');
+  if (slugs.length === 0 && !args.includes('--states')) {
+    console.error('usage: npm run visual -- <slug> [slug ...] | --all | --states');
     process.exit(2);
   }
   const unknown = slugs.filter((slug) => !all.includes(slug));
@@ -173,17 +262,44 @@ async function main(): Promise<void> {
   const [legacyServer, portServer] = await Promise.all([serve(REFERENCE), serve(DIST)]);
   const browser = await chromium.launch();
   const results: Result[] = [];
+  const keep = args.includes('--keep');
+  const withStates = args.includes('--all') || args.includes('--states');
+
+  /** Captures both sites and compares; a failure is captured once more, since a long run can catch a page before it settled. */
+  async function check(
+    label: string,
+    path: string,
+    viewport: (typeof VIEWPORTS)[number],
+    act?: (page: Page) => Promise<void>,
+  ): Promise<void> {
+    const shot = (server: Server): Promise<PNG> =>
+      capture(browser, `http://127.0.0.1:${port(server)}/${path}`, viewport.width, viewport.height, act);
+    let [before, after] = await Promise.all([shot(legacyServer), shot(portServer)]);
+    let result = compare(label, viewport.name, before, after, keep);
+    if (!result.ok) {
+      [before, after] = await Promise.all([shot(legacyServer), shot(portServer)]);
+      result = compare(label, viewport.name, before, after, keep);
+      result.detail += ' (after a retry)';
+    }
+    results.push(result);
+    console.log(`${result.ok ? 'ok  ' : 'FAIL'} ${label} [${viewport.name}] ${result.detail}`);
+  }
+
   try {
     for (const slug of slugs) {
       const path = slug === 'index' ? '' : slug;
-      for (const viewport of VIEWPORTS) {
-        const [before, after] = await Promise.all([
-          capture(browser, `http://127.0.0.1:${port(legacyServer)}/${path}`, viewport.width, viewport.height),
-          capture(browser, `http://127.0.0.1:${port(portServer)}/${path}`, viewport.width, viewport.height),
-        ]);
-        const result = compare(slug, viewport.name, before, after, args.includes('--keep'));
-        results.push(result);
-        console.log(`${result.ok ? 'ok  ' : 'FAIL'} ${slug} [${viewport.name}] ${result.detail}`);
+      for (const viewport of VIEWPORTS) await check(slug, path, viewport);
+    }
+    if (withStates) {
+      for (const state of STATES) {
+        const viewport = VIEWPORTS.find((v) => v.name === state.viewport);
+        if (!viewport) continue;
+        await check(
+          `${state.slug}#${state.name}`,
+          state.slug === 'index' ? '' : state.slug,
+          viewport,
+          state.act,
+        );
       }
     }
   } finally {
