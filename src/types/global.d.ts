@@ -11,6 +11,10 @@ interface BaremConfig {
   startLabel: string;
   label?: string;
   buyUrl?: string | null;
+  /** Relative URL of the matching simulation page. */
+  simUrl?: string;
+  /** When the barem becomes public, as shown to the visitor. */
+  publicLabel?: string;
 }
 
 declare global {
