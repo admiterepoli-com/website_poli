@@ -11,13 +11,19 @@ import { getAuth } from 'firebase-admin/auth';
 import { FieldValue, getFirestore, Timestamp } from 'firebase-admin/firestore';
 import { onRequest } from 'firebase-functions/v2/https';
 
+import type { PaidSimulationId, UserDoc, UserStatus } from '../../shared/firestore.js';
+
 /** The named Firestore database that holds `users`. */
 export const DATABASE_ID = 'admiterepoli';
 
 // Produse Gumroad one-time (o simulare, acces permanent), NU abonamente.
 // Valorile sunt permalink-urile Gumroad şi sunt folosite ca atare în
 // users/{uid}.purchasedSimulations.
-export const SIMULATION_PERMALINKS = ['simulare_09_05', 'simulare-21-07'] as const;
+export const SIMULATION_PERMALINKS = [
+  'simulare_09_05',
+  'simulare-21-07',
+] as const satisfies readonly PaidSimulationId[];
+/** Same union as the shared PaidSimulationId; gumroad.test.ts checks that the list above covers all of it. */
 export type SimulationPermalink = (typeof SIMULATION_PERMALINKS)[number];
 
 // Planuri Student Plus cu plată unică şi acces până la o dată fixă (NU abonamente).
@@ -72,48 +78,57 @@ type ReceivedPing = { readonly [K in keyof GumroadPing]?: AsReceived };
 
 // --- Firestore writes to users/{uid}; all of them are merged into the document ---
 
-export interface SubscriptionEndedWrite {
+/**
+ * A merge write to users/{uid}. Every key must be a field of the shared UserDoc
+ * and `status` must be a UserStatus. The other values stay as the handler writes
+ * them: copied from the body (AsReceived) or FieldValue sentinels.
+ */
+type UserDocWrite<
+  T extends { [K in keyof T]: K extends 'status' ? UserStatus : K extends keyof UserDoc ? unknown : never },
+> = T;
+
+export type SubscriptionEndedWrite = UserDocWrite<{
   status: 'free';
   subscriptionEndedAt: AsReceived;
   subscriptionEndedReason: AsReceived;
-}
+}>;
 
-export interface CancellationWrite {
+export type CancellationWrite = UserDocWrite<{
   status: 'pending_cancellation';
   pendingCancellationAt: AsReceived;
   cancelledByBuyer: boolean;
   cancelledDueToPaymentFailures: boolean;
-}
+}>;
 
-export interface RefundWrite {
+export type RefundWrite = UserDocWrite<{
   status: 'free';
   refundedAt: FieldValue;
-}
+}>;
 
-export interface SimulationPurchaseWrite {
+export type SimulationPurchaseWrite = UserDocWrite<{
   gumroadSaleId: AsReceived;
   gumroadProduct: AsReceived;
   paidAt: FieldValue;
   purchasedSimulations: FieldValue;
-}
+}>;
 
-export interface FixedTermPlanWrite {
+export type FixedTermPlanWrite = UserDocWrite<{
   status: 'paid';
   gumroadSaleId: AsReceived;
   gumroadProduct: AsReceived;
   gumroadSubscriptionId: null;
   accessUntil: Timestamp;
   paidAt: FieldValue;
-}
+}>;
 
-export interface SubscriptionWrite {
+export type SubscriptionWrite = UserDocWrite<{
   status: 'paid';
   gumroadSaleId: AsReceived;
   gumroadProduct: AsReceived;
   gumroadSubscriptionId: AsReceived;
   accessUntil: FieldValue;
   paidAt: FieldValue;
-}
+}>;
 
 export type UserWrite =
   | SubscriptionEndedWrite
