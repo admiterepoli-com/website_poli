@@ -38,6 +38,7 @@ Read this before porting anything; each point cost a debugging session.
   - `fonts`: `jakarta` (default, 43 pages) or `dm-sans` (22 pages). Extra font links go in the `head` slot.
   - `popupNoscript`: `weekly` (default), `info` or `title`. The `<noscript>` text is in the SEO baseline.
   - `popup={false}`, `footer={false}`, `cookieConsent={false}`, `auth={false}`, `footerIconAlt`, `canonical`, `noindex`: only where the legacy page differs.
+- **Page styles go at the top of the page's `<body>`, not in the `head` slot** (#173). Astro links the bundled site CSS at the very end of `<head>`, after the `head` slot, and nothing can be rendered after it. On the legacy pages a page's own `<style>` came after `styles.css` and won ties; to keep that, put the legacy `<style>` block as `<style is:inline>` first inside the `BaseLayout` default slot (see the barem pages and `ExamLayout`). Stylesheets that come from npm (KaTeX) are imported in the component's frontmatter instead, so Astro bundles them after `global.css`; import such components after `BaseLayout`. The `head` slot is for fonts, meta tags and classic scripts.
 - **The reference example is `src/pages/cti-vs-is.astro`.** Its header comment describes the steps.
 - **Do not load `main.js` on a ported page.** Its features are being split into `src/scripts/`; loading it too would bind handlers twice.
 - **CSS is not minified and HTML whitespace is not compressed** (`astro.config.ts`). Both changed rendering or the extracted text. Do not turn them back on.

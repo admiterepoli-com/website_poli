@@ -9,8 +9,13 @@
  *   </BaseLayout>
  *
  * Slots: default (page content, including its own <main>), `head` (extra head
- * tags such as KaTeX CSS or a start-time script), `scripts` (end of body,
- * before the auth module).
+ * tags such as fonts or a start-time script), `scripts` (end of body, before
+ * the auth module).
+ *
+ * The bundled CSS (global.css and any CSS a component imports) is linked by
+ * Astro at the very end of <head>, after the `head` slot. A page's own legacy
+ * <style> block must therefore go first in the default slot, not in `head`,
+ * so it still comes after the site CSS (see PORTING.md).
  *
  * The shared parts of the page (cookie consent, header, footer, popup, auth)
  * are added by their own components at the marked places below. Each flag
