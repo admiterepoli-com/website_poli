@@ -1,53 +1,25 @@
-<!DOCTYPE html>
-<html lang="ro">
-    <head>
-        <script src="./cookie-consent.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+---
+/**
+ * Ported from legacy/subiecte.html: the internal-link hub to every barem,
+ * subiect and rezolvare page, so every href is copied as it is.
+ *
+ * Each year card (header <p> + its dropdown section) is a <Dropdown> with the
+ * legacy year-card header in the `header` slot; the sections inside are
+ * copied as they are. The toggle logic, which legacy main.js bound, is loaded
+ * once through the `scripts` slot (see Dropdown.astro). The legacy page has no
+ * inline <style> and no other page script. Fonts: DM Sans, plus the legacy
+ * Poppins link in the head slot.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Dropdown from '../components/Dropdown.astro';
+---
 
-            gtag('config', 'G-PC1VMXYCRN');
-        </script>
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Subiecte, Bareme și Rezolvări</title>
-        <meta name="description" content="Arhiva completă a subiectelor de admitere din anii trecuți de la UPB și Unibuc, cu baremele și rezolvările lor.">
-        <link rel="icon" type="image/png" href="logosquared.png">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-</head>
-    <body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
-
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
+<BaseLayout
+  fonts="dm-sans"
+  title="Subiecte, Bareme și Rezolvări"
+  description="Arhiva completă a subiectelor de admitere din anii trecuți de la UPB și Unibuc, cu baremele și rezolvările lor."
+>
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
         <main>
             <div class="grid-main-content">
                 <div class="container">
@@ -67,16 +39,15 @@
                         <div class="year-cards-list">
 
                             <!-- 2026 -->
-                            <p class="subiecte-box year-card" data-set="2026" style="--card-accent: #34d399; --card-shadow: #1a7a56;">
+                            <Dropdown set="2026" headerClass="year-card" style="--card-accent: #34d399; --card-shadow: #1a7a56;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2026</span>
                                 <span class="year-card-desc">Simulare · Preadmitere · Rezolvări complete</span>
                                 <span class="year-card-badge-new">Nou</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2026" style="--card-accent: #34d399; --card-shadow: #1a7a56;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>Simulare 2026</h3></li>
@@ -101,19 +72,17 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="#">Mate</a> <span class="separator">|</span> <a href="#">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                             <!-- 2025 -->
-                            <p class="subiecte-box year-card" data-set="2025" style="--card-accent: #5b9cf6; --card-shadow: #1e4d8c;">
+                            <Dropdown set="2025" headerClass="year-card" style="--card-accent: #5b9cf6; --card-shadow: #1e4d8c;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2025</span>
                                 <span class="year-card-desc">Simulare · Preadmitere · Admitere · Rezolvări complete</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2025" style="--card-accent: #5b9cf6; --card-shadow: #1e4d8c;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>Simulare</h3></li>
@@ -138,19 +107,17 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="./rezolvare-admitere-2025-matematica" target="_blank">Mate</a> <span class="separator">|</span> <a href="./rezolvare-admitere-2025-informatica">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                             <!-- 2024 -->
-                            <p class="subiecte-box year-card" data-set="2024" style="--card-accent: #a78bfa; --card-shadow: #5b21b6;">
+                            <Dropdown set="2024" headerClass="year-card" style="--card-accent: #a78bfa; --card-shadow: #5b21b6;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2024</span>
                                 <span class="year-card-desc">Simulare · Preadmitere · Admitere</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2024" style="--card-accent: #a78bfa; --card-shadow: #5b21b6;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>Simulare</h3></li>
@@ -175,19 +142,17 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="https://www.youtube.com/watch?v=gbX0MePdi70" target="_blank">Mate</a> <span class="separator">|</span> <a href="#">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                             <!-- 2023 -->
-                            <p class="subiecte-box year-card" data-set="2023" style="--card-accent: #4db6ac; --card-shadow: #1a6b64;">
+                            <Dropdown set="2023" headerClass="year-card" style="--card-accent: #4db6ac; --card-shadow: #1a6b64;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2023</span>
                                 <span class="year-card-desc">Simulare · Preadmitere · Admitere</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2023" style="--card-accent: #4db6ac; --card-shadow: #1a6b64;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>Simulare</h3></li>
@@ -212,8 +177,7 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="https://www.youtube.com/watch?v=QmD3k7vcaNY" target="_blank">Mate</a> <span class="separator">|</span> <a href="#">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                         </div>
                     </div>
@@ -229,15 +193,14 @@
                         <div class="year-cards-list">
 
                             <!-- UB 2025 -->
-                            <p class="subiecte-box year-card" data-set="2025UB" style="--card-accent: #fb923c; --card-shadow: #9a4a10;">
+                            <Dropdown set="2025UB" headerClass="year-card" style="--card-accent: #fb923c; --card-shadow: #9a4a10;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2025</span>
                                 <span class="year-card-desc">MateInfoUB I · MateInfoUB II · Admitere</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2025UB" style="--card-accent: #fb923c; --card-shadow: #9a4a10;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>MateInfoUB I</h3></li>
@@ -262,19 +225,17 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="https://www.youtube.com/watch?v=Xgh8w8mLDrI" target="_blank">Mate</a> <span class="separator">|</span> <a href="#">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                             <!-- UB 2024 -->
-                            <p class="subiecte-box year-card" data-set="2024UB" style="--card-accent: #f472b6; --card-shadow: #9a1a5c;">
+                            <Dropdown set="2024UB" headerClass="year-card" style="--card-accent: #f472b6; --card-shadow: #9a1a5c;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2024</span>
                                 <span class="year-card-desc">MateInfoUB I · MateInfoUB II · Admitere</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2024UB" style="--card-accent: #f472b6; --card-shadow: #9a1a5c;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>MateInfoUB I</h3></li>
@@ -299,19 +260,17 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="https://drive.google.com/file/d/1FRtAPoLPuIMDQFiCMyZJPf3EvG54vL8X/view" target="_blank">Mate</a> <span class="separator">|</span> <a href="https://drive.google.com/file/d/1mBP9UpAKtGQh6zAMmaCQzTTkkCD8Godv/view" target="_blank">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                             <!-- UB 2023 -->
-                            <p class="subiecte-box year-card" data-set="2023UB" style="--card-accent: #818cf8; --card-shadow: #3730a3;">
+                            <Dropdown set="2023UB" headerClass="year-card" style="--card-accent: #818cf8; --card-shadow: #3730a3;">
+                                <Fragment slot="header">
                                 <span class="year-card-year">2023</span>
                                 <span class="year-card-desc">MateInfoUB I · MateInfoUB II · Admitere</span>
                                 <span class="info-card-chevron">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                                 </span>
-                            </p>
-                            <div class="dropdown-section" id="dropdown-2023UB" style="--card-accent: #818cf8; --card-shadow: #3730a3;">
-                                <div class="sub-links">
+                                </Fragment>
                                     <section>
                                         <ul class="dropdown-design">
                                             <li><h3>MateInfoUB I</h3></li>
@@ -336,8 +295,7 @@
                                             <li><p><em>Rezolvare:</em> <span class="links"><a href="https://drive.google.com/file/d/1vskXMAYJ3oJufdBdq1-w_QxT9XzZfUw-/view" target="_blank">Mate</a> <span class="separator">|</span> <a href="https://drive.google.com/file/d/1b7cNHKb4mL4urtq4157s9vYfaHTtfhfv/view" target="_blank">Info</a></span></p></li>
                                         </ul>
                                     </section>
-                                </div>
-                            </div>
+                            </Dropdown>
 
                         </div>
                     </div>
@@ -345,41 +303,11 @@
                 </div>
             </div>
         </main>
-<footer>   
-        <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-            <img src="./images/whatsapp.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-            <img src="./images/instagram.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="./contact" style="color: white; text-decoration: none;"> Contact</a>
-        <a href="./termeni-si-conditii" style="color: white; text-decoration: none;"> Termeni si conditii</a>
-        <a href="./politica-confidentialitate" style="color: white; text-decoration: none;">Politica de Confidentialitate</a>
-        <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-    </footer>
-        <script src="main.js"></script>
-    
-        <!-- Newsletter Popup Liquid Glass -->
-     <div id="newsletter-popup">
-                <div class="newsletter-content">
-            <button class="close-btn" aria-label="Close">&times;</button>
-            <h3 class="glass-headline">Antrenament zilnic pentru&nbsp;admitere</h3>
-            <div class="popup-benefits">
-                <p><strong>Seturi noi de probleme</strong> la mate, info și&nbsp;fizică</p>
-                <p>Sesiuni LIVE de simulări pe Google&nbsp;Meet</p>
-            </div>
-            <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank" class="whatsapp-btn" id="whatsapp-link">Intră&nbsp;în&nbsp;grupul de&nbsp;WhatsApp</a>
-            <a href="#" class="dismiss-link popup-microcopy">Nu acum &middot; Fără spam</a>
-        </div>
-    </div>
-    <noscript>
-        <div style="padding: 20px; background: #f8f9fa; border: 1px solid #ddd; text-align: center; color: #333;">
-            <h3>Rămâi la curent cu AdmiterePoli</h3>
-            <p>Abonează-te la newsletter-ul nostru pentru a primi săptămânal noutăți despre admitere, subiecte rezolvate și resurse utile.</p>
-        </div>
-    </noscript>
-    </div>
+  <Fragment slot="scripts">
+    <script>
+      import { initDropdowns } from '../scripts/dropdown';
 
-        <script type="module" src="./firebase-auth.js"></script>
-</body>
-</html>
+      initDropdowns();
+    </script>
+  </Fragment>
+</BaseLayout>
