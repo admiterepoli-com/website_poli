@@ -1,0 +1,47 @@
+---
+/**
+ * Simulation 3, ported from legacy/simulare-2026-05-09.html onto ExamLayout: problems,
+ * gate config, results titles and Sheets endpoint are in
+ * src/data/simulations/2026-05-09.ts. The track-selector contents are the legacy
+ * markup (`{ }` written as `{'{ }'}`).
+ * - `staticCounts`: the problem counts are written into the legacy markup
+ *   (and the SEO baseline).
+ * - The result is saved with `track: null`, as on the legacy page.
+ * - Gate start 10:00 from the data file (decision on #137).
+ */
+import ExamLayout from '../layouts/ExamLayout.astro';
+import exam from '../data/simulations/2026-05-09';
+---
+
+<ExamLayout title="Simulare #3 — 9 Mai 2026 | AdmiterePoli" description="Simulare preadmitere 9 Mai 2026 — Matematică + Informatică sau Fizică." config={exam} staticCounts>
+  <Fragment slot="track-selector">
+                    <div class="sim-badge-date">&#128197; 9 Mai 2026 &bull; ora 10:00</div>
+                    <h1>Simulare #3</h1>
+                    <p class="sim-start-subtitle">
+                        Alege varianta pe care o susții la admitere.<br>
+                        Ambele conțin <strong>10 probleme de matematică</strong> plus 10 din disciplina aleasă.
+                    </p>
+                    <div class="track-grid">
+                        <div class="track-card track-info" onclick="selectTrack('info')">
+                            <div class="track-icon">{'{ }'}</div>
+                            <p class="track-title">Matematică<br>&amp; Informatică</p>
+                            <p class="track-desc">10 probleme de informatică (C++) + 10 probleme de matematică</p>
+                            <span class="track-cta">Intră în simulare &rarr;</span>
+                        </div>
+                        <div class="track-card track-fizica" onclick="selectTrack('fizica')">
+                            <div class="track-icon">&#934;</div>
+                            <p class="track-title">Matematică<br>&amp; Fizică</p>
+                            <p class="track-desc">10 probleme de fizică + 10 probleme de matematică</p>
+                            <span class="track-cta">Intră în simulare &rarr;</span>
+                        </div>
+                    </div>
+  </Fragment>
+  <Fragment slot="scripts">
+    <script>
+      import exam from '../data/simulations/2026-05-09';
+      import { mountExam } from '../lib/exam/results';
+
+      mountExam(exam, { saveTrack: false });
+    </script>
+  </Fragment>
+</ExamLayout>
