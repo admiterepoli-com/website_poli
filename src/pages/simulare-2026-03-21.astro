@@ -1,0 +1,21 @@
+---
+/**
+ * Simulation 1, ported from legacy/simulare-2026-03-21.html onto ExamLayout: the
+ * problems, results title and Sheets endpoint are in
+ * src/data/simulations/2026-03-21.ts. Free simulation: no gate, no track selection;
+ * the result is saved with `track: null` as on the legacy page.
+ */
+import ExamLayout from '../layouts/ExamLayout.astro';
+import exam from '../data/simulations/2026-03-21';
+---
+
+<ExamLayout title="Simulare Preadmitere 1 | AdmiterePoli" description="Testeaza-ti cunostintele la Matematica si Informatica pentru admiterea la Politehnica." config={exam}>
+  <Fragment slot="scripts">
+    <script>
+      import exam from '../data/simulations/2026-03-21';
+      import { mountExam } from '../lib/exam/results';
+
+      mountExam(exam, { saveTrack: false });
+    </script>
+  </Fragment>
+</ExamLayout>
