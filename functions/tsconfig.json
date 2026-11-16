@@ -26,5 +26,7 @@
     "allowJs": true,
     "checkJs": false
   },
-  "include": ["src/**/*"]
+  // ../shared holds the Firestore types shared with the site. Declaration files only:
+  // they are type-checked against but emit nothing, so lib/ stays self-contained.
+  "include": ["src/**/*", "../shared/**/*.d.ts"]
 }
