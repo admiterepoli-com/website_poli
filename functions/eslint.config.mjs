@@ -3,8 +3,8 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    // lib/ is build output; src/legacy.js is the untouched legacy handler file.
-    ignores: ['lib/', 'node_modules/', 'src/legacy.js'],
+    // lib/ is build output.
+    ignores: ['lib/', 'node_modules/'],
   },
   js.configs.recommended,
   ...tseslint.configs.strict,
