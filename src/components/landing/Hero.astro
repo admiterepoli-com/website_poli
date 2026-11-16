@@ -4,10 +4,6 @@
  * copied from legacy/index.html. The staggered load animation is pure CSS
  * (`lp-fade-up` in src/styles/02-shared-buttons-brilliant-style.css).
  *
- * The typewriter runs as on the legacy site (main.js ran it on this page), but
- * the hero has no `data-typewriter` attribute, so it does nothing. Whether to
- * restore or remove the effect is decided in #139.
- *
  * `#hero-register-btn` is wired by the auth entry module (src/lib/firebase/entry.ts).
  */
 ---
@@ -167,9 +163,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  import { initTypewriter } from '../../scripts/typewriter';
-
-  initTypewriter();
-</script>
