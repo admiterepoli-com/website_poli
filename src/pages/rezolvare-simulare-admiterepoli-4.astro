@@ -1,0 +1,53 @@
+---
+/**
+ * Ported from legacy/rezolvare-simulare-admiterepoli-4.html as its own page
+ * (#70, decided in #141): its inline font sizes and margins differ from the
+ * PDF template (1.3rem intro, 1.2rem / 1.1rem lists, 1rem container margins),
+ * so <main> is copied as it is, with <PdfViewer> in place of the
+ * #pdfViewer div.
+ *
+ * KaTeX is dropped (#141): the legacy page loaded it from the CDN but has no
+ * formulas, so nothing visible changes. Like the legacy page, it has no
+ * WhatsApp popup.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PdfViewer from '../components/PdfViewer.astro';
+---
+
+<BaseLayout
+  title="Rezolvare Simulare AdmiterePoli 4 2026 – Informatică | AdmiterePoli"
+  description="Rezolvarea scrisă pentru a patra simulare de admitere la Universitatea Politehnica București (UPB) 2026 – Informatică."
+  popup={false}
+>
+    <main>
+        <section class="grid-main-content">
+            <div class="container" style="margin-bottom: 1rem;">
+                <div class="pag-intro">
+                    <h1 style="text-align: left;">Rezolvare Simulare AdmiterePoli IV</h1>
+                    <h3 class="indented" style="margin-top: 1rem; font-weight: 500; line-height: 1.6; font-size: 1.3rem;">
+                        Aici găsești rezolvarea detaliată, pas cu pas, pentru subiectele de la a patra simulare AdmiterePoli. Parcurge explicațiile pentru a înțelege exact cum se abordează fiecare problemă.
+                    </h3>
+
+                    <div style="margin-top: 1.5rem; background: rgba(225, 225, 225, 0.1); padding: 1.5rem; border-radius: 1rem;">
+                        <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.2rem;">🔗 Linkuri utile:</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.1rem;">
+                            <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-07-21" style="color: lightblue;">Rezolvă Simularea</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-4" style="color: lightblue;">Vezi baremul</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <PdfViewer src="pdfs/rezolvare-simulare-admiterepoli-4.pdf" errorMessage="A apărut o eroare la încărcarea rezolvării." />
+
+            <div class="container" style="margin-top: 1rem;">
+                <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;">Rezolvări similare care te-ar putea ajuta:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.2rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="./rezolvare-simulare-admiterepoli-1" style="color: lightblue;">Rezolvare Simulare AdmiterePoli I</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./rezolvare-simulare-admiterepoli-2" style="color: lightblue;">Rezolvare Simulare AdmiterePoli II</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./rezolvare-simulare-admiterepoli-3" style="color: lightblue;">Rezolvare Simulare AdmiterePoli III</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
