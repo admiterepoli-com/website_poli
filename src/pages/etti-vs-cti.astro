@@ -1,0 +1,222 @@
+---
+/**
+ * Ported from legacy/etti-vs-cti.html, following the pilot page cti-vs-is.astro:
+ * the repeated blocks use the components in src/components/content/, every
+ * other tag, class, inline style and text is copied as it is.
+ *
+ * Differences from the pilot, all from the legacy page: three columns
+ * (ETTI, CTI, IETTIE) and the extra `table-etti` class on the comparison
+ * table; the materii paragraphs carry an inline style; the "Ce vei studia"
+ * card adds an <hr>, a second heading and a two-column triple grid; the CTA
+ * box is the same markup as CtaBox. Its <noscript> popup text is the
+ * heading-only version, hence popupNoscript="title".
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AccentCard from '../components/content/AccentCard.astro';
+import CardGrid from '../components/content/CardGrid.astro';
+import ComparisonTable from '../components/content/ComparisonTable.astro';
+import CtaBox from '../components/content/CtaBox.astro';
+import MateriiBox from '../components/content/MateriiBox.astro';
+import SectionCard from '../components/content/SectionCard.astro';
+import type { ComparisonColumn, ComparisonRow } from '../components/content/types';
+
+const columns: ComparisonColumn[] = [
+  { tag: { variant: 'etti', label: 'ETTI' }, label: 'Electronică & Telecom' },
+  { tag: { variant: 'cti', label: 'CTI' }, label: 'Calculatoare & IT' },
+  { tag: { variant: 'en', label: 'IETTIE' }, label: 'ETTI Engleză' },
+];
+
+const rows: ComparisonRow[] = [
+  {
+    label: 'Focus principal',
+    cells: [
+      'Hardware, Circuite, Prelucrarea semnalelor, Telecomunicații',
+      'Software, Algoritmi, Arhitectura calculatoarelor, Sisteme',
+      'Identic cu ETTI, dar predat exclusiv în engleză',
+    ],
+  },
+  {
+    label: 'Materii specifice',
+    cells: [
+      'Multă Fizică, Matematică, Electronică, Unde radio',
+      'Multă Programare, Baze de Date, Rețele, OOP',
+      'Aceleași materii ca ETTI, cursuri & examene în engleză',
+    ],
+  },
+  {
+    label: 'Specializări',
+    cells: [
+      'ELA, TST, RST, MON (4 specializări)',
+      'INF – Ingineria Informației (1 specializare)',
+      'Aceleași 4 specializări ca ETTI',
+    ],
+  },
+  {
+    label: 'Concurența la admitere',
+    cells: [
+      'Medii mari, de obicei sub CTI',
+      'Cele mai mari medii de intrare (top)',
+      'Uneori ușor mai mici, necesită atestat de limbă',
+    ],
+  },
+  {
+    label: 'Joburi tipice',
+    cells: [
+      'Telecom Engineer, Embedded Dev, Hardware Engineer',
+      'Software Dev, DevOps, Data Engineer, Cybersecurity',
+      'Identic cu ETTI + avantaj în mediul internațional',
+    ],
+  },
+  {
+    label: 'Avantaj cheie',
+    cells: [
+      'Pregătire solidă hardware + embedded + IoT',
+      'Pregătire orientată software modern (web, cloud, AI)',
+      'Engleză tehnică nativă, ideal pentru Erasmus',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="ETTI vs CTI vs ETTI Engleză – Comparație Detaliată | AdmiterePoli"
+  description="Comparație detaliată între ETTI, CTI și ETTI Engleză (IETTIE) – materii, joburi, mituri și sfaturi pentru a alege secția potrivită la Politehnică."
+  popupNoscript="title"
+>
+        <main>
+            <section class="grid-main-content">
+
+                <!-- HERO -->
+                <div class="hero-comparatie">
+                    <a href="./informatii" class="hero-back-btn">← Înapoi la Informații</a>
+                    <span class="badge">Ghid complet ETTI</span>
+                    <h1>ETTI vs CTI vs ETTI Engleză</h1>
+                    <p>Comparație detaliată între cele trei secții: materii, joburi, concurență la admitere și mituri. Tot ce ai nevoie pentru a lua o decizie informată.</p>
+                </div>
+
+                <!-- TABEL COMPARATIV -->
+                <SectionCard title="Tabel Comparativ Rapid" delay="0.1s">
+                    <ComparisonTable criterion="Caracteristică" columns={columns} rows={rows} tableClass="table-etti" />
+                </SectionCard>
+
+                <!-- CE VREI SA STUDIEZI -->
+                <SectionCard title="Ce vei studia efectiv?" delay="0.15s">
+
+                    <CardGrid kind="materii">
+                        <MateriiBox title="Materiile de la CTI" titleStyle="color:var(--accent2)">
+                            <p style="color:var(--muted); font-size:0.9rem; margin-bottom:0.75rem">Focus pe modul în care funcționează software-ul, algoritmi eficienți și comunicarea programelor cu hardware-ul.</p>
+                            <ul>
+                                <li>Programare (C, C++, Java, Python, C#)</li>
+                                <li>Structuri de date și Algoritmi</li>
+                                <li>Sisteme de Operare și Baze de Date</li>
+                                <li>Proiectarea Microprocesoarelor</li>
+                                <li>Inteligență Artificială și Machine Learning</li>
+                            </ul>
+                        </MateriiBox>
+                        <MateriiBox title="Materiile de la ETTI" titleStyle="color:var(--accent)">
+                            <p style="color:var(--muted); font-size:0.9rem; margin-bottom:0.75rem">Focus pe fizica din spatele electronicii, transmiterea datelor și hardware-ul la nivel de circuit.</p>
+                            <ul>
+                                <li>Analiza și prelucrarea semnalelor (matematică avansată)</li>
+                                <li>Electronică analogică, digitală și de putere</li>
+                                <li>Microunde și rețele de telecomunicații (5G, fibră optică)</li>
+                                <li>Programarea micro-controlerelor și sisteme Embedded (C/C++)</li>
+                                <li>Teoria transmisiunii informației</li>
+                            </ul>
+                        </MateriiBox>
+                    </CardGrid>
+
+                    <hr class="section-hr">
+
+                    <h2 style="margin-top:0.5rem">ETTI Română vs IETTIE (Engleză)</h2>
+                    <p style="color:var(--text); margin-bottom:1rem">La nivel de materii, <strong>ETTI și IETTIE sunt absolut identice</strong>. Vei face exact aceleași cursuri de Electronică, Prelucrare de Semnale, Microcontrolere și Rețele Telecom.</p>
+
+                    <CardGrid kind="triple" style="grid-template-columns:1fr 1fr">
+                        <AccentCard variant="etti" title="ETTI – Secția Română">
+                            <ul>
+                                <li>Cursuri, laboratoare și examene în română</li>
+                                <li>Comunitate uriașă de studenți</li>
+                                <li>Concurență standard ETTI</li>
+                            </ul>
+                        </AccentCard>
+                        <AccentCard variant="en" title="IETTIE – Secția Engleză">
+                            <ul>
+                                <li>Cursuri, laboratoare și examene în engleză</li>
+                                <li>Studenți internaționali, excelent pentru Erasmus</li>
+                                <li>Necesită atestat / test de limbă engleză</li>
+                            </ul>
+                        </AccentCard>
+                    </CardGrid>
+                </SectionCard>
+
+                <!-- MITURI SI REALITATE -->
+                <SectionCard title="Mituri și Realitate" delay="0.2s">
+                    <CardGrid kind="myth">
+
+                        <AccentCard variant="myth" title='Mit: „Dacă termin ETTI, ajung să repar televizoare."'>
+                            <p><strong style="color:var(--accent3)">Realitate:</strong> Fals. Foarte mulți absolvenți ETTI ajung Software Developers (în special Embedded, Automotive, IoT sau Networking). Totuși, facultatea îți oferă <em>baza</em> de programare (C/C++) — dacă vrei Web/Mobile/Cloud, va trebui să înveți acele tehnologii autodidact.</p>
+                        </AccentCard>
+
+                        <AccentCard variant="myth" title='Mit: „La CTI faci doar programare, zero hardware."'>
+                            <p><strong style="color:var(--accent3)">Realitate:</strong> Fiind o facultate de inginerie, vei face fizică, electrotehnică și electronică și la CTI (în primii doi ani), plus arhitectura calculatoarelor. Ponderea acestor materii este însă mult mai mică față de ETTI.</p>
+                        </AccentCard>
+
+                        <AccentCard variant="myth" title='Mit: „La IETTIE profesorii sunt mai indulgenți."'>
+                            <p><strong style="color:var(--accent3)">Realitate:</strong> Nivelul de exigență este, în mare parte, același. Unii studenți consideră IETTIE mai „ușor" pentru că toată documentația tehnică online este oricum în engleză — legătura dintre curs și studiul individual devine mai naturală.</p>
+                        </AccentCard>
+
+                        <AccentCard variant="myth" title='Mit: „Dacă fac ETTI în română, voi fi dezavantajat la multinaționale."'>
+                            <p><strong style="color:var(--accent3)">Realitate:</strong> Nu te va încurca deloc. Limbajul tehnic IT/telecom este o „romgleză" plină de termeni tehnici (board, debugging, routing, trigger). IETTIE oferă un avantaj la prezentări de business, dar ca pregătire tehnică, angajatorii nu fac nicio diferență.</p>
+                        </AccentCard>
+
+                    </CardGrid>
+                </SectionCard>
+
+                <!-- VERDICT / PENTRU CINE -->
+                <SectionCard title="Pentru cine este fiecare secție?" delay="0.25s">
+                    <CardGrid kind="triple">
+                        <AccentCard variant="etti" title="Alege ETTI dacă…">
+                            <ul>
+                                <li>Te fascinează hardware-ul, circuitele și fizica din spatele electronicii</li>
+                                <li>Vrei să lucrezi în telecomunicații, automotive, IoT sau sisteme embedded</li>
+                                <li>Îți place matematica aplicată la semnale și circuite</li>
+                                <li>Vrei să înțelegi cum funcționează infrastructura fizică a lumii digitale</li>
+                            </ul>
+                        </AccentCard>
+                        <AccentCard variant="cti" title="Alege CTI dacă…">
+                            <ul>
+                                <li>Pasiunea ta principală este programarea și algoritmii</li>
+                                <li>Vrei să lucrezi în software, web, AI/ML, cloud sau cybersecurity</li>
+                                <li>Preferi să construiești aplicații și sisteme software complexe</li>
+                                <li>Ești atras de startup-uri tech sau roluri de Software Engineer</li>
+                            </ul>
+                        </AccentCard>
+                    </CardGrid>
+                </SectionCard>
+
+                <!-- PROGRAME OFICIALE -->
+                <SectionCard title="Programe oficiale & resurse" delay="0.3s">
+                    <div class="sfat-info" style="margin:0 0 1rem 0">
+                        <p>Consultă programa detaliată : <em>Programa Oficială UPB ETTI –</em>
+                            <span class="links">
+                                <a href="https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_ELA.pdf" target="_blank">IEETI-ELA</a>
+                                <span class="separator">|</span>
+                                <a href="https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_TST.pdf" target="_blank">IEETI-TST</a>
+                                <span class="separator">|</span>
+                                <a href="https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_RST.pdf" target="_blank">IEETI-RST</a>
+                                <span class="separator">|</span>
+                                <a href="https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_MON.pdf" target="_blank">IEETI-MON</a>
+                                <span class="separator">|</span>
+                                <a href="https://etti.upb.ro/wp-content/uploads/2021/12/04_ETTI_INF.pdf" target="_blank">CTI-INF</a>
+                            </span>
+                        </p>
+                    </div>
+                    <CtaBox
+                        text="Vrei să explorezi și alte informații despre admitere?"
+                        href="./informatii"
+                        label="Vezi toate informațiile"
+                    />
+                </SectionCard>
+
+            </section>
+        </main>
+</BaseLayout>
