@@ -1,0 +1,163 @@
+---
+/**
+ * Barem of the AdmiterePoli simulation IV, ported from
+ * legacy/barem-simulare-admiterepoli-4.html.
+ *
+ * This is the only barem page with a gate:
+ * - `window.baremConfig` is set by an inline classic script in the head slot,
+ *   unchanged from legacy; the auth module (`applyBaremGate`) reads it.
+ * - `#barem-gate` and `#barem-content` start hidden. The auth module shows one
+ *   of them; `data-reveal-after` is the safety net (`src/scripts/reveal.ts`,
+ *   the legacy `revealScheduled` from main.js) that shows the barem once it is
+ *   public even when the auth module never loads. The reveal runs as its own
+ *   script, independent of the Firebase bundle.
+ *
+ * The legacy inline <style> block is kept unchanged at the top of the body
+ * (not in the head slot) so that it still comes after the global stylesheet,
+ * which Astro links at the end of <head>, and keeps overriding the
+ * `.barem-table` rules of 07-barem-cod.css as it did on the legacy page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BaremTable, { type BaremRow } from '../components/BaremTable.astro';
+
+const columns = ['Mate', 'Info', 'Fizică'] as const;
+
+const rows: BaremRow[] = [
+  { label: 'Problema 1', answers: ['b', 'd', 'c'] },
+  { label: 'Problema 2', answers: ['c', 'b', 'c'] },
+  { label: 'Problema 3', answers: ['c', 'a', 'a'] },
+  { label: 'Problema 4', answers: ['c', 'c', 'd'] },
+  { label: 'Problema 5', answers: ['a', 'b', 'd'] },
+  { label: 'Problema 6', answers: ['c', 'b', 'b'] },
+  { label: 'Problema 7', answers: ['b', 'b', 'c'] },
+  { label: 'Problema 8', answers: ['b', 'c', 'c'] },
+  { label: 'Problema 9', answers: ['a', 'c', 'e'] },
+  { label: 'Problema 10', answers: ['c', 'c', 'f'] },
+];
+---
+
+<BaseLayout
+  title="Barem Simulare AdmiterePoli 4 2026 – Informatică | AdmiterePoli"
+  description="Baremul pentru a patra simulare de admitere la Universitatea Politehnica București (UPB) 2026 – Informatică. Verifică-ți răspunsurile!"
+  popupNoscript="info"
+>
+  <Fragment slot="head">
+    <!-- Config gate barem. Trei ferestre: înainte de startsAt e închis pentru toată
+         lumea; între startsAt şi 24 iulie ora 10:00 (SIMULATION_SALE_END din
+         firebase-auth.js) îl văd doar cei cu acces; după — public, ca baremele #1–#3.
+         startsAt trebuie să rămână identic cu window.examGateStart din
+         simulare-2026-07-21.html, altfel baremul se deschide înaintea subiectului. -->
+    <script is:inline>
+        window.baremConfig = {
+            simId:       'simulare-21-07',
+            label:       'Simularea #4',
+            buyUrl:      'https://admiterepoli.gumroad.com/l/simulare-21-07',
+            simUrl:      './simulare-2026-07-21',
+            startsAt:    new Date('2026-07-21T17:00:00+03:00'),
+            startLabel:  '21 Iulie 2026, ora 17:00',
+            publicLabel: '24 iulie, ora 10:00'
+        };
+    </script>
+  </Fragment>
+    <style is:inline>
+        .barem-table-wrapper {
+            overflow-x: auto;
+            margin: 2rem auto;
+            max-width: 700px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-shine);
+            backdrop-filter: blur(16px) saturate(1.5);
+            -webkit-backdrop-filter: blur(16px) saturate(1.5);
+        }
+
+        .barem-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            color: var(--text-heading);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .barem-table th, .barem-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .barem-table th {
+            background: rgba(123, 160, 217, 0.1);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .barem-table th:nth-child(2) { color: var(--accent2); }  /* Mate */
+        .barem-table th:nth-child(3) { color: var(--accent3); }  /* Info */
+        .barem-table th:nth-child(4) { color: #fbbf24; }         /* Fizică */
+
+        .barem-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .barem-table tr:hover td {
+            background: rgba(123, 160, 217, 0.05);
+        }
+
+        .barem-table td {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .barem-table td:first-child {
+            text-align: left;
+            padding-left: 25px;
+            color: var(--muted);
+        }
+
+    </style>
+    <main>
+        <div id="barem-gate" class="exam-gate-msg" style="display:none"></div>
+        <!-- data-reveal-after e plasa de siguranţă: pe 24 iulie la 10:00 main.js
+             afişează baremul chiar dacă firebase-auth.js nu s-a încărcat. -->
+        <section class="grid-main-content" id="barem-content" style="display:none"
+                 data-reveal-after="2026-07-24T10:00:00+03:00">
+            <div class="container" style="margin-bottom: 1rem;">
+                <div class="pag-intro">
+                    <h1 style="text-align: left;">Barem Simulare AdmiterePoli IV</h1>
+                    <h3 class="indented" style="margin-top: 1rem; font-weight: 500; line-height: 1.6; font-size: 1.3rem;">
+                        Aici găsești baremul pentru a patra simulare organizată de noi, AdmiterePoli, pentru toate cele trei probe: Matematică, Informatică și Fizică. Asigură-te că ai confruntat grilele cu răspunsurile de mai jos.
+                    </h3>
+
+                    <div style="margin-top: 1.5rem; background: rgba(225, 225, 225, 0.1); padding: 1.5rem; border-radius: 1rem;">
+                        <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.2rem;">🔗 Linkuri utile:</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.1rem;">
+                            <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-07-21" style="color: lightblue;">Rezolvă Simularea</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="./rezolvare-simulare-admiterepoli-4" style="color: lightblue;">Vezi rezolvarea scrisă</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabel Barem -->
+            <BaremTable columns={columns} rows={rows} />
+
+            <div class="container" style="margin-top: 1rem;">
+                <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;">Subiecte similare care te-ar putea ajuta:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.2rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="./simulare-2026-informatica-barem" style="color: lightblue;">Barem Simulare 2026 Informatică</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-1" style="color: lightblue;">Barem Simulare AdmiterePoli I</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-2" style="color: lightblue;">Barem Simulare AdmiterePoli II</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./barem-simulare-admiterepoli-3" style="color: lightblue;">Barem Simulare AdmiterePoli III</a></li>
+                </ul>
+            </div>
+        </section><!-- #barem-content -->
+    </main>
+  <Fragment slot="scripts">
+    <script>
+      import { initScheduledReveal } from '../scripts/reveal';
+
+      initScheduledReveal();
+    </script>
+  </Fragment>
+</BaseLayout>
