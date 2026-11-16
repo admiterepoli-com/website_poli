@@ -156,8 +156,8 @@ export interface ExamConfig {
   id: SimulationSlug;
   /**
    * Moment the gate opens, as an ISO 8601 string with offset
-   * (`window.examGateStart`). Only simulation 4 sets it; simulation 3 relies on
-   * the gate's built-in default and simulations 1 and 2 are not gated.
+   * (`window.examGateStart`). Every paid simulation sets it: the gate has no
+   * built-in default (#137). Simulations 1 and 2 are not gated.
    */
   startsAt?: string;
   /** `window.examGateStartLabel`, e.g. `21 Iulie 2026, ora 17:00`. */
