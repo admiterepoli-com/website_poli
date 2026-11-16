@@ -84,6 +84,10 @@ Behaviour checked after the change: e2e suite (8/8), visual states, exam gate of
 
 Moving the global stylesheet to the top of `<head>` (where legacy had `styles.css`) was tried and made no difference, so it was not changed.
 
+## Follow-up: `exercitii-video` page CSS
+
+The page's own stylesheet (the ~700-line legacy `<style>`) is now `src/styles/pages/exercitii-video.css`, imported by the page after `BaseLayout`, so Astro links it in `<head>` right after the site CSS. That is the same position and cascade order as on the legacy page, where the `<style>` sat in `<head>` after `styles.css`. Visual parity: 0.000% pixel difference on desktop and mobile. Not re-measured with Lighthouse in this change.
+
 ## Still above the 5% budget
 
 | Page | Metric | Diagnosis | Suggested next step |
