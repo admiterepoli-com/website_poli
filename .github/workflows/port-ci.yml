@@ -71,6 +71,16 @@ jobs:
         if: hashFiles('functions/package.json') != ''
         run: npm --prefix functions test --if-present
 
+      # End-to-end smoke tests (tests/e2e/) against the built dist/, in Chromium. Analytics,
+      # Firebase and the results sheet are blocked or intercepted by the test fixture.
+      - name: Install Playwright browser
+        if: hashFiles('playwright.config.ts') != ''
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        if: hashFiles('playwright.config.ts') != ''
+        run: npm run test:e2e
+
       # Always runs: every known URL exists, pages have titles, internal links,
       # assets and sitemap URLs resolve. Uses dist/ once it contains the pages.
       - name: Site smoke test
