@@ -51,6 +51,26 @@ jobs:
         if: hashFiles('package.json') != ''
         run: npm test --if-present
 
+      # Cloud Functions are a separate TypeScript project (functions/package.json) that the root
+      # ESLint, Prettier and tsconfig ignore. Compile, lint and test it here so a broken function
+      # fails the PR instead of the deploy. Nothing is deployed. functions/ pins Node 20 in
+      # `engines`; on Node 22 `npm ci` only prints an EBADENGINE warning.
+      - name: Functions install
+        if: hashFiles('functions/package-lock.json') != ''
+        run: npm --prefix functions ci
+
+      - name: Functions build
+        if: hashFiles('functions/package.json') != ''
+        run: npm --prefix functions run build
+
+      - name: Functions lint
+        if: hashFiles('functions/package.json') != ''
+        run: npm --prefix functions run lint
+
+      - name: Functions tests
+        if: hashFiles('functions/package.json') != ''
+        run: npm --prefix functions test --if-present
+
       # Always runs: every known URL exists, pages have titles, internal links,
       # assets and sitemap URLs resolve. Uses dist/ once it contains the pages.
       - name: Site smoke test
