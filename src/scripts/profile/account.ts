@@ -4,13 +4,13 @@
  * The injected HTML is byte-identical to the legacy one; do not reformat the template literals.
  */
 import { sendPasswordResetEmail, updateProfile, type User } from 'firebase/auth';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, type Timestamp } from 'firebase/firestore';
 
+import type { UserDoc } from '../../types/firestore';
 import { auth, db } from '../../lib/firebase/app';
 import { initialsOf } from './format';
-import type { ProfileUserDoc } from './types';
 
-export function renderAccountSection(user: User, userData: ProfileUserDoc): void {
+export function renderAccountSection(user: User, userData: UserDoc<Timestamp>): void {
   // Email
   const emailDisplay = document.getElementById('profile-email-display');
   if (emailDisplay) emailDisplay.textContent = user.email;

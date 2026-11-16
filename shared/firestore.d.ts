@@ -53,6 +53,8 @@ export interface UserDoc<Timestamp = unknown> {
   /** Lower-cased email; fallback lookup key for the Gumroad webhook. */
   emailLower?: string;
   status?: UserStatus;
+  /** Name the user sets on the profile page (also stored on the Firebase Auth profile). */
+  displayName?: string;
   selectedPlan?: PlanId;
   selectedBilling?: BillingId;
   createdAt?: Timestamp;

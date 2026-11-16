@@ -7,12 +7,12 @@
  * Prices and Gumroad products come from `STUDENT_PLUS_OFFERS` instead of being written out again;
  * the resulting text is the legacy text.
  */
+import type { Timestamp } from 'firebase/firestore';
 import type { User } from 'firebase/auth';
 
 import { STUDENT_PLUS_OFFERS } from '../../lib/firebase/offers';
-import type { BillingId } from '../../types/firestore';
+import type { BillingId, UserDoc } from '../../types/firestore';
 import { escHtml, formatRoDate, paidPlanOf, type PaidPlan } from './format';
-import type { ProfileUserDoc } from './types';
 
 const { monthly, preadmitere, admitere } = STUDENT_PLUS_OFFERS;
 
@@ -42,7 +42,7 @@ function isBillingId(value: string | undefined): value is BillingId {
   return value === 'monthly' || value === 'preadmitere' || value === 'admitere';
 }
 
-export function renderPlanSection(user: User, userData: ProfileUserDoc): void {
+export function renderPlanSection(user: User, userData: UserDoc<Timestamp>): void {
   const container = document.getElementById('profile-plan-content');
   if (!container) return;
 

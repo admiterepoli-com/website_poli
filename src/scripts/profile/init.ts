@@ -3,13 +3,13 @@
  * A visitor who is not signed in is sent to the home page.
  */
 import { onAuthStateChanged, type User } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, type Timestamp } from 'firebase/firestore';
 
+import type { UserDoc } from '../../types/firestore';
 import { auth, db } from '../../lib/firebase/app';
 import { renderAccountSection } from './account';
 import { renderPlanSection } from './plan';
 import { renderResultsSection } from './results';
-import type { ProfileUserDoc } from './types';
 
 /** After a Gumroad purchase the webhook needs a moment before the user document shows it. */
 const UPGRADE_WAIT_MS = 3000;
@@ -20,7 +20,7 @@ async function initProfilePage(user: User): Promise<void> {
 
   try {
     const snap = await getDoc(doc(db, 'users', user.uid));
-    const userData: ProfileUserDoc = snap.exists() ? (snap.data() as ProfileUserDoc) : {};
+    const userData: UserDoc<Timestamp> = snap.exists() ? (snap.data() as UserDoc<Timestamp>) : {};
     renderAccountSection(user, userData);
     renderPlanSection(user, userData);
     await renderResultsSection(user);
