@@ -1,27 +1,22 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <script src="./cookie-consent.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC1VMXYCRN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+---
+/**
+ * Ported from legacy/preadmitere-2026-matematica-barem.html as its own page (#77): it shows an
+ * answer table instead of a PDF, so it does not fit the PDF template. The
+ * <main> markup, table included, is copied as it is.
+ *
+ * The legacy inline <style> block is kept unchanged at the top of the body
+ * (not in the head slot) so that it still comes after the bundled site CSS
+ * and overrides the `.barem-table` rules of 07-barem-cod.css as on the
+ * legacy page (see PORTING.md).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
 
-        gtag('config', 'G-PC1VMXYCRN');
-    </script>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Barem Preadmitere Politehnica 2026 – Matematică | AdmiterePoli</title>
-    <meta name="description" content="Baremul oficial pentru preadmiterea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!">
-
-    <link rel="icon" type="image/png" href="logosquared.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <style>
+<BaseLayout
+  title="Barem Preadmitere Politehnica 2026 – Matematică | AdmiterePoli"
+  description="Baremul oficial pentru preadmiterea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2026. Verifică-ți răspunsurile!"
+>
+    <style is:inline>
         .barem-table-wrapper {
             overflow-x: auto;
             margin: 2rem auto;
@@ -75,34 +70,6 @@
             color: var(--muted);
         }
     </style>
-</head>
-<body class="lp-body lp-dark">
-        <header>
-            <a href="./" class="nav-logo-link">
-                <img src="images/logonoutrans.png" alt="logo" class="logonav">
-            </a>
-            <nav>
-
-                <div id="nav-cursor" class="nav-cursor" aria-hidden="true"></div>
-
-                <ul class="nav-elements">
-                    <li><a href="./informatii">Informații generale</a></li>
-                    <li><a href="./subiecte">Subiecte/Rezolvări</a></li>
-                    <li><a href="./resurse">Resurse</a></li>
-                    <li><a href="./simulari">Simulări</a></li>
-                    <li><a href="./exercitii-video">Exerciții video</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-header-actions">
-                <button class="nav-header-signup" id="header-signup-btn">Sign Up</button>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
     <main>
         <section class="grid-main-content">
             <div class="container" style="margin-bottom: 2rem;">
@@ -155,41 +122,4 @@
             </div>
         </section>
     </main>
-    <footer>
-        <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank">
-            <img src="./images/whatsapp.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="https://www.instagram.com/admitere.poli?igsh=MTMzNjNjMHoyZDIyZQ%3D%3D&utm_source=qr" target="_blank">
-            <img src="./images/instagram.svg" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-        </a>
-        <a href="./contact" style="color: white; text-decoration: none;"> Contact</a>
-        <a href="./termeni-si-conditii" style="color: white; text-decoration: none;"> Termeni si conditii</a>
-        <a href="./politica-confidentialitate" style="color: white; text-decoration: none;">Politica de Confidentialitate</a>
-        <div>&copy; 2026 AdmiterePoli. Toate drepturile rezervate. Creat de studenți, pentru viitori studenți.</div>
-    </footer>
-
-    <script src="main.js"></script>
-
-    <!-- Newsletter Popup Liquid Glass -->
-    <div id="newsletter-popup">
-        <div class="newsletter-content">
-            <button class="close-btn" aria-label="Close">&times;</button>
-            <h3 class="glass-headline">Antrenament zilnic pentru&nbsp;admitere</h3>
-            <div class="popup-benefits">
-                <p><strong>Seturi noi de probleme</strong> la mate, info și&nbsp;fizică</p>
-                <p>Sesiuni LIVE de simulări pe Google&nbsp;Meet</p>
-            </div>
-            <a href="https://chat.whatsapp.com/Fc7xjNckFGYBE9E16xsZ1D" target="_blank" class="whatsapp-btn" id="whatsapp-link">Intră&nbsp;în&nbsp;grupul de&nbsp;WhatsApp</a>
-            <a href="#" class="dismiss-link popup-microcopy">Nu acum &middot; Fără spam</a>
-        </div>
-    </div>
-    <noscript>
-        <div style="padding: 20px; background: #f8f9fa; border: 1px solid #ddd; text-align: center; color: #333;">
-            <h3>Rămâi la curent cu AdmiterePoli</h3>
-            <p>Abonează-te la newsletter-ul nostru pentru a primi săptămânal noutăți despre admitere, subiecte rezolvate și resurse utile.</p>
-        </div>
-    </noscript>
-
-        <script type="module" src="./firebase-auth.js"></script>
-</body>
-</html>
+</BaseLayout>
