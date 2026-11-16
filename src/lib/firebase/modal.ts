@@ -3,6 +3,7 @@
  * Extracted from `legacy/firebase-auth.js` (issue #20). The injected HTML is byte-identical to the
  * legacy one; do not reformat the template literal.
  */
+import { BILLING_IDS, STANDARD_PLAN_PRICE, STUDENT_PLUS_OFFERS, type StudentPlusOffer } from './offers';
 
 /** The two error boxes of the modal: `#auth-error-login` and `#auth-error-register`. */
 export type AuthPanelId = 'login' | 'register';
@@ -22,6 +23,16 @@ export function onPlanStepShown(handler: () => void): void {
 }
 
 /* ── HTML injectat în DOM ─────────────────────────────────────── */
+
+/** `data-monthly="…" data-preadmitere="…" data-admitere="…"`, one value per billing option. */
+function billingAttrs(value: (billing: (typeof BILLING_IDS)[number]) => string): string {
+  return BILLING_IDS.map((billing) => `data-${billing}="${value(billing)}"`).join(' ');
+}
+
+/** The same attributes, read from the Student Plus offer of each billing option. */
+function offerAttrs(value: (offer: StudentPlusOffer) => string): string {
+  return billingAttrs((billing) => value(STUDENT_PLUS_OFFERS[billing]));
+}
 
 export function injectModal(): void {
   const overlay: HTMLDivElement = document.createElement('div');
@@ -107,7 +118,7 @@ export function injectModal(): void {
               </div>
             </div>
             <div class="plan-price">
-              <span class="plan-amount" data-monthly="0" data-preadmitere="0" data-admitere="0">0</span>
+              <span class="plan-amount" ${billingAttrs(() => String(STANDARD_PLAN_PRICE))}>${STANDARD_PLAN_PRICE}</span>
               <span class="plan-currency">RON</span>
               <span class="plan-period" data-monthly="/lună" data-preadmitere="/lună" data-admitere="/lună">/lună</span>
             </div>
@@ -124,14 +135,14 @@ export function injectModal(): void {
             </div>
             <div class="plan-price-wrap">
               <div class="plan-price-old-row" hidden>
-                <span class="plan-amount-old" data-monthly="" data-preadmitere="460" data-admitere="736"></span>
+                <span class="plan-amount-old" ${offerAttrs((o) => (o.oldPrice === null ? '' : String(o.oldPrice)))}></span>
                 <span class="plan-amount-old">RON</span>
-                <span class="plan-sale-badge" data-monthly="" data-preadmitere="-25%" data-admitere="-35%"></span>
+                <span class="plan-sale-badge" ${offerAttrs((o) => o.discount ?? '')}></span>
               </div>
               <div class="plan-price">
-                <span class="plan-amount" data-monthly="92" data-preadmitere="345" data-admitere="480">92</span>
+                <span class="plan-amount" ${offerAttrs((o) => String(o.price))}>${STUDENT_PLUS_OFFERS.monthly.price}</span>
                 <span class="plan-currency">RON</span>
-                <span class="plan-period" data-monthly="/lună" data-preadmitere="până la Preadmitere" data-admitere="până la Admitere">/lună</span>
+                <span class="plan-period" ${offerAttrs((o) => o.period)}>${STUDENT_PLUS_OFFERS.monthly.period}</span>
               </div>
             </div>
           </div>

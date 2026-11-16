@@ -12,6 +12,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import type { UserDoc } from '../../types/firestore';
 import { hasSimulationAccess, isSaleClosed } from './access';
 import { db } from './app';
+import { STUDENT_PLUS_OFFERS } from './offers';
 
 /** KaTeX auto-render, loaded by the simulation pages as a classic script. */
 type MathWindow = Window & { renderMathInElement?: (element: HTMLElement) => void };
@@ -21,7 +22,7 @@ function errorMessage(e: unknown): unknown {
   return typeof e === 'object' && e !== null && 'message' in e ? e.message : undefined;
 }
 
-export const STUDENT_PLUS_URL = 'https://admiterepoli.gumroad.com/l/student-plus-lunar';
+export const STUDENT_PLUS_URL: string = STUDENT_PLUS_OFFERS.monthly.gumroadUrl;
 
 /* Deblocare automată la ora de start, fără refresh manual. Un singur timer activ
    pe pagină — applyExamGate poate fi re-apelat la fiecare schimbare de stare auth.

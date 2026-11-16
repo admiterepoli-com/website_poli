@@ -12,66 +12,16 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import type { BillingId, PlanId, UserDoc } from '../../types/firestore';
 import { auth, db } from './app';
 import { closeModal, showStep } from './modal';
+import { STUDENT_PLUS_OFFERS, studentPlusCheckoutUrl } from './offers';
 
 /* ── Preţuri şi linkuri Gumroad ───────────────────────────────── */
 
-/** What Student Plus costs for one billing option, and where it is bought. */
-export interface StudentPlusOffer {
-  /** Price in RON, VAT included. */
-  price: number;
-  /** Struck-through reference price in RON; `null` for the monthly subscription. */
-  oldPrice: number | null;
-  /** Discount badge next to the old price; `null` for the monthly subscription. */
-  discount: string | null;
-  /** Text after the price. */
-  period: string;
-  /** Gumroad product page. */
-  gumroadUrl: string;
-}
-
-/**
- * Single source for the Student Plus prices and Gumroad products ("plans for year 2026").
- * The picker still reads the amounts from the `data-<billing>` attributes of the markup in `./modal`,
- * which must carry the same values.
- */
-export const STUDENT_PLUS_OFFERS = {
-  monthly: {
-    price: 92,
-    oldPrice: null,
-    discount: null,
-    period: '/lună',
-    gumroadUrl: 'https://admiterepoli.gumroad.com/l/student-plus-lunar',
-  },
-  preadmitere: {
-    price: 345,
-    oldPrice: 460,
-    discount: '-25%',
-    period: 'până la Preadmitere',
-    gumroadUrl: 'https://admiterepoli.gumroad.com/l/student-plus-preadmitere',
-  },
-  admitere: {
-    price: 480,
-    oldPrice: 736,
-    discount: '-35%',
-    period: 'până la Admitere',
-    gumroadUrl: 'https://admiterepoli.gumroad.com/l/student-plus-admitere',
-  },
-} as const satisfies Record<BillingId, StudentPlusOffer>;
-
-/** The Standard plan is free for every billing option. */
-export const STANDARD_PLAN_PRICE = 0;
+// The prices and Gumroad products live in `./offers`, which `./modal` also reads.
+export { STANDARD_PLAN_PRICE, STUDENT_PLUS_OFFERS, studentPlusCheckoutUrl } from './offers';
+export type { StudentPlusOffer } from './offers';
 
 function isBillingId(value: string | undefined): value is BillingId {
   return value !== undefined && Object.hasOwn(STUDENT_PLUS_OFFERS, value);
-}
-
-/**
- * Gumroad checkout link for Student Plus, prefilled with the account email and returning to the
- * profile page. `returnUrl` is passed unencoded.
- */
-export function studentPlusCheckoutUrl(billing: BillingId, email: string | null, returnUrl: string): string {
-  // `String(null)` keeps the legacy output for an account without an email.
-  return `${STUDENT_PLUS_OFFERS[billing].gumroadUrl}?wanted=true&email=${encodeURIComponent(String(email))}&redirect_url=${encodeURIComponent(returnUrl)}`;
 }
 
 /** `code` and `message` of a caught value, for the log lines the legacy code printed. */
