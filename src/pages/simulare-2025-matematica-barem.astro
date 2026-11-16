@@ -1,0 +1,53 @@
+---
+/**
+ * Ported from legacy/simulare-2025-matematica-barem.html as its own page, not
+ * from the PDF template (#80): the legacy markup never closes the first
+ * `<div class="container" style="margin-bottom: 2rem;">`, so the browser nests
+ * the PDF viewer and the related-links container inside it until `</section>`.
+ * That narrows the PDF to the container width, which the template cannot
+ * reproduce. The markup below is the legacy one with that implicit close
+ * written out (same DOM as the browser built). Do not "fix" the nesting
+ * without a visual decision.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PdfViewer from '../components/PdfViewer.astro';
+---
+
+<BaseLayout
+  title="Barem Simulare Admitere Politehnica 2025 – Matematică | AdmiterePoli"
+  description="Vezi baremul oficial de corectare pentru simularea examenului de admitere la matematică, Universitatea Politehnica București (UPB) 2025."
+>
+    <main>
+        <section class="grid-main-content">
+            
+            <div class="container" style="margin-bottom: 2rem;">
+                <div class="pag-intro">
+                    <h1 style="text-align: left;">Barem Simulare Politehnica 2025 – Matematică</h1>
+                    
+                    <h3 class="indented" style="margin-top: 1rem; font-weight: 500; line-height: 1.6; font-size: 1.5rem;">
+                        Aici găsești baremul oficial de corectare și notare pentru simularea examenului de admitere la matematică, organizată de Universitatea Națională de Știință și Tehnologie Politehnica București în 2025.
+                    </h3>
+
+                    <div style="margin-top: 1.5rem; background: rgba(225, 225, 225, 0.1); padding: 1.5rem; border-radius: 1rem;">
+                        <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;">🔗 Linkuri utile:</h3>
+                        <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.3rem;">
+                            <li style="margin-bottom: 0.5rem;"><a href="http://www.physics.pub.ro/Admitere/2025/Simulare_Admitere_2025/Algebra_si_Elemente_de_Analiza_Matematica_(Varianta_B)_AAM-B_15.03.2025.pdf" target="_blank" style="color: lightblue;">Vezi subiectul oficial (PDF)</a></li>
+                            <li style="margin-bottom: 0.5rem;"><a href="./simulare-2025-informatica-barem" style="color: lightblue;">Vezi baremul la Informatică</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=9mBcY7_gpxE" target="_blank" style="color: lightblue;">Vezi rezolvarea video</a></li>
+                        </ul>
+                    </div>
+                </div>
+            <PdfViewer src="pdfs/simulare2025-mate-barem.pdf" errorMessage="A apărut o eroare la încărcarea baremului." />
+
+            <div class="container" style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 0.8rem; color: #C3D5F0; font-size: 1.3rem;">Subiecte similare care te-ar putea ajuta:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; font-size: 1.3rem;">
+                    <li style="margin-bottom: 0.5rem;"><a href="./preadmitere-2025-matematica-barem" style="color: lightblue;">Barem Preadmitere 2025 Matematică</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="./admitere-2025-matematica-barem" style="color: lightblue;">Barem Admitere 2025 Matematică</a></li>
+                </ul>
+            </div>
+
+            </div>
+        </section>
+    </main>
+</BaseLayout>
