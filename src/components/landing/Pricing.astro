@@ -1,0 +1,71 @@
+---
+/**
+ * "Resursele care te fac student": the Standard / Student Plus cards of the
+ * landing page, markup copied from legacy/index.html. The Student Plus prices
+ * and discounts come from STUDENT_PLUS_OFFERS (src/lib/firebase/offers.ts),
+ * the source the plan picker uses too, so a price change is made once.
+ *
+ * The buttons (`#oferim-btn-standard`, `#oferim-btn-plus`) are wired by the
+ * auth entry module (src/lib/firebase/plans.ts); this component has no script.
+ */
+import { STUDENT_PLUS_OFFERS } from '../../lib/firebase/offers';
+
+const { monthly, preadmitere, admitere } = STUDENT_PLUS_OFFERS;
+---
+
+<section class="lp-pricing">
+  <div class="lp-section-header">
+    <h2>Resursele care te fac student</h2>
+    <p>Alege planul care se potrivește ritmului tău de pregătire.</p>
+  </div>
+  <div class="lp-plans">
+    <div class="lp-plan">
+      <h3 class="lp-plan-name">Standard</h3>
+      <p class="lp-plan-desc">Fundamentul pregătirii tale</p>
+      <div class="lp-plan-price">
+        <span class="lp-plan-price-value">Gratuit</span>
+      </div>
+      <ul class="lp-plan-features">
+        <li>Subiecte și rezolvări complete</li>
+        <li>Simulări cu autocorectare</li>
+        <li>Rezultate salvate în profil</li>
+        <li>Informații generale admitere</li>
+      </ul>
+      <button class="lp-btn lp-btn-outline-blue" id="oferim-btn-standard">
+        Creează cont
+      </button>
+    </div>
+    <div class="lp-plan lp-plan-featured">
+      <div class="lp-plan-badge">Popular</div>
+      <h3 class="lp-plan-name">Student Plus</h3>
+      <p class="lp-plan-desc">Acces complet la toată platforma</p>
+      <div class="lp-plan-price lp-plan-price-sale">
+        <div class="lp-plan-price-now">
+          <span class="lp-plan-price-value">{monthly.price}</span>
+          <span class="lp-plan-price-currency">RON</span>
+          <span class="lp-plan-price-period">/ lună</span>
+        </div>
+      </div>
+      <ul class="lp-plan-terms">
+        <li>
+          <span>Până la Preadmitere</span> <strong>{preadmitere.price} RON</strong>{' '}
+          <span class="lp-plan-sale-tag">{preadmitere.discount}</span>
+        </li>
+        <li>
+          <span>Până la Admitere</span> <strong>{admitere.price} RON</strong>{' '}
+          <span class="lp-plan-sale-tag">{admitere.discount}</span>
+        </li>
+        <li class="lp-plan-terms-note">Toate prețurile includ TVA.</li>
+      </ul>
+      <ul class="lp-plan-features">
+        <li>Tot ce include Standard, plus:</li>
+        <li>Videouri explicative la exercițiile noastre</li>
+        <li>Acces la simulările plătite</li>
+        <li>Rezolvările complete ale simulărilor</li>
+      </ul>
+      <button class="lp-btn lp-btn-fill" id="oferim-btn-plus">
+        Începe cu Student Plus
+      </button>
+    </div>
+  </div>
+</section>

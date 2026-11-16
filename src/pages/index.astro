@@ -2,21 +2,23 @@
 /**
  * Landing page, ported from legacy/index.html.
  *
- * The top half (hero, simulation event card, features) lives in
- * src/components/landing/. The bottom half (pricing, subiecte, about) is
- * still the legacy markup, copied as it is; part 2 of the port (#49)
- * componentises it. Its buttons (`#oferim-btn-standard`, `#oferim-btn-plus`)
- * are wired by the auth entry module, so it needs no script of its own.
+ * Sections, top to bottom: hero, simulation event card, features, pricing,
+ * latest subiecte, about; each is a component in src/components/landing/.
+ * The pricing buttons are wired by the auth entry module, so the page needs
+ * no script of its own.
  *
  * This is the only page with a canonical tag.
  *
- * The legacy page loaded GSAP and ScrollTrigger from cdnjs but no script
- * used them. The two tags are kept for parity until #49 replaces them.
+ * The legacy page loaded GSAP and ScrollTrigger from cdnjs, but no script
+ * used them; the two tags are dropped (decision on #172).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import About from '../components/landing/About.astro';
 import Features from '../components/landing/Features.astro';
 import Hero from '../components/landing/Hero.astro';
+import Pricing from '../components/landing/Pricing.astro';
 import SimEvent from '../components/landing/SimEvent.astro';
+import Subiecte from '../components/landing/Subiecte.astro';
 ---
 
 <BaseLayout
@@ -33,104 +35,12 @@ import SimEvent from '../components/landing/SimEvent.astro';
 
                 <Features />
 
-                <section class="lp-pricing">
-                    <div class="lp-section-header">
-                        <h2>Resursele care te fac student</h2>
-                        <p>Alege planul care se potrivește ritmului tău de pregătire.</p>
-                    </div>
-                    <div class="lp-plans">
-                        <div class="lp-plan">
-                            <h3 class="lp-plan-name">Standard</h3>
-                            <p class="lp-plan-desc">Fundamentul pregătirii tale</p>
-                            <div class="lp-plan-price">
-                                <span class="lp-plan-price-value">Gratuit</span>
-                            </div>
-                            <ul class="lp-plan-features">
-                                <li>Subiecte și rezolvări complete</li>
-                                <li>Simulări cu autocorectare</li>
-                                <li>Rezultate salvate în profil</li>
-                                <li>Informații generale admitere</li>
-                            </ul>
-                            <button class="lp-btn lp-btn-outline-blue" id="oferim-btn-standard">Creează cont</button>
-                        </div>
-                        <div class="lp-plan lp-plan-featured">
-                            <div class="lp-plan-badge">Popular</div>
-                            <h3 class="lp-plan-name">Student Plus</h3>
-                            <p class="lp-plan-desc">Acces complet la toată platforma</p>
-                            <div class="lp-plan-price lp-plan-price-sale">
-                                <div class="lp-plan-price-now">
-                                    <span class="lp-plan-price-value">92</span>
-                                    <span class="lp-plan-price-currency">RON</span>
-                                    <span class="lp-plan-price-period">/ lună</span>
-                                </div>
-                            </div>
-                            <ul class="lp-plan-terms">
-                                <li><span>Până la Preadmitere</span> <strong>345 RON</strong> <span class="lp-plan-sale-tag">-25%</span></li>
-                                <li><span>Până la Admitere</span> <strong>480 RON</strong> <span class="lp-plan-sale-tag">-35%</span></li>
-                                <li class="lp-plan-terms-note">Toate prețurile includ TVA.</li>
-                            </ul>
-                            <ul class="lp-plan-features">
-                                <li>Tot ce include Standard, plus:</li>
-                                <li>Videouri explicative la exercițiile noastre</li>
-                                <li>Acces la simulările plătite</li>
-                                <li>Rezolvările complete ale simulărilor</li>
-                            </ul>
-                            <button class="lp-btn lp-btn-fill" id="oferim-btn-plus">Începe cu Student Plus</button>
-                        </div>
-                    </div>
-                </section>
+                <Pricing />
 
-                <section class="poveste container lp-subiecte-section">
-                    <h2>Subiecte Politehnică 2026 Rezolvate</h2>
-                    <div class="container">
-                        <div class="sub-links" style="opacity: 1;">
-                            <section>
-                                <ul class="dropdown-design">
-                                    <li><h3>Simulare 2026</h3></li>
-                                    <li><p><em>Subiect:</em> <span class="links"><a href="https://www.reddit.com/r/Polytehnica/comments/1rnasfy/subiecte_infomate_simulare_2026/" target="_blank">Mate</a> <span class="separator">|</span> <a href="https://www.reddit.com/r/Polytehnica/comments/1rnasfy/subiecte_infomate_simulare_2026/" target="_blank">Info</a></span></p></li>
-                                    <li><p><em>Barem:</em> <span class="links"><a href="./simulare-2026-matematica-barem">Mate</a> <span class="separator">|</span> <a href="./simulare-2026-informatica-barem">Info</a></span></p></li>
-                                    <li><p><em>Rezolvare:</em> <span class="links"><a href="./rezolvare-simulare-2026-matematica" target="_blank">Mate</a> <span class="separator">|</span> <a href="./rezolvare-simulare-2026-informatica" target="_blank">Info</a></span></p></li>
-                                </ul>
-                            </section>
-                            <section>
-                                <ul class="dropdown-design">
-                                    <li><h3>Preadmitere 2026</h3></li>
-                                    <li><p><em>Subiect:</em> <span class="links"><a href="./preadmitere-2026-mate-subiect">Mate</a> <span class="separator">|</span> <a href="./preadmitere-2026-info-subiect">Info</a></span></p></li>
-                                    <li><p><em>Barem:</em> <span class="links"><a href="./preadmitere-2026-matematica-barem">Mate</a> <span class="separator">|</span> <a href="./preadmitere-2026-informatica-barem">Info</a></span></p></li>
-                                    <li><p><em>Rezolvare:</em> <span class="links"><a href="./rezolvare-preadmitere-2026-matematica">Mate</a> <span class="separator">|</span> <a href="./rezolvare-preadmitere-2026-informatica">Info</a></span></p></li>
-                                </ul>
-                            </section>
-                            <section>
-                                <ul class="dropdown-design">
-                                    <li><h3>Admitere 2025</h3></li>
-                                    <li><p><em>Subiect:</em> <span class="links"><a href="http://www.physics.pub.ro/Admitere/2025/Algebra_si_Elemente_de_Analiza_Matematica_AAM_(Varianta_S).pdf" target="_blank">Mate</a> <span class="separator">|</span> <a href="http://www.physics.pub.ro/Admitere/2025/Informatica_I_(Varianta_S).pdf">Info</a></span></p></li>
-                                    <li><p><em>Barem:</em> <span class="links"><a href="./admitere-2025-matematica-barem">Mate</a> <span class="separator">|</span> <a href="./admitere-2025-informatica-barem">Info</a></span></p></li>
-                                    <li><p><em>Rezolvare:</em> <span class="links"><a href="./rezolvare-admitere-2025-matematica" target="_blank">Mate</a> <span class="separator">|</span> <a href="./rezolvare-admitere-2025-informatica">Info</a></span></p></li>
-                                </ul>
-                            </section>
-                        </div>
-                    </div>
-                </section>
+                <Subiecte />
 
-                <section class="lp-about" id="despre-noi">
-                    <h2>Creat de studenți, pentru viitori studenți</h2>
-                    <p>Am trecut prin admiterea la Politehnica București și am construit platforma pe care ne-am fi dorit-o noi — subiecte rezolvate pas cu pas, simulări realiste și resurse greu de găsit, centralizate într-un singur loc.</p>
-                    <div class="lp-founders">
-                        <div class="lp-founder">
-                            <img src="images/poza-alex.jpg" alt="Alex" loading="lazy">
-                            <span>Alex</span>
-                        </div>
-                        <div class="lp-founder">
-                            <img src="images/poza-robert.jpg" alt="Robert" loading="lazy">
-                            <span>Robert</span>
-                        </div>
-                    </div>
-                </section>
+                <About />
 
             </div>
         </main>
-  <Fragment slot="scripts">
-        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
-        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
-  </Fragment>
 </BaseLayout>
